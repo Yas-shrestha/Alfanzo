@@ -1,0 +1,40 @@
+/******* Customized Bootstrap for Resort ********/
+
+/* Colors */
+$primary: #c19a6b; /* Warm Oak - main theme color for wood and nature */
+$secondary: #4caf50; /* Forest Green - representing greenery and fresh air */
+$light: #f5f5dc; /* Soft Beige - warm, neutral background to mimic sandy shores */
+$dark: #111111; /* Deep Black - for text contrast */
+
+/* Body & Text Colors */
+$body-color: #ffffff; /* Clean white for backgrounds to enhance readability */
+$headings-color: $dark; /* Dark color for headings to make them stand out */
+
+/* Typography */
+$font-family-base: "Open Sans", sans-serif; /* Clean, modern, and easy-to-read font */
+$headings-font-family: "Merriweather", serif; /* Elegant serif font for headings, adding a touch of sophistication */
+$headings-font-weight: 600; /* Semi-bold headings for a touch of prominence */
+$display-font-weight: 700; /* Extra-bold for display headings to make them eye-catching */
+
+/* Responsive Font Sizes */
+$enable-responsive-font-sizes: true;
+
+/* Borders */
+$border-radius: 10px; /* Soft corners to give a more organic feel */
+$border-radius-sm: $border-radius;
+$border-radius-lg: $border-radius;
+
+/* Links */
+$link-decoration: none; /* Clean, modern design without underlined links */
+$link-hover-color: #d4af37; /* Muted Gold for elegant hover effect on links */
+
+/* Button & CTA Styling */
+$button-border-radius: $border-radius; /* Rounded buttons for a soft, welcoming feel */
+$button-primary-bg: $primary; /* Primary buttons in Warm Oak */
+$button-primary-color: $body-color; /* Button text in pure white */
+
+/* Advanced Layout */
+$enable-negative-margins: true;
+
+/* Import Bootstrap */
+@import "bootstrap/scss/bootstrap";
