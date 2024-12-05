@@ -13,8 +13,8 @@
                         @endif
                         <div class="d-flex justify-content-between">
                             <h1>Manage join_us</h1>
-                            <a href="{{ route('team_members.create') }}" class="btn btn-primary btn-md "><i class="fa fa-plus"
-                                    aria-hidden="true"></i></a>
+                            <a href="{{ route('team_members.create') }}" class="btn btn-primary btn-md "><i
+                                    class="fa fa-plus" aria-hidden="true"></i></a>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
@@ -50,8 +50,10 @@
                                                     <td>{{ $team->instagram }}</td>
                                                     <td>{{ $team->facebook }}</td>
                                                     <td>{{ $team->twitter }}</td>
-                                                    <td><a target="_blank" href="{{ url('uploads/' . $team->img) }}"><img src="{{ asset('uploads/' . $team->img) }}"
-                                                        width="50px" height="50px" alt="no"></a></td>
+                                                    <td><a target="_blank"
+                                                            href="{{ url('uploads/' . $team->files->img) }}"><img
+                                                                src="{{ asset('uploads/' . $team->files->img) }}"
+                                                                width="50px" height="50px" alt="no"></a></td>
                                                     <td>
                                                         <a href="{{ route('team_members.edit', $team->id) }}"
                                                             class="btn btn-md btn-primary"><i class="fa fa-pencil"
@@ -61,17 +63,17 @@
                                                                 aria-hidden="true"></i></a>
                                                         <!-- Modal trigger button -->
                                                         <button type="button" class="btn btn-danger btn-md"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#modalId{{  $team->id}}">
-                                                        <i class="fa-solid fa-trash-can"></i>
-                                                    </button>
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalId{{ $team->id }}">
+                                                            <i class="fa-solid fa-trash-can"></i>
+                                                        </button>
 
-                                                    <!-- Modal Body -->
-                                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                                    <div class="modal fade" id="modalId{{  $team->id}}"
-                                                        tabindex="-1" data-bs-backdrop="static"
-                                                        data-bs-keyboard="false" role="dialog"
-                                                        aria-labelledby="modalTitleId" aria-hidden="true">
+                                                        <!-- Modal Body -->
+                                                        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                                                        <div class="modal fade" id="modalId{{ $team->id }}"
+                                                            tabindex="-1" data-bs-backdrop="static"
+                                                            data-bs-keyboard="false" role="dialog"
+                                                            aria-labelledby="modalTitleId" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
                                                                 role="document">
                                                                 <div class="modal-content">
@@ -114,7 +116,7 @@
                                         </tbody>
                                     </table>
                                     <div>
-                                        {{ $teams->links()  }}
+                                        {{ $teams->links() }}
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +129,7 @@
     <script>
         function firstFunction() {
             var x = document.querySelector('input[name=img]:checked').value;
-            document.getElementById('imagebox').value = x;  
+            document.getElementById('imagebox').value = x;
         }
     </script>
 @endsection

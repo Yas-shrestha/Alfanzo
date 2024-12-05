@@ -12,11 +12,12 @@
                             </div>
                         @endif
                         @if (Session::has('error'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {{ Session('error') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endif
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ Session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
                         <div class="d-flex justify-content-between">
                             <h1>Manage file</h1>
                             <a href="{{ route('foods.create') }}" class="btn btn-primary btn-md p-3"><i class="fa fa-plus"
@@ -54,9 +55,11 @@
                                                     </td>
                                                     <td>Rs {{ $food->price }}</td>
                                                     <td>
-                                                        <a target="_blank" href="{{ url('uploads/' . $food->img) }}"><img src="{{ asset('uploads/' . $food->img) }}"
-                                                            width="50px" height="50px" alt="no"></a>
-                                                        </td>
+                                                        <a target="_blank"
+                                                            href="{{ url('uploads/' . $food->files->files->img) }}"><img
+                                                                src="{{ asset('uploads/' . $food->files->files->img) }}"
+                                                                width="50px" height="50px" alt="no"></a>
+                                                    </td>
 
                                                     <td>
                                                         <a href="{{ route('foods.edit', $food->id) }}"

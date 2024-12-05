@@ -29,10 +29,10 @@
                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
                                                     <label for="exampleInputText1" class="form-label">Name</label>
-                                                    <input disabled type="text" class="form-control" id="exampleInputText1"
-                                                        aria-describedby="textHelp" name="name"
+                                                    <input disabled type="text" class="form-control"
+                                                        id="exampleInputText1" aria-describedby="textHelp" name="name"
                                                         value="{{ $testimonial->name }}">
-                                                        @error('name')
+                                                    @error('name')
                                                         <small>{{ $message }}</small>
                                                     @enderror
                                                 </div>
@@ -40,10 +40,10 @@
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
                                                     <label for="exampleInputText1" class="form-label">profession</label>
-                                                    <input disabled type="text" class="form-control" id="exampleInputText1"
-                                                        aria-describedby="textHelp" name="profession"
+                                                    <input disabled type="text" class="form-control"
+                                                        id="exampleInputText1" aria-describedby="textHelp" name="profession"
                                                         value="{{ $testimonial->profession }}">
-                                                        @error('profession')
+                                                    @error('profession')
                                                         <small>{{ $message }}</small>
                                                     @enderror
                                                 </div>
@@ -52,7 +52,7 @@
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlTextarea1"
                                                         class="form-label">description</label>
-                                                    <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'>{{$testimonial->description}}</textarea>
+                                                    <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'>{{ $testimonial->description }}</textarea>
                                                 </div>
                                                 @error('description')
                                                     <small>{{ $message }}</small>
@@ -87,11 +87,11 @@
                                                                     @foreach ($files as $file)
                                                                         <label>
                                                                             <input disabled type="radio" name="img"
-                                                                                value="{{ $file->img }}"
+                                                                                value="{{ $file->files->img }}"
                                                                                 style="opacity: 0;" />
-                                                                            <img src="{{ asset('uploads/' . $file->img) }}"
-                                                                                alt="" height="100px;"
-                                                                                width="100px;" style="margin-right:20px;">
+                                                                            {{ asset('uploads/' . $file->img) }}
+                                                                            alt="" height="100px;"
+                                                                            width="100px;" style="margin-right:20px;">
                                                                         </label>
                                                                     @endforeach
                                                                     <div>
@@ -117,13 +117,15 @@
                                                     <label class="col-form-label">Image</label>
                                                 </div>
                                                 <div class="input disabled-group mb-3 col">
-                                                    <input disabled id="imagebox" type="text" class="form-control" readonly
-                                                        name="img" readonly value="{{ $testimonial->img }}">
+                                                    <input disabled id="imagebox" type="text" class="form-control"
+                                                        readonly name="img" readonly
+                                                        value="{{ $testimonial->files->img }}">
                                                     <div class="input disabled-group-append">
-                                                        
+
                                                     </div>
                                                 </div>
-                                                <img src="{{ asset('uploads/' . $testimonial->img) }}" alt="" class="w-100">
+                                                <img src="{{ asset('uploads/' . $testimonial->files->img) }}"
+                                                    alt="" class="w-100">
 
                                             </div>
                                         </div>

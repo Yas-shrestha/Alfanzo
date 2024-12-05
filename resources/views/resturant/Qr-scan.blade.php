@@ -42,7 +42,8 @@
                             <div class="col-lg-12 py-2 px-4">
                                 <div class="d-flex align-items-center">
                                     <img class="flex-shrink-0 img-fluid rounded"
-                                        src="{{ asset('uploads/' . $food->img) }}" alt="" style="width: 40px;">
+                                        src="{{ asset('uploads/' . $food->files->img) }}" alt=""
+                                        style="width: 40px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h6 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>{{ $food->name }}</span>
@@ -59,7 +60,8 @@
                             <div class="col-lg-12 py-2 px-4">
                                 <div class="d-flex align-items-center">
                                     <img class="flex-shrink-0 img-fluid rounded"
-                                        src="{{ asset('uploads/' . $food->img) }}" alt="" style="width: 40px;">
+                                        src="{{ asset('uploads/' . $food->files->img) }}" alt=""
+                                        style="width: 40px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h6 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>{{ $food->name }}</span>
@@ -76,7 +78,8 @@
                             <div class="col-lg-12 py-2 px-4">
                                 <div class="d-flex align-items-center">
                                     <img class="flex-shrink-0 img-fluid rounded"
-                                        src="{{ asset('uploads/' . $food->img) }}" alt="" style="width: 40px;">
+                                        src="{{ asset('uploads/' . $food->files->img) }}" alt=""
+                                        style="width: 40px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h6 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>{{ $food->name }}</span>
@@ -94,7 +97,8 @@
                             <div class="col-lg-12 py-2 px-4">
                                 <div class="d-flex align-items-center">
                                     <img class="flex-shrink-0 img-fluid rounded"
-                                        src="{{ asset('uploads/' . $food->img) }}" alt="" style="width: 40px;">
+                                        src="{{ asset('uploads/' . $food->files->img) }}" alt=""
+                                        style="width: 40px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h6 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>{{ $food->name }}</span>
@@ -112,7 +116,8 @@
                             <div class="col-lg-12 py-2 px-4">
                                 <div class="d-flex align-items-center">
                                     <img class="flex-shrink-0 img-fluid rounded"
-                                        src="{{ asset('uploads/' . $food->img) }}" alt="" style="width: 40px;">
+                                        src="{{ asset('uploads/' . $food->files->img) }}" alt=""
+                                        style="width: 40px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h6 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>{{ $food->name }}</span>

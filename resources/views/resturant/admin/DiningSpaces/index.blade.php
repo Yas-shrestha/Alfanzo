@@ -6,7 +6,7 @@
                 <div class="container-fluid p-4">
                     <div class="pagetitle">
                         @if (Session::has('message'))
-                            <div class="alert alert-success alert-dismissible fade show text-dark" role="alert">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ Session('message') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
@@ -20,13 +20,13 @@
                         @endif
                         <div class="d-flex justify-content-between">
                             <h1>Manage file</h1>
-                            <a href="{{ route('carousels.create') }}" class="btn btn-primary btn-md p-3"><i
-                                    class="fa fa-plus" aria-hidden="true"></i></a>
+                            <a href="{{ route('spaces.create') }}" class="btn btn-primary btn-md p-3"><i class="fa fa-plus"
+                                    aria-hidden="true"></i></a>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">carousels</li>
+                                <li class="breadcrumb-item active">space</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -40,37 +40,38 @@
                                             <tr>
                                                 <th scope="col">S.N</th>
                                                 <th scope="col">Title</th>
+                                                <th scope="col">Description</th>
                                                 <th scope="col">Image</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($carousels as $carousel)
+                                            @foreach ($spaces as $space)
                                                 <tr>
                                                     <th scope="row">{{ $loop->iteration }}</th>
-                                                    <td>{{ $carousel->title }}</td>
+                                                    <td>{{ $space->title }}</td>
+                                                    <td>{{ $space->description }}</td>
                                                     <td><a target="_blank"
-                                                            href="{{ url('uploads/' . $carousel->files->files->img) }}"><img
-                                                                src="{{ asset('uploads/' . $carousel->files->files->img) }}"
+                                                            href="{{ url('uploads/' . $space->files->img) }}"><img
+                                                                src="{{ asset('uploads/' . $space->files->img) }}"
                                                                 width="50px" height="50px" alt="no"></a></td>
-
                                                     <td>
-                                                        <a href="{{ route('carousels.edit', $carousel->id) }}"
+                                                        <a href="{{ route('spaces.edit', $space->id) }}"
                                                             class="btn btn-md btn-primary"><i class="fa fa-pencil"
                                                                 aria-hidden="true"></i></a>
-                                                        <a href="{{ route('carousels.show', $carousel->id) }}"
+                                                        <a href="{{ route('spaces.show', $space->id) }}"
                                                             class="btn btn-md btn-secondary"><i class="fa fa-eye"
                                                                 aria-hidden="true"></i></a>
                                                         <!-- Modal trigger button -->
                                                         <button type="button" class="btn btn-danger btn-md"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#modalId{{ $carousel->id }}">
+                                                            data-bs-target="#modalId{{ $space->id }}">
                                                             <i class="fa-solid fa-trash-can"></i>
                                                         </button>
 
                                                         <!-- Modal Body -->
                                                         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                                        <div class="modal fade" id="modalId{{ $carousel->id }}"
+                                                        <div class="modal fade" id="modalId{{ $space->id }}"
                                                             tabindex="-1" data-bs-backdrop="static"
                                                             data-bs-keyboard="false" role="dialog"
                                                             aria-labelledby="modalTitleId" aria-hidden="true">
@@ -89,7 +90,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <form
-                                                                            action="{{ route('carousels.destroy', $carousel->id) }}"
+                                                                            action="{{ route('spaces.destroy', $space->id) }}"
                                                                             method="POST" enctype="multipart/form-data">
                                                                             @method('delete')
                                                                             @csrf
@@ -116,7 +117,7 @@
                                         </tbody>
                                     </table>
                                     <div>
-                                        {{ $carousels->links() }}
+                                        {{ $spaces->links() }}
                                     </div>
                                 </div>
                             </div>

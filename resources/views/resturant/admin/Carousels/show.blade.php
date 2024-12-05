@@ -68,9 +68,9 @@
                                                                             <input type="radio" name="img"
                                                                                 value="{{ $file->id }}"
                                                                                 style="opacity: 0;" />
-                                                                            <img src="{{ asset('uploads/' . $file->img) }}"
-                                                                                alt="" height="100px;"
-                                                                                width="100px;" style="margin-right:20px;">
+                                                                            {{ asset('uploads/' . $file->img) }}
+                                                                            alt="" height="100px;"
+                                                                            width="100px;" style="margin-right:20px;">
                                                                         </label>
                                                                     @endforeach
 
@@ -93,11 +93,11 @@
                                                 <div class="form-group col-12 mb-0">
                                                     <label class="col-form-label">Image</label>
                                                 </div>
-                                                <img src="/uploads/{{ $carousels->img }}" width="120px" height="60px"
-                                                    alt="no" class="m-2">
+                                                <img src="/uploads/{{ $carousels->files->img }}" width="120px"
+                                                    height="60px" alt="no" class="m-2">
                                                 <div class="input-group mb-3 col">
                                                     <input id="imagebox" type="text" class="form-control" disabled
-                                                        name="img" readonly value="{{ $carousels->img }}">
+                                                        name="img" readonly value="{{ $carousels->files->img }}">
                                                     <div class="input-group-append">
                                                         @error('img')
                                                             <small>{{ $message }}</small>

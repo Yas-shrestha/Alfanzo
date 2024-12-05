@@ -34,8 +34,8 @@
                         <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
                         <p class="mb-4">{{ $testimonial->description }}</p>
                         <div class="d-flex align-items-center">
-                            <img class="flex-shrink-0 rounded-circle" src="{{ asset('uploads/' . $testimonial->img) }}"
-                                alt="">
+                            <img class="flex-shrink-0 rounded-circle"
+                                src="{{ asset('uploads/' . $testimonial->files->img) }}" alt="">
                             <div class="ms-3">
                                 <h5 class="mb-1">{{ $testimonial->name }}</h5>
                                 <span>{{ $testimonial->profession }}</span>

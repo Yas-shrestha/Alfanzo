@@ -143,8 +143,7 @@
 
                                                 <div class="input-group mb-3 col">
                                                     <input id="imagebox" type="text" class="form-control"
-                                                        name="img" readonly
-                                                        value="{{ $food->file_id }}|{{ $food->img }}">
+                                                        name="img" readonly value="{{ $food->file_id }}">
                                                     <div class="input-group-append">
                                                         <button type="button" class="btn btn-primary btn-md"
                                                             data-bs-toggle="modal" data-bs-target="#modalId">
@@ -155,8 +154,8 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <img src="{{ asset('uploads/' . $food->img) }}" alt=""
-                                                    class="w-100">
+                                                <img src="{{ asset('uploads/' . $food->files->files->img) }}"
+                                                    alt="" class="w-100">
 
                                             </div>
                                         </div>

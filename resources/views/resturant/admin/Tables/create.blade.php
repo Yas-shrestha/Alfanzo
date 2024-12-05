@@ -32,11 +32,7 @@
                                                         <small>{{ $message }}</small>
                                                     @enderror
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlTextarea1"
-                                                        class="form-label">Description</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'></textarea>
-                                                </div>
+
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="mb-3">
                                                         <!-- Modal trigger button -->
@@ -129,9 +125,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="exampleInputText1" class="form-label">Floor</label>
-                                                    <input type="number" class="form-control" id="exampleInputText1"
-                                                        max="10" aria-describedby="textHelp" name="floor">
+                                                    <label for="exampleInputText1" class="form-label">Dining Space</label>
+                                                    <select class="form-select" name="space_id"
+                                                        aria-label="Default select example">
+                                                        @foreach ($spaces as $space)
+                                                            <option value="{{ $space->id }}">{{ $space->title }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

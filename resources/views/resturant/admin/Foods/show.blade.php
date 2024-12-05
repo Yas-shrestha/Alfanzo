@@ -30,8 +30,8 @@
                                                 <div class="mb-3">
                                                     <label for="exampleInputText1" class="form-label">name</label>
                                                     <input type="text" class="form-control" id="exampleInputText1"
-                                                        aria-describedby="textHelp" name="name"
-                                                      disabled  value="{{ $food->name }}">
+                                                        aria-describedby="textHelp" name="name" disabled
+                                                        value="{{ $food->name }}">
                                                 </div>
 
                                             </div>
@@ -41,8 +41,8 @@
                                                     <label for="exampleInputDescription1"
                                                         class="form-label">Description</label>
                                                     <input type="text" class="form-control" id="exampleInputDescription1"
-                                                        aria-describedby="descriptionHelp" name="description"
-                                                        disabled  value="{{ $food->description }}">
+                                                        aria-describedby="descriptionHelp" name="description" disabled
+                                                        value="{{ $food->description }}">
                                                 </div>
 
                                             </div>
@@ -50,7 +50,7 @@
 
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlTextarea1"
-                                                    class="form-label">Sub_Description</label>
+                                                        class="form-label">Sub_Description</label>
                                                     <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3" name='sub_description'>{{ $food->sub_description }}</textarea>
                                                 </div>
 
@@ -58,9 +58,9 @@
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">type</label>
-                                                    <input type="text"class="form-control"
-                                                        id="exampleInputEmail1" aria-describedby="emailHelp" name="type"
-                                                        disabled  value="{{ $food->type }}">
+                                                    <input type="text"class="form-control" id="exampleInputEmail1"
+                                                        aria-describedby="emailHelp" name="type" disabled
+                                                        value="{{ $food->type }}">
                                                     @error('type')
                                                         <small>{{ $message }}</small>
                                                     @enderror
@@ -69,9 +69,9 @@
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">price</label>
-                                                    <input price="text"class="form-control"
-                                                        id="exampleInputEmail1" aria-describedby="emailHelp" name="price"
-                                                        disabled  value="{{ $food->price }}">
+                                                    <input price="text"class="form-control" id="exampleInputEmail1"
+                                                        aria-describedby="emailHelp" name="price" disabled
+                                                        value="{{ $food->price }}">
                                                     @error('price')
                                                         <small>{{ $message }}</small>
                                                     @enderror
@@ -107,11 +107,11 @@
                                                                     @foreach ($files as $file)
                                                                         <label>
                                                                             <input type="radio" name="img"
-                                                                                value="{{ $file->img }}"
+                                                                                value="{{ $file->files->img }}"
                                                                                 style="opacity: 0;" />
-                                                                            <img src="{{ asset('uploads/' . $file->img) }}"
-                                                                                alt="" height="100px;"
-                                                                                width="100px;" style="margin-right:20px;">
+                                                                            {{ asset('uploads/' . $file->img) }}
+                                                                            alt="" height="100px;"
+                                                                            width="100px;" style="margin-right:20px;">
                                                                         </label>
                                                                     @endforeach
 
@@ -137,15 +137,16 @@
 
                                                 <div class="input-group mb-3 col">
                                                     <input id="imagebox" type="text" class="form-control"
-                                                        name="img" readonly value="{{ $food->img }}">
+                                                        name="img" readonly value="{{ $food->files->img }}">
                                                     <div class="input-group-append">
-                                                      
+
                                                         @error('img')
                                                             <small>{{ $message }}</small>
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <img src="{{ asset('uploads/' . $food->img) }}" alt="" class="w-100">
+                                                <img src="{{ asset('uploads/' . $food->files->files->img) }}"
+                                                    alt="" class="w-100">
 
                                             </div>
                                         </div>

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('space_id')->nullable();
             $table->foreign('space_id')->references('id')->on('dining_spaces')->onDelete('cascade');
             $table->string('table_no')->unique();
-            $table->string('floor')->nullable();
             $table->timestamps();
         });
     }

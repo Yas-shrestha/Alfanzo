@@ -37,22 +37,18 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="exampleInputEmail1" class="form-label">Floor</label>
-                                                    <input type="number" class="form-control" id="exampleInputEmail1"
-                                                        aria-describedby="emailHelp" name="floor" max="10"
-                                                        value="{{ $table->floor }}">
-                                                    @error('floor')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
+                                                    <label for="exampleInputText1" class="form-label">Dining Space</label>
+                                                    <select class="form-select" name="space_id"
+                                                        aria-label="Default select example">
+                                                        @foreach ($spaces as $space)
+                                                            <option value="{{ $space->id }}"
+                                                                {{ $space->id == $selectedSpaceId ? 'selected' : '' }}>
+                                                                {{ $space->title }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlTextarea1"
-                                                        class="form-label">Description</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'>{{ $table->description }}</textarea>
-                                                    @error('description')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
+
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
@@ -129,7 +125,7 @@
                                                 </div>
                                                 <div class="input-group mb-3 col">
                                                     <input id="imagebox" type="text" class="form-control" readonly
-                                                        name="img" value="{{ $table->file_id }}|{{ $table->img }}">
+                                                        name="img" value="{{ $table->file_id }}">
                                                     <div class="input-group-append">
                                                         <button type="button" class="btn btn-primary btn-md"
                                                             data-bs-toggle="modal" data-bs-target="#modalId">
@@ -138,9 +134,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <a target="_blank" href="{{ url('uploads/' . $table->img) }}"><img
-                                                            src="{{ asset('uploads/' . $table->img) }}" width="50px"
-                                                            height="50px" alt="no"></a>
+                                                    <a target="_blank"
+                                                        href="{{ url('uploads/' . $table->files->img) }}"><img
+                                                            src="{{ asset('uploads/' . $table->files->img) }}"
+                                                            width="50px" height="50px" alt="no"></a>
                                                 </div>
                                             </div>
                                             <div class="text-center">

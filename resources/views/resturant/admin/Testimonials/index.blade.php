@@ -44,8 +44,10 @@
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $testimonial->name }}</td>
                                                     <td>{{ $testimonial->profession }}</td>
-                                                    <td><a target="_blank" href="{{ url('uploads/' . $testimonial->img) }}"><img src="{{ asset('uploads/' . $testimonial->img) }}"
-                                                        width="50px" height="50px" alt="no"></a></td>
+                                                    <td><a target="_blank"
+                                                            href="{{ url('uploads/' . $testimonial->files->img) }}"><img
+                                                                src="{{ asset('uploads/' . $testimonial->files->img) }}"
+                                                                width="50px" height="50px" alt="no"></a></td>
                                                     <td>
                                                         <a href="{{ route('testimonials.edit', $testimonial->id) }}"
                                                             class="btn btn-md btn-primary"><i class="fa fa-pencil"
@@ -55,17 +57,17 @@
                                                                 aria-hidden="true"></i></a>
                                                         <!-- Modal trigger button -->
                                                         <button type="button" class="btn btn-danger btn-md"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#modalId{{$testimonial->id}}">
-                                                        <i class="fa-solid fa-trash-can"></i>
-                                                    </button>
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalId{{ $testimonial->id }}">
+                                                            <i class="fa-solid fa-trash-can"></i>
+                                                        </button>
 
-                                                    <!-- Modal Body -->
-                                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                                    <div class="modal fade" id="modalId{{$testimonial->id}}"
-                                                        tabindex="-1" data-bs-backdrop="static"
-                                                        data-bs-keyboard="false" role="dialog"
-                                                        aria-labelledby="modalTitleId" aria-hidden="true">
+                                                        <!-- Modal Body -->
+                                                        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                                                        <div class="modal fade" id="modalId{{ $testimonial->id }}"
+                                                            tabindex="-1" data-bs-backdrop="static"
+                                                            data-bs-keyboard="false" role="dialog"
+                                                            aria-labelledby="modalTitleId" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
                                                                 role="document">
                                                                 <div class="modal-content">

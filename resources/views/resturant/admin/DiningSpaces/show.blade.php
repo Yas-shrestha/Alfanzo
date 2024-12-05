@@ -8,7 +8,7 @@
                     <div class="pagetitle">
                         <div class="d-flex justify-content-between">
                             <h1>View</h1>
-                            <a href="{{ route('abouts.index') }}" class="btn btn-primary btn-md ">Back</a>
+                            <a href="{{ route('spaces.index') }}" class="btn btn-primary btn-md ">Back</a>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('abouts.show', $about->id) }}" method="POST"
+                                    <form action="{{ route('spaces.show', $about->id) }}" method="POST"
                                         enctype="multipart/form-data">
                                         @method('PUT')
                                         @csrf

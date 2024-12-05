@@ -13,7 +13,6 @@ class Table extends Model
         'file_id',
         'space_id',
         'table_no',
-        'floor'
     ];
     public function fileManager()
     {

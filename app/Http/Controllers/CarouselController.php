@@ -39,7 +39,7 @@ class CarouselController extends Controller
         $carousel->title = $validate_data['title'];
         // Save the image ID and image name to the database
         $carousel->file_id = $validate_data['img'];
-        $carousel->img = $imageName;
+
         $carousel->save();
         return redirect('admin/carousels')->with('success', 'Your data have been submitted');
     }
@@ -80,7 +80,7 @@ class CarouselController extends Controller
         $carousel->title = $validate_data['title'];
         // Save the image ID and image name to the database
         $carousel->file_id = $validate_data['img'];
-        $carousel->img = $imageName;
+
 
         $carousel->update();
         return redirect('admin/carousels')->with('success', 'Your data have been updated');

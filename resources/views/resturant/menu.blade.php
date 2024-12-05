@@ -68,7 +68,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item">
                                     <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->img) }}"
+                                        <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->files->img) }}"
                                             alt="" data-bs-toggle="modal"
                                             data-bs-target="#modalId{{ $food->id }}">
                                     </div>
@@ -116,7 +116,8 @@
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-6"><img class="img-fluid w-100"
-                                                        src="{{ asset('uploads/' . $food->img) }}" alt=""></div>
+                                                        src="{{ asset('uploads/' . $food->files->img) }}" alt="">
+                                                </div>
                                                 <div class="col-6">
                                                     <div class="border border-primary p-2 rounded-3">
                                                         <h3>Name: <span>{{ $food->name }} </span></h3>
@@ -169,7 +170,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item">
                                     <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->img) }}"
+                                        <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->files->img) }}"
                                             alt="" data-bs-toggle="modal"
                                             data-bs-target="#modalId{{ $food->id }}">
                                     </div>
@@ -217,7 +218,8 @@
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-6"><img class="img-fluid w-100"
-                                                        src="{{ asset('uploads/' . $food->img) }}" alt=""></div>
+                                                        src="{{ asset('uploads/' . $food->files->img) }}" alt="">
+                                                </div>
                                                 <div class="col-6">
                                                     <div class="border border-primary p-2 rounded-3">
                                                         <h3>Name: <span>{{ $food->name }} </span></h3>
@@ -270,7 +272,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item">
                                     <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->img) }}"
+                                        <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->files->img) }}"
                                             alt="" data-bs-toggle="modal"
                                             data-bs-target="#modalId{{ $food->id }}">
                                     </div>
@@ -318,7 +320,8 @@
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-6"><img class="img-fluid w-100"
-                                                        src="{{ asset('uploads/' . $food->img) }}" alt=""></div>
+                                                        src="{{ asset('uploads/' . $food->files->img) }}" alt="">
+                                                </div>
                                                 <div class="col-6">
                                                     <div class="border border-primary p-2 rounded-3">
                                                         <h3>Name: <span>{{ $food->name }} </span></h3>
@@ -371,7 +374,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item">
                                     <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->img) }}"
+                                        <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->files->img) }}"
                                             alt="" data-bs-toggle="modal"
                                             data-bs-target="#modalId{{ $food->id }}">
                                     </div>
@@ -419,7 +422,8 @@
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-6"><img class="img-fluid w-100"
-                                                        src="{{ asset('uploads/' . $food->img) }}" alt=""></div>
+                                                        src="{{ asset('uploads/' . $food->files->img) }}" alt="">
+                                                </div>
                                                 <div class="col-6">
                                                     <div class="border border-primary p-2 rounded-3">
                                                         <h3>Name: <span>{{ $food->name }} </span></h3>
@@ -471,7 +475,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="product-item">
                                 <div class="position-relative bg-light overflow-hidden">
-                                    <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->img) }}"
+                                    <img class="img-fluid w-100" src="{{ asset('uploads/' . $food->files->img) }}"
                                         alt="" data-bs-toggle="modal"
                                         data-bs-target="#modalId{{ $food->id }}">
                                 </div>
@@ -519,7 +523,8 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-6"><img class="img-fluid w-100"
-                                                    src="{{ asset('uploads/' . $food->img) }}" alt=""></div>
+                                                    src="{{ asset('uploads/' . $food->files->img) }}" alt="">
+                                            </div>
                                             <div class="col-6">
                                                 <div class="border border-primary p-2 rounded-3">
                                                     <h3>Name: <span>{{ $food->name }} </span></h3>
@@ -585,7 +590,7 @@
                             style="border-radius: 25px">
                             <div class="team-item text-center rounded bg-white overflow-hidden">
                                 <div class="rounded overflow-hidden m-4">
-                                    <img class="img-fluid rounded" src="{{ asset('uploads/' . $team->img) }}"
+                                    <img class="img-fluid rounded" src="{{ asset('uploads/' . $team->files->img) }}"
                                         alt="" data-bs-toggle="modal"
                                         data-bs-target="#teamID{{ $team->id }}"
                                         style="cursor: pointer;
@@ -619,7 +624,8 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-6"><img class="img-fluid w-100"
-                                                    src="{{ asset('uploads/' . $team->img) }}" alt=""></div>
+                                                    src="{{ asset('uploads/' . $team->files->img) }}" alt="">
+                                            </div>
                                             <div class="col-6">
                                                 <div class="border border-primary p-2 rounded-3">
                                                     <h3>Name: <span>{{ $team->name }} </span></h3>

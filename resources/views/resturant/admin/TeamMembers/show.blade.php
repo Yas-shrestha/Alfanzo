@@ -29,47 +29,53 @@
                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
                                                     <label for="exampleInputName1" class="form-label">Name</label>
-                                                    <input disabled type="text" class="form-control" id="exampleInputName1"
-                                                        aria-describedby="nameHelp" name="name" value="{{$team->name}}">
+                                                    <input disabled type="text" class="form-control"
+                                                        id="exampleInputName1" aria-describedby="nameHelp" name="name"
+                                                        value="{{ $team->name }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
                                                     <label for="exampleInputName1" class="form-label">Qualification</label>
-                                                    <input disabled type="text" class="form-control" id="exampleInputName1"
-                                                        aria-describedby="nameHelp" name="qualification" value="{{$team->qualification}}">
+                                                    <input disabled type="text" class="form-control"
+                                                        id="exampleInputName1" aria-describedby="nameHelp"
+                                                        name="qualification" value="{{ $team->qualification }}">
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
                                                     <label for="exampleInputPost1" class="form-label">Post</label>
-                                                    <input disabled type="text" class="form-control" id="exampleInputPost1"
-                                                        aria-describedby="postHelp" name="post" value="{{$team->post}}">
+                                                    <input disabled type="text" class="form-control"
+                                                        id="exampleInputPost1" aria-describedby="postHelp" name="post"
+                                                        value="{{ $team->post }}">
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
                                                     <label for="exampleInputInstagram1" class="form-label">Instagram</label>
-                                                    <input disabled type="text" class="form-control" id="exampleInputInstagram1"
-                                                        aria-describedby="instagramHelp" name="instagram" value="{{$team->instagram}}">
+                                                    <input disabled type="text" class="form-control"
+                                                        id="exampleInputInstagram1" aria-describedby="instagramHelp"
+                                                        name="instagram" value="{{ $team->instagram }}">
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
                                                     <label for="exampleInputFacebook1" class="form-label">Facebook</label>
-                                                    <input disabled type="text" class="form-control" id="exampleInputFacebook1"
-                                                        aria-describedby="facebookHelp" name="facebook" value="{{$team->facebook}}">
+                                                    <input disabled type="text" class="form-control"
+                                                        id="exampleInputFacebook1" aria-describedby="facebookHelp"
+                                                        name="facebook" value="{{ $team->facebook }}">
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
                                                     <label for="exampleInputTwitter1" class="form-label">Twitter</label>
-                                                    <input disabled type="text" class="form-control" id="exampleInputTwitter1"
-                                                        aria-describedby="twitterHelp" name="twitter" value="{{$team->twitter}}">
+                                                    <input disabled type="text" class="form-control"
+                                                        id="exampleInputTwitter1" aria-describedby="twitterHelp"
+                                                        name="twitter" value="{{ $team->twitter }}">
                                                 </div>
                                             </div>
 
@@ -77,9 +83,9 @@
                                                 <div class="mb-3">
                                                     <label for="exampleInputDescription1"
                                                         class="form-label">Description</label>
-                                                    <input disabled type="text" class="form-control" id="exampleInputDescription1"
-                                                        aria-describedby="descriptionHelp" name="description"
-                                                        value="{{ $team->description }}">
+                                                    <input disabled type="text" class="form-control"
+                                                        id="exampleInputDescription1" aria-describedby="descriptionHelp"
+                                                        name="description" value="{{ $team->description }}">
                                                     @error('description')
                                                         <small>{{ $message }}</small>
                                                     @enderror
@@ -116,7 +122,8 @@
                                                                     <h5 class="modal-title" id="modalTitleId">Choose photo
                                                                     </h5>
                                                                     <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
 
@@ -129,11 +136,11 @@
                                                                     @foreach ($files as $file)
                                                                         <label>
                                                                             <input disabled type="radio" name="img"
-                                                                                value="{{ $file->img }}"
+                                                                                value="{{ $file->files->img }}"
                                                                                 style="opacity: 0;" />
-                                                                            <img src="{{ asset('uploads/' . $file->img) }}"
-                                                                                alt="" height="100px;"
-                                                                                width="100px;" style="margin-right:20px;">
+                                                                            {{ asset('uploads/' . $file->img) }}
+                                                                            alt="" height="100px;"
+                                                                            width="100px;" style="margin-right:20px;">
                                                                         </label>
                                                                     @endforeach
 
@@ -156,18 +163,19 @@
                                                 <div class="form-group col-12 mb-0">
                                                     <label class="col-form-label">Image</label>
                                                 </div>
-                                                
+
                                                 <div class="input disabled-group mb-3 col">
-                                                    <input disabled id="imagebox" type="text" class="form-control" 
-                                                        name="img" readonly value="{{ $team->img }}">
+                                                    <input disabled id="imagebox" type="text" class="form-control"
+                                                        name="img" readonly value="{{ $team->files->img }}">
                                                     <div class="input disabled-group-append">
-                                                      
+
                                                         @error('img')
                                                             <small>{{ $message }}</small>
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <img src="{{ asset('uploads/' . $team->img) }}" alt="" class="w-100">
+                                                <img src="{{ asset('uploads/' . $team->files->img) }}" alt=""
+                                                    class="w-100">
 
                                             </div>
                                         </div>
@@ -183,12 +191,7 @@
     <script>
         function firstFunction() {
             var x = document.querySelector('input disabled[name=img]:checked').value;
-            document.getElementById('imagebox').value = x;  
+            document.getElementById('imagebox').value = x;
         }
     </script>
 @endsection
-
-
-
-
-

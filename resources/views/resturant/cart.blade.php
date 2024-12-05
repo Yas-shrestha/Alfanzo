@@ -48,7 +48,7 @@
                                                 <div id="{{ $item->id }}"
                                                     class="row mb-4 d-flex justify-content-between align-items-center">
                                                     <div class="col-md-2 col-lg-2 col-xl-2">
-                                                        <img src="{{ asset('uploads/' . $item->food->img) }}"
+                                                        <img src="{{ asset('uploads/' . $item->food->files->img) }}"
                                                             class="img-fluid rounded-3" alt="Cotton T-shirt">
                                                     </div>
                                                     <div class="col-md-2 col-lg-2 col-xl-2">

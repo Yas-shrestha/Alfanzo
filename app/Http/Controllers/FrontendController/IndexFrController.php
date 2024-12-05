@@ -23,14 +23,14 @@ class IndexFrController extends Controller
         $user_id = auth()->check() ? auth()->user()->id : null;
         $carousels = Carousel::all();
         $about = About::query()->firstOrCreate([
-            'img'=>'',
-            'title'=>'Resturant bagaicha',
-            'description'=>'Welcome to our resturant Bagaicha where You will feel at home'
+            'file_id' => '1',
+            'title' => 'Resturant bagaicha',
+            'description' => 'Welcome to our resturant Bagaicha where You will feel at home'
         ]);
         $aboutFeature = AboutFeature::limit(4)->get();
         $teams = Team::limit(4)->get();
         $testimonials = Testimonial::all();
-        $settings=SiteConfig::all();
-        return view('resturant.index', compact('carousels', 'about', 'aboutFeature', 'foods', 'teams', 'testimonials','user_id','settings'));
+        $settings = SiteConfig::all();
+        return view('resturant.index', compact('carousels', 'about', 'aboutFeature', 'foods', 'teams', 'testimonials', 'user_id', 'settings'));
     }
 }

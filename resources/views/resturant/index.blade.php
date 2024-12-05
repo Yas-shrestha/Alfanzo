@@ -6,7 +6,7 @@
             <div class="carousel-inner">
                 @foreach ($carousels as $key => $carousel)
                     <div class="carousel-item  {{ $key == 0 ? 'active' : '' }}">
-                        <img class="w-100" src="{{ asset('uploads/' . $carousel->img) }}" alt="Image"
+                        <img class="w-100" src="{{ asset('uploads/' . $carousel->files->img) }}" alt="Image"
                             style="width: 100%; height: 100vh; object-fit: cover; background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9));">
                         <div class="carousel-caption">
                             <div class="container">
@@ -44,7 +44,7 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="about-img position-relative overflow-hidden p-5 pe-0">
                         <img class="img-fluid w-100"
-                            src="{{ asset('uploads/' . ($about->img != '' ? $about->img : 'hero.jpg')) }}">
+                            src="{{ asset('uploads/' . ($about->files->img != '' ? $about->files->img : 'hero.jpg')) }}">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
@@ -75,8 +75,8 @@
                             style="border-radius: 25px">
                             <div class="team-item text-center rounded bg-white overflow-hidden">
                                 <div class="rounded overflow-hidden m-4">
-                                    <img class="img-fluid rounded" src="{{ asset('uploads/' . $team->img) }}" alt=""
-                                        data-bs-toggle="modal" data-bs-target="#teamID{{ $team->id }}"
+                                    <img class="img-fluid rounded" src="{{ asset('uploads/' . $team->files->img) }}"
+                                        alt="" data-bs-toggle="modal" data-bs-target="#teamID{{ $team->id }}"
                                         style="cursor: pointer;
                             height:10rem;">
                                 </div>
@@ -107,7 +107,8 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-6"><img class="img-fluid w-100"
-                                                    src="{{ asset('uploads/' . $team->img) }}" alt=""></div>
+                                                    src="{{ asset('uploads/' . $team->files->img) }}" alt="">
+                                            </div>
                                             <div class="col-6">
                                                 <div class="border border-primary p-2 rounded-3">
                                                     <h3>Name: <span>{{ $team->name }} </span></h3>
@@ -162,7 +163,7 @@
                                     <div class="product-item rounded-3">
                                         <div class="position-relative bg-light overflow-hidden">
                                             <img class="img-fluid w-100 rounded-3"
-                                                src="{{ asset('uploads/' . $food->img) }}" alt=""
+                                                src="{{ asset('uploads/' . $food->files->img) }}" alt=""
                                                 style="height: 200px ; object-fit:cover ">
                                         </div>
                                         <div class="text-center p-4">
@@ -220,7 +221,8 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-6"><img class="img-fluid w-100"
-                                                            src="{{ asset('uploads/' . $food->img) }}" alt="">
+                                                            src="{{ asset('uploads/' . $food->files->img) }}"
+                                                            alt="">
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="border border-primary p-2 rounded-3">
@@ -254,7 +256,7 @@
             </div>
         </div>
     @endif
-    
+
     <!-- Booking Start -->
     <div class="container-fluid bg-primary bg-icon mt-5 py-5">
         <div class="container">
@@ -313,7 +315,7 @@
                             <p class="mb-4">{{ $testimonial->description }}</p>
                             <div class="d-flex align-items-center">
                                 <img class="flex-shrink-0 rounded-circle"
-                                    src="{{ asset('uploads/' . $testimonial->img) }}" alt="">
+                                    src="{{ asset('uploads/' . $testimonial->files->img) }}" alt="">
                                 <div class="ms-3">
                                     <h5 class="mb-1">{{ $testimonial->name }}</h5>
                                     <span>{{ $testimonial->profession }}</span>

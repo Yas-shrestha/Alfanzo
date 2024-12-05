@@ -38,13 +38,16 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="exampleInputEmail1" class="form-label">Floor</label>
-                                                    <input type="text" class="form-control" disabled
-                                                        id="exampleInputEmail1" aria-describedby="emailHelp" name="floor"
-                                                        max="1" value="{{ $table->floor }}">
-                                                    @error('floor')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
+                                                    <label for="exampleInputText1" class="form-label">Dining Space</label>
+                                                    <select class="form-select" name="space_id"
+                                                        aria-label="Default select example">
+                                                        @foreach ($spaces as $space)
+                                                            <option value="{{ $space->id }}"
+                                                                {{ $space->id == $selectedSpaceId ? 'selected' : '' }}>
+                                                                {{ $space->title }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
 
 
@@ -112,7 +115,7 @@
 
                                                     <div class="input-group mb-3 col">
                                                         <input id="imagebox" type="text" class="form-control" disabled
-                                                            name="img" value="{{ $table->img }}">
+                                                            name="img" value="{{ $table->files->img }}">
                                                         <div class="input-group-append">
 
                                                         </div>
@@ -140,9 +143,10 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <a target="_blank" href="{{ url('uploads/' . $table->img) }}"><img
-                                                            src="{{ asset('uploads/' . $table->img) }}" width="50px"
-                                                            height="50px" alt="no"></a>
+                                                    <a target="_blank"
+                                                        href="{{ url('uploads/' . $table->files->img) }}"><img
+                                                            src="{{ asset('uploads/' . $table->files->img) }}"
+                                                            width="50px" height="50px" alt="no"></a>
                                                 </div>
                                             </div>
                                         </div>

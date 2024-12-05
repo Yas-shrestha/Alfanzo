@@ -14,7 +14,8 @@
                         @if (Session::has('error'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 {{ Session('error') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
                             </div>
                         @endif
                         <div class="d-flex justify-content-between">
@@ -50,8 +51,10 @@
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $about->title }}</td>
                                                     <td>{{ $about->description }}</td>
-                                                    <td><a target="_blank" href="{{ url('uploads/' . $about->img) }}"><img src="{{ asset('uploads/' . $about->img) }}"
-                                                        width="50px" height="50px" alt="no"></a></td>
+                                                    <td><a target="_blank"
+                                                            href="{{ url('uploads/' . $about->files->img) }}"><img
+                                                                src="{{ asset('uploads/' . $about->files->img) }}"
+                                                                width="50px" height="50px" alt="no"></a></td>
                                                     <td>
                                                         <a href="{{ route('abouts.edit', $about->id) }}"
                                                             class="btn btn-md btn-primary"><i class="fa fa-pencil"
@@ -61,16 +64,17 @@
                                                                 aria-hidden="true"></i></a>
                                                         <!-- Modal trigger button -->
                                                         <button type="button" class="btn btn-danger btn-md"
-                                                            data-bs-toggle="modal" data-bs-target="#modalId{{$about->id}}">
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalId{{ $about->id }}">
                                                             <i class="fa-solid fa-trash-can"></i>
                                                         </button>
 
                                                         <!-- Modal Body -->
                                                         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                                        <div class="modal fade" id="modalId{{$about->id}}" tabindex="-1"
-                                                            data-bs-backdrop="static" data-bs-keyboard="false"
-                                                            role="dialog" aria-labelledby="modalTitleId"
-                                                            aria-hidden="true">
+                                                        <div class="modal fade" id="modalId{{ $about->id }}"
+                                                            tabindex="-1" data-bs-backdrop="static"
+                                                            data-bs-keyboard="false" role="dialog"
+                                                            aria-labelledby="modalTitleId" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
                                                                 role="document">
                                                                 <div class="modal-content">

@@ -88,8 +88,7 @@
 
                                                 <div class="input-group mb-3 col">
                                                     <input id="imagebox" type="text" class="form-control" readonly
-                                                        name="img" readonly
-                                                        value="{{ $carousels->file_id }}|{{ $carousels->img }}">
+                                                        name="img" readonly value="{{ $carousels->file_id }}">
                                                     <div class="input-group-append">
                                                         <button type="button" class="btn btn-primary btn-md"
                                                             data-bs-toggle="modal" data-bs-target="#modalId">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DiningSpaceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EsewaPaymentController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\PaymentFailedController;
 use App\Http\Controllers\PaymentSuccessController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\ReservationController;
+use App\Models\DiningSpace;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,10 +94,10 @@ Route::middleware(['auth', 'checkRole'])->group(function () {
         Route::resource('/testimonials', 'App\Http\Controllers\TestimonialController');
         Route::resource('/team_members', 'App\Http\Controllers\TeamController');
         Route::resource('/settings', 'App\Http\Controllers\SiteConfigController');
-
         Route::resource('/payments', 'App\Http\Controllers\PaymentController');
         Route::resource('/tables', 'App\Http\Controllers\TableController');
         Route::resource('/orders', 'App\Http\Controllers\OrderController');
+        Route::resource('/spaces', DiningSpaceController::class);
     });
 });
 

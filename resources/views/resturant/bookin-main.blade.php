@@ -223,7 +223,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <img src="{{ asset('uploads/' . $table->img) }}" alt=""
+                                                <img src="{{ asset('uploads/' . $table->files->img) }}" alt=""
                                                     class="w-100" style="object-fit: cover">
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -283,7 +283,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <img src="{{ asset('uploads/' . $table->img) }}" alt=""
+                                                <img src="{{ asset('uploads/' . $table->files->img) }}" alt=""
                                                     class="w-100" style="object-fit: cover">
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">

@@ -7,13 +7,12 @@
 
                     <div class="pagetitle">
                         <div class="d-flex justify-content-between">
-                            <h1>View</h1>
-                            <a href="{{ route('abouts.index') }}" class="btn btn-primary btn-md ">Back</a>
+                            <h1>Add</h1>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">View-about</li>
+                                <li class="breadcrumb-item active">Dining Spaces</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -21,33 +20,22 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('abouts.show', $about->id) }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @method('PUT')
+                                    <form action="{{ route('spaces.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
 
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
                                                     <label for="exampleInputText1" class="form-label">Title</label>
                                                     <input type="text" class="form-control" id="exampleInputText1"
-                                                        disabled aria-describedby="textHelp" name="title"
-                                                        value="{{ $about->title }}">
-                                                    @error('title')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
+                                                        aria-describedby="textHelp" name="title">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
-                                                    <label for="exampleInputDescription1"
+                                                    <label for="exampleFormControlTextarea1"
                                                         class="form-label">Description</label>
-                                                    <input type="text" class="form-control" id="exampleInputDescription1"
-                                                        disabled aria-describedby="descriptionHelp" name="description"
-                                                        value="{{ $about->description }}">
-                                                    @error('description')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name='description'></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -76,6 +64,7 @@
                                                                             outline: 2px solid #f00;
                                                                         }
                                                                     </style>
+
                                                                     @foreach ($files as $file)
                                                                         <label>
                                                                             <input type="radio" name="img"
@@ -90,6 +79,9 @@
                                                                     <div>
                                                                         {{ $files->links() }}
                                                                     </div>
+                                                                    <?php
+                                                                    ?>
+
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -109,10 +101,9 @@
                                                 <div class="form-group col-12 mb-0">
                                                     <label class="col-form-label">Image</label>
                                                 </div>
-
                                                 <div class="input-group mb-3 col">
-                                                    <input id="imagebox" type="text" class="form-control" readonly
-                                                        name="img" readonly value="{{ $about->files->img }}">
+                                                    <input id="imagebox" type="text" class="form-control" disabled
+                                                        name="img" readonly>
                                                     <div class="input-group-append">
                                                         <button type="button" class="btn btn-primary btn-md"
                                                             data-bs-toggle="modal" data-bs-target="#modalId">
@@ -122,6 +113,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -131,6 +123,7 @@
             </section>
         </div>
     </main>
+
     <script>
         function firstFunction() {
             var x = document.querySelector('input[name=img]:checked').value;

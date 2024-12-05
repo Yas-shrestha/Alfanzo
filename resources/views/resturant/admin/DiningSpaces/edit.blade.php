@@ -8,7 +8,7 @@
                     <div class="pagetitle">
                         <div class="d-flex justify-content-between">
                             <h1>Edit</h1>
-                            <a href="{{ route('abouts.index') }}" class="btn btn-primary btn-md p-3">Back</a>
+                            <a href="{{ route('spaces.index') }}" class="btn btn-primary btn-md p-3">Back</a>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('abouts.update', $about->id) }}" method="POST"
+                                    <form action="{{ route('spaces.update', $about->id) }}" method="POST"
                                         enctype="multipart/form-data">
                                         @method('PUT')
                                         @csrf
@@ -117,8 +117,7 @@
 
                                                     <div class="input-group mb-3 col">
                                                         <input id="imagebox" type="text" class="form-control" readonly
-                                                            name="img" readonly
-                                                            value="{{ $about->id }}|{{ $about->files->img }}">
+                                                            name="img" readonly value="{{ $about->file_id }}">
                                                         <div class="input-group-append">
                                                             <button type="button" class="btn btn-primary btn-md"
                                                                 data-bs-toggle="modal" data-bs-target="#modalId">

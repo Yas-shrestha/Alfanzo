@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DiningSpace;
 use App\Models\Files;
 use App\Models\Table;
 use Illuminate\Http\Request;
@@ -13,8 +14,9 @@ class TableController extends Controller
      */
     public function index()
     {
+        $spaces = DiningSpace::query()->get()->all();
         $tables = Table::paginate(5);
-        return view('resturant.admin.Tables.index', compact('tables'));
+        return view('resturant.admin.Tables.index', compact('tables', 'spaces'));
     }
 
     /**
@@ -22,8 +24,9 @@ class TableController extends Controller
      */
     public function create()
     {
+        $spaces = DiningSpace::query()->get()->all();
         $files = Files::paginate(9);
-        return view('resturant.admin.Tables.create', compact('files'));
+        return view('resturant.admin.Tables.create', compact('files', 'spaces'));
     }
 
     /**
@@ -36,17 +39,14 @@ class TableController extends Controller
             'img' => 'required',
             'table_status' => 'nullable',
             'table_no' => 'required|unique:tables',
-            'description' => 'required',
-            'floor' => 'required',
+            'space_id' => 'required',
         ]);
 
         // Save the image ID and image name to the database
         $table->file_id = $validate_data['img'];
-
         $table->table_status = $validate_data['table_status'];
         $table->table_no = $validate_data['table_no'];
-        $table->description = $validate_data['description'];
-        $table->floor = $validate_data['floor'];
+        $table->space_id = $validate_data['space_id'];
         $table->save();
         return redirect('admin/tables')->with('success', 'Your data have been submitted');
     }
@@ -83,17 +83,15 @@ class TableController extends Controller
         $validate_data = $request->validate([
             'img' => 'required',
             'table_status' => 'nullable',
-            'description' => 'required',
-            'floor' => 'required',
+
+            'space_id' => 'required',
         ]);
 
 
         // Save the image ID and image name to the database
         $table->file_id = $validate_data['img'];
-
         $table->table_status = $validate_data['table_status'];
-        $table->description = $validate_data['description'];
-        $table->floor = $validate_data['floor'];
+        $table->space_id = $validate_data['space_id'];
         $table->save();
         return redirect('admin/tables')->with('success', 'Your data have been submitted');
     }

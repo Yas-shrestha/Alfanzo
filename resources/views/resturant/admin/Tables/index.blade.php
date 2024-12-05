@@ -40,7 +40,6 @@
                                             <tr>
                                                 <th scope="col">S.N</th>
                                                 <th scope="col">Table No</th>
-                                                <th scope="col">Floor</th>
                                                 <th scope="col">Image</th>
                                                 <th scope="col">Table Status</th>
                                                 <th scope="col">Action</th>
@@ -51,10 +50,11 @@
                                                 <tr>
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $table->table_no }}</td>
-                                                    <td>{{ $table->floor }}</td>
-                                                    <td><a target="_blank" href="{{ url('uploads/' . $table->img) }}"><img
-                                                                src="{{ asset('uploads/' . $table->img) }}" width="50px"
-                                                                height="50px" alt="no"></a>
+                                                    <td>{{ $table->dining_status }}</td>
+                                                    <td><a target="_blank"
+                                                            href="{{ url('uploads/' . $table->files->img) }}"><img
+                                                                src="{{ asset('uploads/' . $table->files->img) }}"
+                                                                width="50px" height="50px" alt="no"></a>
                                                     </td>
                                                     <td>{{ $table->table_status }}</td>
                                                     <td>
