@@ -145,8 +145,8 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <img src="{{ asset('uploads/' . $food->files->files->img) }}"
-                                                    alt="" class="w-100">
+                                                <img src="{{ asset('uploads/' . $food->files->img) }}" alt=""
+                                                    class="w-100">
 
                                             </div>
                                         </div>

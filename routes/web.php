@@ -36,18 +36,20 @@ use App\Models\DiningSpace;
 */
 
 
-Route::get('/', IndexFrController::class)->name('/');
-Route::get('/team', TeamFrController::class)->name('team');
-Route::get('/testimonial', TestimonialFrController::class)->name('testimonial');
-Route::get('/contact', ContactFrController::class)->name('contact');
-Route::get('/about', AboutFrController::class)->name('about');
-Route::get('/cart', CartFrController::class)->name('cart');
-Route::get('/menu', MenuFrController::class)->name('menu');
-Route::get('/booked-table', BookedTableController::class)->name('booked-table');
-Route::get('/order', OrderController::class)->name('order');
-Route::get('/payment-failed', PaymentFailedController::class)->name('payment-failed');
+Route::get('/', [IndexFrController::class, 'index'])->name('/');
+Route::get('/team', [IndexFrController::class, 'team'])->name('team');
+Route::get('/testimonial', [IndexFrController::class, 'testimonial'])->name('testimonial');
+Route::get('/contact', [IndexFrController::class, 'contact'])->name('contact');
+Route::get('/about', [IndexFrController::class, 'about'])->name('about');
+Route::get('/cart', [IndexFrController::class, 'cart'])->name('cart');
+Route::get('/menu', [IndexFrController::class, 'menu'])->name('menu');
+Route::get('/booked-table', [IndexFrController::class, 'bookedTable'])->name('booked-table');
+Route::get('/order', [IndexFrController::class, 'order'])->name('order');
+Route::get('/404', [IndexFrController::class, 'notfound'])->name('404');
+
+
 Route::get('/qr-page', QRCodeController::class)->name('qr-page');
-Route::get('/404', NotFoundController::class)->name('404');
+Route::get('/payment-failed', PaymentFailedController::class)->name('payment-failed');
 Route::get('/user-password', [UserFrController::class, 'passwordChange'])->name('change.password');
 Route::get('/user-info', [UserFrController::class, 'index'])->name('user-info');
 Route::post('/user/update/{id}', [UserFrController::class, 'update'])->name('userfr.update');

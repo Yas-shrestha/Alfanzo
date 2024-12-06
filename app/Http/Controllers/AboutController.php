@@ -22,8 +22,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        $files = Files::paginate(9);
-        return view('resturant.admin.About_us.create', compact('files'));
+        return redirect('admin/abouts');
     }
 
     /**
@@ -43,7 +42,7 @@ class AboutController extends Controller
         $about->file_id = $validate_data['img'];
 
         $about->save();
-        return redirect('admin/about')->with('success', 'Your data have been submitted');
+        return redirect('admin/abouts')->with('success', 'Your data have been submitted');
     }
 
     /**
@@ -86,17 +85,17 @@ class AboutController extends Controller
         $about->file_id = $validate_data['img'];
 
         $about->update();
-        return redirect('admin/about')->with('success', 'Your data have been updated');
+        return redirect('admin/abouts')->with('success', 'Your data have been updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
-    {
-        $about = new About;
-        $about = $about->where('id', $id)->First();
-        $about->delete();
-        return redirect('admin/about')->with('success', 'Your data have been deleted');
-    }
+    // public function destroy($id)
+    // {
+    //     $about = new About;
+    //     $about = $about->where('id', $id)->First();
+    //     $about->delete();
+    //     return redirect('admin/abouts')->with('success', 'Your data have been deleted');
+    // }
 }

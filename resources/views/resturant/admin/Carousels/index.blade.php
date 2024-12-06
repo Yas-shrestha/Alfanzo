@@ -50,8 +50,8 @@
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $carousel->title }}</td>
                                                     <td><a target="_blank"
-                                                            href="{{ url('uploads/' . $carousel->files->files->img) }}"><img
-                                                                src="{{ asset('uploads/' . $carousel->files->files->img) }}"
+                                                            href="{{ url('uploads/' . $carousel->files->img) }}"><img
+                                                                src="{{ asset('uploads/' . $carousel->files->img) }}"
                                                                 width="50px" height="50px" alt="no"></a></td>
 
                                                     <td>

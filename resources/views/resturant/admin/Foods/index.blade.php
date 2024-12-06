@@ -56,8 +56,8 @@
                                                     <td>Rs {{ $food->price }}</td>
                                                     <td>
                                                         <a target="_blank"
-                                                            href="{{ url('uploads/' . $food->files->files->img) }}"><img
-                                                                src="{{ asset('uploads/' . $food->files->files->img) }}"
+                                                            href="{{ url('uploads/' . $food->files->img) }}"><img
+                                                                src="{{ asset('uploads/' . $food->files->img) }}"
                                                                 width="50px" height="50px" alt="no"></a>
                                                     </td>
 

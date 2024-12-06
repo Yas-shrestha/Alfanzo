@@ -6,13 +6,20 @@
             <div class="carousel-inner">
                 @foreach ($carousels as $key => $carousel)
                     <div class="carousel-item  {{ $key == 0 ? 'active' : '' }}">
-                        <img class="w-100" src="{{ asset('uploads/' . $carousel->files->img) }}" alt="Image"
-                            style="width: 100%; height: 100vh; object-fit: cover; background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9));">
+                        <div class="image-container"
+                            style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+                            <img class="w-100" src="{{ asset('uploads/' . $carousel->files->img) }}" alt="Image"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="overlay"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5);">
+                            </div>
+                        </div>
                         <div class="carousel-caption">
                             <div class="container">
                                 <div class="row justify-content-start">
                                     <div class="col-lg-7">
-                                        <h1 class="display-2 mb-5 animated slideInDown">{{ $carousel->title }}</h1>
+                                        <h1 class="display-2 mb-5 animated slideInDown text-white">{{ $carousel->title }}
+                                        </h1>
                                         <a href="{{ route('menu') }}"
                                             class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Menu</a>
                                         <a href="{{ route('booking') }}"
@@ -73,8 +80,8 @@
                     @foreach ($teams as $team)
                         <div class="col-lg-3 col-md-6 wow fadeInUp  rounded " data-wow-delay="0.1s"
                             style="border-radius: 25px">
-                            <div class="team-item text-center rounded bg-white overflow-hidden">
-                                <div class="rounded overflow-hidden m-4">
+                            <div class="team-item text-center rounded bg-white overflow-hidden pb-2">
+                                <div class="rounded overflow-hidden m-4 ">
                                     <img class="img-fluid rounded" src="{{ asset('uploads/' . $team->files->img) }}"
                                         alt="" data-bs-toggle="modal" data-bs-target="#teamID{{ $team->id }}"
                                         style="cursor: pointer;
