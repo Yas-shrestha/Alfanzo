@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
-            $table->enum('table_status', ['ok', 'maintainance'])->default('ok');
+            $table->enum('table_status', ['ok', 'maintainance',])->default('ok');
             $table->foreignId('file_id')->nullable();
             $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
             $table->foreignId('space_id')->nullable();

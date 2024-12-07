@@ -26,7 +26,7 @@
                 <li class="menu-header small text-uppercase">
                     <span class="menu-header-text">Manage Orders and reservation</span>
                 </li>
-                <li class="menu-item {{ Route::is('orders.index') ? 'active' : '' }}">
+                <li class="menu-item  {{ Route::is('orders.create', 'orders.index') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
                         <div data-i18n="Account Settings">Orders</div>
@@ -39,6 +39,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="menu-item {{ Route::is('reservation.index') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;
@@ -83,6 +84,63 @@
                 </li>
 
                 @if (Auth::check() && Auth::user()->role == 1)
+                    <li class="menu-item {{ Route::is('rooms.index') ? 'active' : '' }}">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <div data-i18n="Account Settings">Rooms</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('rooms.create') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Create</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('rooms.index') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Manage</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Table and spaces</span>
+                    </li>
+                    <li class="menu-item {{ Route::is('spaces.index') ? 'active' : '' }}">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <div data-i18n="Account Settings">Dining Spaces</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('spaces.create') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Create</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('spaces.index') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Manage</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item {{ Route::is('tables.create', 'tables.index') ? 'active' : '' }}">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="fa fa-table" aria-hidden="true"></i>
+                            <div data-i18n="Account Settings">Table</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('tables.create') }}" class="menu-link">
+                                    <div data-i18n="Account">Create</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('tables.index') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Manage</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Manage File</span>
                     </li>
@@ -168,6 +226,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="menu-item {{ Route::is('carousels.create', 'carousels.index') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="fa-solid fa-sliders"></i>&nbsp;&nbsp;

@@ -21,7 +21,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-    //   return view('resturant.admin.Contacts.create');
+        //   return view('resturant.admin.Contacts.create');
     }
 
     /**
@@ -29,19 +29,19 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-       $contact=new Contact;
-       $validate_data=$request->validate([
-        'name'=>'required',
-        'email'=>'required',
-        'subject'=>'required',
-        'message'=>'required',
-       ]);
-       $contact->name = $validate_data['name'];
-       $contact->email = $validate_data['email'];
-       $contact->subject = $validate_data['subject'];
-       $contact->message = $validate_data['message'];
-       $contact->save();
-       return redirect('contact')->with('success', 'Your message have been sent');
+        $contact = new Contact;
+        $validate_data = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+        $contact->name = $validate_data['name'];
+        $contact->email = $validate_data['email'];
+        $contact->subject = $validate_data['subject'];
+        $contact->message = $validate_data['message'];
+        $contact->save();
+        return redirect('contact')->with('success', 'Your message have been sent');
     }
 
     /**
@@ -51,7 +51,7 @@ class ContactController extends Controller
     {
         $contact = new Contact;
         $contact = $contact->where('id', $id)->First();
-        return view('resturant.admin.Contacts.show', compact('contact','files'));
+        return view('resturant.admin.Contacts.show', compact('contact', 'files'));
     }
 
     /**
@@ -61,7 +61,7 @@ class ContactController extends Controller
     {
         $contact = new Contact;
         $contact = $contact->where('id', $id)->First();
-        return view('resturant.admin.Contacts.edit', compact('contact','files'));
+        return view('resturant.admin.Contacts.edit', compact('contact', 'files'));
     }
 
     /**
@@ -69,13 +69,13 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contact=new Contact;
+        $contact = new Contact;
         $contact = $contact->where('id', $id)->First();
-        $validate_data=$request->validate([
-         'name'=>'required',
-         'email'=>'required',
-         'subject'=>'required',
-         'message'=>'required',
+        $validate_data = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
         ]);
         $contact->title = $validate_data['name'];
         $contact->description = $validate_data['email'];
@@ -93,6 +93,6 @@ class ContactController extends Controller
         $Contacts = new Contact;
         $Contacts = $Contacts->where('id', $id)->First();
         $Contacts->delete();
-        return redirect('admin/contacts')->with('success','Your data have been deleted');
+        return redirect('admin/contacts')->with('success', 'Your data have been deleted');
     }
 }

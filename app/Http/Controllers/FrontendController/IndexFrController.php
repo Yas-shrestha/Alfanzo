@@ -7,13 +7,16 @@ use App\Models\About;
 use App\Models\AboutFeature;
 use App\Models\Carousel;
 use App\Models\Cart;
+use App\Models\Files;
 use App\Models\Food;
 use App\Models\Order;
 use App\Models\reservation;
+use App\Models\room;
 use App\Models\SiteConfig;
 use App\Models\Team;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class IndexFrController extends Controller
 {
@@ -22,10 +25,21 @@ class IndexFrController extends Controller
         $foods = Food::limit(4)->get();
         $user_id = auth()->check() ? auth()->user()->id : null;
         $carousels = Carousel::all();
+        $file = Files::query()->inRandomOrder()->first();
+
+        if (!$file) {
+            // If no file exists, insert a new random file
+            $file = Files::create([
+                'title' => 'Random File ' . Str::random(5),
+                'img' => 'hero.jpg' // Replace with an actual default image path
+            ]);
+        }
+
+        // Use the file ID from the retrieved or created file
         $about = About::query()->firstOrCreate([
-            'file_id' => '1',
-            'title' => 'Resturant bagaicha',
-            'description' => 'Welcome to our resturant Bagaicha where You will feel at home'
+            'file_id' => $file->id,
+            'title' => 'Restaurant Bagaicha',
+            'description' => 'Welcome to our restaurant Bagaicha where you will feel at home'
         ]);
         $aboutFeature = AboutFeature::limit(4)->get();
         $teams = Team::limit(4)->get();
@@ -102,5 +116,11 @@ class IndexFrController extends Controller
         $testimonials = Testimonial::all();
         $settings = SiteConfig::all();
         return view('resturant.testimonial', compact('testimonials', 'settings'));
+    }
+    public function room()
+    {
+        $rooms = room::all();
+        $settings = SiteConfig::all();
+        return view('resturant.rooms', compact('rooms', 'settings'));
     }
 }

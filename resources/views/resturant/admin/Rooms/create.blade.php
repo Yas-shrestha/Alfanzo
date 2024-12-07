@@ -7,13 +7,12 @@
 
                     <div class="pagetitle">
                         <div class="d-flex justify-content-between">
-                            <h1>View</h1>
-                            <a href="{{ route('spaces.index') }}" class="btn btn-primary btn-md ">Back</a>
+                            <h1>Add</h1>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">View-space</li>
+                                <li class="breadcrumb-item active">foods</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -21,33 +20,66 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('spaces.show', $space->id) }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @method('PUT')
+                                    <form action="{{ route('rooms.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputText1" class="form-label">Room Number</label>
+                                                    <input type="text" class="form-control" id="exampleInputText1"
+                                                        aria-describedby="textHelp" name="number">
+                                                    @error('number')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
-                                                    <label for="exampleInputText1" class="form-label">Title</label>
-                                                    <input type="text" class="form-control" id="exampleInputText1"
-                                                        disabled aria-describedby="textHelp" name="title"
-                                                        value="{{ $space->title }}">
-                                                    @error('title')
+                                                    <label for="exampleFormControlTextarea1" class="form-label">No of
+                                                        bed</label>
+                                                    <input type="number" class="form-control" id="exampleInputText1"
+                                                        aria-describedby="textHelp" name="noofbed" min="1"
+                                                        max="4">
+                                                    @error('noofbed')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlTextarea1" class="form-label">No of
+                                                        window</label>
+                                                    <input type="number" class="form-control" id="exampleInputText1"
+                                                        aria-describedby="textHelp" name="noofwindow" min="1"
+                                                        max="4">
+                                                    @error('noofwindow')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1"
+                                                        class="form-label">special_feature</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='special_feature'></textarea>
+
+                                                    @error('special_feature')
                                                         <small>{{ $message }}</small>
                                                     @enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputDescription1"
-                                                        class="form-label">Description</label>
-                                                    <input type="text" class="form-control" id="exampleInputDescription1"
-                                                        disabled aria-describedby="descriptionHelp" name="description"
-                                                        value="{{ $space->description }}">
-                                                    @error('description')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
+                                                <div class="mb-3 ">
+                                                    <label for="select1" class="form-label">status</label>
+                                                    <select class="form-select " id="select1" name="status">
+                                                        <option value="available">Available</option>
+                                                        <option value="booked">Booked</option>
+                                                        <option value="on_maintainance">Maintainance</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -76,6 +108,7 @@
                                                                             outline: 2px solid #f00;
                                                                         }
                                                                     </style>
+
                                                                     @forelse ($files as $file)
                                                                         <label>
                                                                             <input type="radio" name="img"
@@ -95,6 +128,9 @@
                                                                     <div>
                                                                         {{ $files->links() }}
                                                                     </div>
+                                                                    <?php
+                                                                    ?>
+
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -103,21 +139,18 @@
                                                                         data-bs-dismiss="modal"
                                                                         onclick=" firstFunction()">Save</button>
                                                                 </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- Optional: Place to the bottom of scripts -->
-                                                    <script>
-                                                        const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-                                                    </script>
+
                                                 </div>
                                                 <div class="form-group col-12 mb-0">
                                                     <label class="col-form-label">Image</label>
                                                 </div>
-
                                                 <div class="input-group mb-3 col">
-                                                    <input id="imagebox" type="text" class="form-control" readonly
-                                                        name="img" readonly value="{{ $space->files->img }}">
+                                                    <input id="imagebox" type="text" class="form-control" disabled
+                                                        name="img" readonly>
                                                     <div class="input-group-append">
                                                         <button type="button" class="btn btn-primary btn-md"
                                                             data-bs-toggle="modal" data-bs-target="#modalId">
@@ -126,7 +159,21 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlTextarea1"
+                                                        class="form-label">Description</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'></textarea>
+                                                    @error('description')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            @error('title')
+                                                <small>{{ $message }}</small>
+                                            @enderror
                                         </div>
+                                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -136,10 +183,15 @@
             </section>
         </div>
     </main>
+
     <script>
         function firstFunction() {
             var x = document.querySelector('input[name=img]:checked').value;
             document.getElementById('imagebox').value = x;
         }
+    </script>
+    <!-- Optional: Place to the bottom of scripts -->
+    <script>
+        const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
     </script>
 @endsection

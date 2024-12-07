@@ -62,7 +62,7 @@
                                                             class="btn btn-md btn-secondary"><i class="fa fa-eye"
                                                                 aria-hidden="true"></i></a>
                                                         <!-- Modal trigger button -->
-                                                      
+
                                                     </td>
                                                 </tr>
                                             @endforeach

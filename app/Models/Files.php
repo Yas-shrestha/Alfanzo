@@ -29,6 +29,10 @@ class Files extends Model
     {
         return $this->hasMany(Team::class, "file_id");
     }
+    public function table()
+    {
+        return $this->hasMany(Table::class, "file_id");
+    }
     public function rooms()
     {
         return $this->hasMany(room::class, "file_id");

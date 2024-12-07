@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('file_id')->nullable();
             $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->timestamps();
         });
     }

@@ -31,13 +31,7 @@
                                                         aria-describedby="textHelp" name="title">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlTextarea1"
-                                                        class="form-label">Description</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name='description'></textarea>
-                                                </div>
-                                            </div>
+
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
                                                     <!-- Modal trigger button -->
@@ -65,7 +59,7 @@
                                                                         }
                                                                     </style>
 
-                                                                    @foreach ($files as $file)
+                                                                    @forelse ($files as $file)
                                                                         <label>
                                                                             <input type="radio" name="img"
                                                                                 value="{{ $file->id }}"
@@ -75,7 +69,12 @@
                                                                                 width="100px;"
                                                                                 style="margin-right:20px; margin-bottom:10px;">
                                                                         </label>
-                                                                    @endforeach
+                                                                    @empty
+                                                                        <a href="{{ route('fileManager.create') }}"
+                                                                            class="btn btn-primary text-center">Add
+                                                                            images </a>
+                                                                    @endforelse
+
                                                                     <div>
                                                                         {{ $files->links() }}
                                                                     </div>
@@ -112,6 +111,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlTextarea1"
+                                                        class="form-label">Description</label>
+                                                    <textarea id="myEditor" name="description"></textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                                     </form>
@@ -129,5 +135,46 @@
             var x = document.querySelector('input[name=img]:checked').value;
             document.getElementById('imagebox').value = x;
         }
+    </script>
+    <script>
+        tinymce.init({
+            selector: '#myEditor', // Target the specific textarea
+            plugins: [
+                // Essential plugins
+                'image', 'link', 'lists', 'media', 'table', 'wordcount',
+                // Optional extras
+                'emoticons', 'charmap', 'searchreplace', 'visualblocks'
+
+            ],
+            toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | link image  | numlist bullist  ',
+            menubar: false, // Simplify UI by removing menu bar
+            branding: false, // Remove "Powered by TinyMCE" branding
+            height: 400, // Set a comfortable height for the editor
+            image_title: true, // Enable title input for images
+            automatic_uploads: false, // Disable TinyMCE's built-in image uploader
+            file_picker_types: 'image', // Focus on images for the file picker
+            file_picker_callback: function(callback, value, meta) {
+                if (meta.filetype === 'image') {
+                    const input = document.createElement('input');
+                    input.setAttribute('type', 'file');
+                    input.setAttribute('accept', 'image/*');
+                    input.onchange = function() {
+                        const file = this.files[0];
+                        const reader = new FileReader();
+                        reader.onload = function() {
+                            callback(reader.result, {
+                                alt: file.name
+                            });
+                        };
+                        reader.readAsDataURL(file);
+                    };
+                    input.click();
+                }
+            },
+            content_style: `
+                body { font-family:Arial,sans-serif; font-size:14px; }
+                img { max-width: 100%; height: auto; }
+            ` // Ensure images are responsive
+        });
     </script>
 @endsection

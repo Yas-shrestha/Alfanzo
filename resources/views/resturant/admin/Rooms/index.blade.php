@@ -6,7 +6,7 @@
                 <div class="container-fluid p-4">
                     <div class="pagetitle">
                         @if (Session::has('message'))
-                            <div class="alert alert-success alert-dismissible fade show text-dark" role="alert">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ Session('message') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
@@ -20,13 +20,13 @@
                         @endif
                         <div class="d-flex justify-content-between">
                             <h1>Manage file</h1>
-                            <a href="{{ route('tables.create') }}" class="btn btn-primary btn-md p-3"><i class="fa fa-plus"
+                            <a href="{{ route('rooms.create') }}" class="btn btn-primary btn-md p-3"><i class="fa fa-plus"
                                     aria-hidden="true"></i></a>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Home</a></li>
-                                <li class="breadcrumb-item active">Table</li>
+                                <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
+                                <li class="breadcrumb-item active">rooms</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -39,42 +39,45 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">S.N</th>
-                                                <th scope="col">Table of </th>
-                                                <th scope="col">Table No</th>
+                                                <th scope="col">Room Number</th>
+                                                <th scope="col">No of window</th>
+                                                <th scope="col">No of bed</th>
                                                 <th scope="col">Image</th>
-                                                <th scope="col">Table Status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            @foreach ($tables as $table)
+                                        <tbody>room
+                                            @foreach ($rooms as $room)
                                                 <tr>
                                                     <th scope="row">{{ $loop->iteration }}</th>
-                                                    <td>{{ $table->spaces->title }}</td>
-                                                    <td>{{ $table->table_no }}</td>
-                                                    <td><a target="_blank"
-                                                            href="{{ url('uploads/' . $table->files->img) }}"><img
-                                                                src="{{ asset('uploads/' . $table->files->img) }}"
+                                                    <td>{{ $room->number }}</td>
+                                                    <td>{{ $room->noofwindow }}
+                                                    </td>
+                                                    <td>Rs {{ $room->noofbed }}</td>
+                                                    <td>
+                                                        <a target="_blank"
+                                                            href="{{ url('uploads/' . $room->files->img) }}"><img
+                                                                src="{{ asset('uploads/' . $room->files->img) }}"
                                                                 width="50px" height="50px" alt="no"></a>
                                                     </td>
-                                                    <td>{{ $table->table_status }}</td>
+
                                                     <td>
-                                                        <a href="{{ route('tables.edit', $table->id) }}"
+                                                        <a href="{{ route('rooms.edit', $room->id) }}"
                                                             class="btn btn-md btn-primary"><i class="fa fa-pencil"
                                                                 aria-hidden="true"></i></a>
-                                                        <a href="{{ route('tables.show', $table->id) }}"
+                                                        <a href="{{ route('rooms.show', $room->id) }}"
                                                             class="btn btn-md btn-secondary"><i class="fa fa-eye"
                                                                 aria-hidden="true"></i></a>
                                                         <!-- Modal trigger button -->
                                                         <button type="button" class="btn btn-danger btn-md"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#modalId{{ $table->id }}">
+                                                            data-bs-target="#modalId{{ $room->id }}">
                                                             <i class="fa-solid fa-trash-can"></i>
                                                         </button>
 
                                                         <!-- Modal Body -->
                                                         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                                        <div class="modal fade" id="modalId{{ $table->id }}"
+                                                        <div class="modal fade" id="modalId{{ $room->id }}"
                                                             tabindex="-1" data-bs-backdrop="static"
                                                             data-bs-keyboard="false" role="dialog"
                                                             aria-labelledby="modalTitleId" aria-hidden="true">
@@ -89,26 +92,24 @@
                                                                             aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        Are you sure
+                                                                        Are you sure you want to delete?
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <form
-                                                                            action="{{ route('tables.destroy', $table->id) }}"
-                                                                            method="POST" enctype="multipart/form-data">
+                                                                            action="{{ route('rooms.destroy', $room->id) }}"
+                                                                            method="POST">
                                                                             @method('delete')
                                                                             @csrf
                                                                             <button type="button" class="btn btn-secondary"
                                                                                 data-bs-dismiss="modal">Close</button>
-                                                                            <button type="submit" name="submit"
-                                                                                class="btn btn-danger"><i
+                                                                            <button type="submit" class="btn btn-danger"><i
                                                                                     class="fa-solid fa-trash-can"></i>
-                                                                            </button>
+                                                                                Delete</button>
                                                                         </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
 
                                                         <!-- Optional: Place to the bottom of scripts -->
                                                         <script>
@@ -120,7 +121,7 @@
                                         </tbody>
                                     </table>
                                     <div>
-                                        {{ $tables->links() }}
+                                        {{ $rooms->links() }}
                                     </div>
                                 </div>
                             </div>

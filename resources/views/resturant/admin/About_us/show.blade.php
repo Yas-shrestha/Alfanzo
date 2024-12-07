@@ -76,7 +76,7 @@
                                                                             outline: 2px solid #f00;
                                                                         }
                                                                     </style>
-                                                                    @foreach ($files as $file)
+                                                                    @forelse ($files as $file)
                                                                         <label>
                                                                             <input type="radio" name="img"
                                                                                 value="{{ $file->id }}"
@@ -86,7 +86,12 @@
                                                                                 width="100px;"
                                                                                 style="margin-right:20px; margin-bottom:10px;">
                                                                         </label>
-                                                                    @endforeach
+                                                                    @empty
+                                                                        <a href="{{ route('fileManager.create') }}"
+                                                                            class="btn btn-primary text-center">Add
+                                                                            images </a>
+                                                                    @endforelse
+
                                                                     <div>
                                                                         {{ $files->links() }}
                                                                     </div>

@@ -13,7 +13,7 @@
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">about</li>
+                                <li class="breadcrumb-item active">spaces</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('spaces.update', $about->id) }}" method="POST"
+                                    <form action="{{ route('spaces.update', $space->id) }}" method="POST"
                                         enctype="multipart/form-data">
                                         @method('PUT')
                                         @csrf
@@ -33,20 +33,8 @@
                                                         <label for="exampleInputText1" class="form-label">Title</label>
                                                         <input type="text" class="form-control" id="exampleInputText1"
                                                             aria-describedby="textHelp" name="title"
-                                                            value="{{ $about->title }}">
+                                                            value="{{ $space->title }}">
                                                         @error('title')
-                                                            <small>{{ $message }}</small>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputDescription1"
-                                                            class="form-label">Description</label>
-                                                        <input type="text" class="form-control"
-                                                            id="exampleInputDescription1" aria-describedby="descriptionHelp"
-                                                            name="description" value="{{ $about->description }}">
-                                                        @error('description')
                                                             <small>{{ $message }}</small>
                                                         @enderror
                                                     </div>
@@ -117,7 +105,7 @@
 
                                                     <div class="input-group mb-3 col">
                                                         <input id="imagebox" type="text" class="form-control" readonly
-                                                            name="img" readonly value="{{ $about->file_id }}">
+                                                            name="img" readonly value="{{ $space->file_id }}">
                                                         <div class="input-group-append">
                                                             <button type="button" class="btn btn-primary btn-md"
                                                                 data-bs-toggle="modal" data-bs-target="#modalId">
@@ -127,6 +115,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputDescription1"
+                                                        class="form-label">Description</label>
+                                                    <textarea id="myEditor" name="description">{{ $space->description }}</textarea>
+                                                    @error('description')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <button type="submit" class="btn btn-primary" name="submit">Edit</button>
                                     </form>
@@ -143,5 +142,46 @@
             var x = document.querySelector('input[name=img]:checked').value;
             document.getElementById('imagebox').value = x;
         }
+    </script>
+    <script>
+        tinymce.init({
+            selector: '#myEditor', // Target the specific textarea
+            plugins: [
+                // Essential plugins
+                'image', 'link', 'lists', 'media', 'table', 'wordcount',
+                // Optional extras
+                'emoticons', 'charmap', 'searchreplace', 'visualblocks'
+
+            ],
+            toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | link image  | numlist bullist  ',
+            menubar: false, // Simplify UI by removing menu bar
+            branding: false, // Remove "Powered by TinyMCE" branding
+            height: 400, // Set a comfortable height for the editor
+            image_title: true, // Enable title input for images
+            automatic_uploads: false, // Disable TinyMCE's built-in image uploader
+            file_picker_types: 'image', // Focus on images for the file picker
+            file_picker_callback: function(callback, value, meta) {
+                if (meta.filetype === 'image') {
+                    const input = document.createElement('input');
+                    input.setAttribute('type', 'file');
+                    input.setAttribute('accept', 'image/*');
+                    input.onchange = function() {
+                        const file = this.files[0];
+                        const reader = new FileReader();
+                        reader.onload = function() {
+                            callback(reader.result, {
+                                alt: file.name
+                            });
+                        };
+                        reader.readAsDataURL(file);
+                    };
+                    input.click();
+                }
+            },
+            content_style: `
+                body { font-family:Arial,sans-serif; font-size:14px; }
+                img { max-width: 100%; height: auto; }
+            ` // Ensure images are responsive
+        });
     </script>
 @endsection

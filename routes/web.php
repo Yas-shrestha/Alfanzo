@@ -22,6 +22,7 @@ use App\Http\Controllers\PaymentFailedController;
 use App\Http\Controllers\PaymentSuccessController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\RoomController;
 use App\Models\DiningSpace;
 
 /*
@@ -46,7 +47,7 @@ Route::get('/menu', [IndexFrController::class, 'menu'])->name('menu');
 Route::get('/booked-table', [IndexFrController::class, 'bookedTable'])->name('booked-table');
 Route::get('/order', [IndexFrController::class, 'order'])->name('order');
 Route::get('/404', [IndexFrController::class, 'notfound'])->name('404');
-
+Route::get('/room', [IndexFrController::class, 'room'])->name('room');
 
 Route::get('/qr-page', QRCodeController::class)->name('qr-page');
 Route::get('/payment-failed', PaymentFailedController::class)->name('payment-failed');
@@ -100,6 +101,7 @@ Route::middleware(['auth', 'checkRole'])->group(function () {
         Route::resource('/tables', 'App\Http\Controllers\TableController');
         Route::resource('/orders', 'App\Http\Controllers\OrderController');
         Route::resource('/spaces', DiningSpaceController::class);
+        Route::resource('/rooms', RoomController::class);
     });
 });
 

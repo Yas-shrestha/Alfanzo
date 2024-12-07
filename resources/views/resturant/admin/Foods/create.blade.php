@@ -12,7 +12,7 @@
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">foods</li>
+                                <li class="breadcrumb-item active">rooms</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('foods.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('rooms.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -104,7 +104,7 @@
                                                                         }
                                                                     </style>
 
-                                                                    @foreach ($files as $file)
+                                                                    @forelse ($files as $file)
                                                                         <label>
                                                                             <input type="radio" name="img"
                                                                                 value="{{ $file->id }}"
@@ -114,7 +114,12 @@
                                                                                 width="100px;"
                                                                                 style="margin-right:20px; margin-bottom:10px;">
                                                                         </label>
-                                                                    @endforeach
+                                                                    @empty
+                                                                        <a href="{{ route('fileManager.create') }}"
+                                                                            class="btn btn-primary text-center">Add
+                                                                            images </a>
+                                                                    @endforelse
+
                                                                     <div>
                                                                         {{ $files->links() }}
                                                                     </div>

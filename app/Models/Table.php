@@ -14,11 +14,14 @@ class Table extends Model
         'space_id',
         'table_no',
     ];
-    public function fileManager()
+    public function files()
     {
         return $this->belongsTo(Files::class, "file_id");
     }
-
+    public function spaces()
+    {
+        return $this->belongsTo(Files::class, "space_id");
+    }
     public function reservations()
     {
         return $this->hasMany(Reservation::class, "table_id");

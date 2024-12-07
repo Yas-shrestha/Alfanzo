@@ -69,6 +69,8 @@
                      class="nav-item nav-link {{ request()->is('about') ? ' active' : '' }}">About Us</a>
                  <a href="{{ route('menu') }}"
                      class="nav-item nav-link {{ request()->is('menu') ? ' active' : '' }}">Menu</a>
+                 <a href="{{ route('room') }}"
+                     class="nav-item nav-link {{ request()->is('room') ? ' active' : '' }}">Room</a>
                  <div class="nav-item dropdown">
                      <a href="#"
                          class="nav-link dropdown-toggle {{ request()->is('booking', 'team', 'testimonial') ? ' active' : '' }}"
