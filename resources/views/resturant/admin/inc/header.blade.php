@@ -49,7 +49,9 @@
     <script src="{{ asset('assets/js/config.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/z7zj2p202lxl9q03wyfwot8ebluk7fika1kbh0osagwgfffs/tinymce/7/tinymce.min.js"
         referrerpolicy="origin"></script>
-
+<style>
+    
+</style>
 </head>
 
 <body>

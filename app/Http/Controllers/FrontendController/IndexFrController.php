@@ -7,12 +7,14 @@ use App\Models\About;
 use App\Models\AboutFeature;
 use App\Models\Carousel;
 use App\Models\Cart;
+use App\Models\DiningSpace;
 use App\Models\Files;
 use App\Models\Food;
 use App\Models\Order;
 use App\Models\reservation;
 use App\Models\room;
 use App\Models\SiteConfig;
+use App\Models\Table;
 use App\Models\Team;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -122,5 +124,17 @@ class IndexFrController extends Controller
         $rooms = room::all();
         $settings = SiteConfig::all();
         return view('resturant.rooms', compact('rooms', 'settings'));
+    }
+    public function spaces()
+    {
+        $spaces = DiningSpace::all();
+        $settings = SiteConfig::all();
+        return view('resturant.spaces', compact('spaces', 'settings'));
+    }
+    public function tables()
+    {
+        $tables = Table::all();
+        $settings = SiteConfig::all();
+        return view('resturant.spaces', compact('tables', 'settings'));
     }
 }

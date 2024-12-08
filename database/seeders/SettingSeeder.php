@@ -52,11 +52,11 @@ class SettingSeeder extends Seeder
             ],
             [
                 'siteKey' => 'Logo',
-                'siteValue' => '',
+                'siteValue' => 'Alfanzoo.png',
             ],
             [
                 'siteKey' => 'ResturantName',
-                'siteValue' => 'Greenary',
+                'siteValue' => 'Alfanzoo',
             ],
             [
                 'siteKey' => 'BookinVideo',
