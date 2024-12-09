@@ -125,22 +125,29 @@
                                                                             outline: 2px solid #f00;
                                                                         }
                                                                     </style>
+                                                                    <div class="row">
 
-                                                                    @forelse ($files as $file)
-                                                                        <label>
-                                                                            <input type="radio" name="img"
-                                                                                value="{{ $file->id }}"
-                                                                                style="opacity: 0;" />
-                                                                            <img src="{{ asset('uploads/' . $file->img) }}"
-                                                                                alt="" height="100px;"
-                                                                                width="100px;"
-                                                                                style="margin-right:20px; margin-bottom:10px;">
-                                                                        </label>
-                                                                    @empty
-                                                                        <a href="{{ route('fileManager.create') }}"
-                                                                            class="btn btn-primary text-center">Add
-                                                                            images </a>
-                                                                    @endforelse
+
+                                                                        @forelse ($files as $file)
+                                                                            <label class="col-lg-4 col md-3 col-sm-12 my-2">
+                                                                                <input type="radio" name="img"
+                                                                                    value="{{ $file->id }}"
+                                                                                    style="opacity: 0;" />
+                                                                                <img src="{{ asset('uploads/' . $file->img) }}"
+                                                                                    alt="" height="100px;"
+                                                                                    width="100px;">
+                                                                            </label>
+                                                                        @empty
+                                                                            <h1>No Images on database</h1>
+                                                                        @endforelse
+                                                                        <div class="col-lg-4 col md-3 col-sm-12">
+
+                                                                            <a href="{{ route('fileManager.create') }}"
+                                                                                class="btn btn-primary text-center">Add
+                                                                                images </a>
+                                                                        </div>
+                                                                    </div>
+
 
                                                                     <div>
                                                                         {{ $files->links() }}

@@ -1,5 +1,36 @@
 @charset "UTF-8";
-
+/* Customized Bootstrap for Alfanzoo Resort */
+/* Colors */
+/* Warm Oak - main theme color for wood and nature */
+/* Forest Green - representing greenery and fresh air */
+/* Soft Beige - warm, neutral background to mimic sandy shores */
+/* Deep Black - for text contrast */
+/* Body & Text Colors */
+/* Clean white for backgrounds to enhance readability */
+/* Dark color for headings to make them stand out */
+/* Typography */
+/* Clean, modern, and easy-to-read font */
+/* Elegant serif font for headings, adding a touch of sophistication */
+/* Semi-bold headings for a touch of prominence */
+/* Extra-bold for display headings to make them eye-catching */
+/* Responsive Font Sizes */
+/* Borders */
+/* Soft corners to give a more organic feel */
+/* Links */
+/* Clean, modern design without underlined links */
+/* Muted Gold for elegant hover effect on links */
+/* Button & CTA Styling */
+/* Rounded buttons for a soft, welcoming feel */
+/* Primary buttons in Warm Oak */
+/* Button text in pure white */
+/* Advanced Layout */
+/* Import Bootstrap */
+/*!
+ * Bootstrap v5.0.0 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
 :root {
     --bs-blue: #0d6efd;

@@ -48,6 +48,7 @@ Route::get('/booked-table', [IndexFrController::class, 'bookedTable'])->name('bo
 Route::get('/order', [IndexFrController::class, 'order'])->name('order');
 Route::get('/404', [IndexFrController::class, 'notfound'])->name('404');
 Route::get('/room', [IndexFrController::class, 'room'])->name('room');
+Route::get('/tables', [IndexFrController::class, 'tables'])->name('table');
 
 Route::get('/qr-page', QRCodeController::class)->name('qr-page');
 Route::get('/payment-failed', PaymentFailedController::class)->name('payment-failed');

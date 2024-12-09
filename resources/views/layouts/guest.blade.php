@@ -18,10 +18,18 @@
 
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-white-900">
+        <div style="font-size:40px; font-weight:bold;color:#c19a6b;">
+            Welcome To Our Resturant
+        </div>
+        <div style="font-size:40px; font-weight:bold;color:#c19a6b;">
+            R M S
         <div><img src="{{asset('uploads/')}}" alt=""></div>
         <div style="font-size:40px; font-weight:bold;color:#c19a6b;">
             Welcome To Our Resort
         </div>
+
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg"
+            style="background: #c19a6b">
       
 
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg"
