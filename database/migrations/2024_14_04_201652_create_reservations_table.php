@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('table_id')->nullable();
-            $table->foreign('table_id')->references('id')->on('tables')->onDelete('cascade');
+            $table->foreignId('spaces_id')->nullable();
+            $table->foreign('spaces_id')->references('id')->on('dining_spaces')->onDelete('cascade');
             $table->string('name');
             $table->string('email');
             $table->string('noofpeople');

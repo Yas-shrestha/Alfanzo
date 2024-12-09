@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class room extends Model
 {
     use HasFactory;
-    protected $fillable = ['file_id', 'number', 'noofbed', 'noofwindow', 'special_feature', 'description', 'status', 'booked_by'];
+    protected $fillable = ['file_id', 'name', 'number', 'noofbed', 'noofwindow', 'special_feature', 'description', 'status', 'booked_by'];
 
     public function files()
     {

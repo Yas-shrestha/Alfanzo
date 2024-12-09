@@ -38,6 +38,18 @@
                                                 </div>
 
                                             </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputText1" class="form-label">Room Name</label>
+                                                    <input type="text" class="form-control" id="exampleInputText1"
+                                                        aria-describedby="textHelp" name="name"
+                                                        value="{{ $room->name }}">
+                                                    @error('name')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
@@ -80,9 +92,9 @@
                                                 <div class="mb-3 ">
                                                     <label for="select1" class="form-label">status</label>
                                                     <select class="form-select " id="select1" name="status">
-                                                        <option value="available">Breakfast</option>
-                                                        <option value="booked">Lunch</option>
-                                                        <option value="on_maintainance">Dinner</option>
+                                                        <option value="available">Available</option>
+                                                        <option value="booked">Booked</option>
+                                                        <option value="on_maintainance">Maintainance</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -102,7 +114,8 @@
                                                                         photo
                                                                     </h5>
                                                                     <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
 
@@ -153,7 +166,7 @@
                                                     <label class="col-form-label">Image</label>
                                                 </div>
                                                 <div class="input-group mb-3 col">
-                                                    <input id="imagebox" type="text" class="form-control" disabled
+                                                    <input id="imagebox" type="text" class="form-control"
                                                         name="img" readonly value="{{ $room->file_id }}">
                                                     <div class="input-group-append">
                                                         <button type="button" class="btn btn-primary btn-md"

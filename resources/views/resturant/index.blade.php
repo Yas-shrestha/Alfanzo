@@ -268,11 +268,12 @@
     <div class="container-fluid bg-primary bg-icon mt-5 py-5">
         <div class="container">
 
-            <div class="p-5 wow fadeInUp text-center  bg-dark" data-wow-delay="0.2s">
+            <div class="p-5 wow fadeInUp text-center " style="background: rgba(0, 0, 0, 0.403)" data-wow-delay="0.2s">
                 <h5 class="section-title ff-secondary text-center text-primary fw-normal">Reservation</h5>
                 <h1 class="text-white mb-4">Book A Table Online</h1>
-                <p>You can select Your desierd Table and Book a table suitable for you and your friends.</p>
+                <p>Do you want to Book a table Or would you like to see our dining space first</p>
                 <a href="/booking" class="btn btn-primary">Book a Table</a>
+                <a href="/spaces" class="btn btn-primary">See our dining Spaces</a>
             </div>
 
         </div>

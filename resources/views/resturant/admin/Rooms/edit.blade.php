@@ -38,6 +38,18 @@
                                                 </div>
 
                                             </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputText1" class="form-label">Room Name</label>
+                                                    <input type="text" class="form-control" id="exampleInputText1"
+                                                        aria-describedby="textHelp" name="name"
+                                                        value="{{ $room->name }}">
+                                                    @error('name')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
@@ -102,7 +114,8 @@
                                                                         photo
                                                                     </h5>
                                                                     <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
 

@@ -31,6 +31,13 @@
                                                         aria-describedby="textHelp" name="title">
                                                 </div>
                                             </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputText1" class="form-label">No of tables</label>
+                                                    <input type="text" class="form-control" id="exampleInputText1"
+                                                        aria-describedby="textHelp" name="nooftables">
+                                                </div>
+                                            </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('file_id')->nullable();
             $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
             $table->string('number');
+            $table->string('name');
             $table->string('noofbed');
             $table->string('noofwindow');
             $table->text('special_feature');

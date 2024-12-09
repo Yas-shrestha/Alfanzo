@@ -39,12 +39,14 @@ class DiningSpaceController extends Controller
         // Validate the request
         $validate_data = $request->validate([
             'title' => 'required|string',
+            'nooftables' => 'required|string',
             'description' => 'required|string', // Rich text content with images
             'img' => 'required', // Assuming 'img' is the file ID
         ]);
 
         // Save basic fields
         $spaces->title = $validate_data['title'];
+        $spaces->nooftables = $validate_data['nooftables'];
         $spaces->file_id = $validate_data['img'];
 
         // Process the 'description' content to handle images
@@ -122,12 +124,14 @@ class DiningSpaceController extends Controller
         // Validate the input
         $request->validate([
             'title' => 'required|string',
+            'nooftables' => 'required|string',
             'img' => 'nullable|exists:files,id',  // Ensure the img ID exists in the files table
             'description' => 'nullable|string',  // Validate description as string
         ]);
 
         // Update the title
         $spaces->title = $request->input('title');
+        $spaces->nooftables = $request->input('nooftables');
 
         // If img_id is provided, update the file_id (image)
         if ($request->has('img') && $request->input('img') !== null) {

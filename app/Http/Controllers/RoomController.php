@@ -31,6 +31,7 @@ class RoomController extends Controller
         $room = new Room;
         $validate_data = $request->validate([
             'number' => 'required|numeric',
+            'name' => 'required',
             'img' => 'required',
             'noofbed' => 'required|numeric|min:1|max:4',
             'noofwindow' => 'required|min:1|max:10',
@@ -45,6 +46,7 @@ class RoomController extends Controller
         $room->file_id = $validate_data['img'];
         $room->special_feature = $validate_data['special_feature'];
         $room->status = $validate_data['status'];
+        $room->name = $validate_data['name'];
         $room->description = $validate_data['description'];
 
         $room->save();
@@ -84,6 +86,7 @@ class RoomController extends Controller
         $room = $room->where('id', $id)->First();
         $validate_data = $request->validate([
             'number' => 'required|numeric',
+            'name' => 'required',
             'img' => 'required',
             'noofbed' => 'required|numeric|min:1|max:4',
             'noofwindow' => 'required|min:1|max:10',
@@ -101,6 +104,7 @@ class RoomController extends Controller
         $room->booked_by = $validate_data['booked_by'] ?? $room->booked_by;
 
         $room->status = $validate_data['status'];
+        $room->name = $validate_data['name'];
         $room->description = $validate_data['description'];
 
         $room->update();
