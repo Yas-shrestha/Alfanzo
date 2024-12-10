@@ -61,7 +61,7 @@
          <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
              <span class="navbar-toggler-icon"></span>
          </button>
-         <div class="collapse navbar-collapse" id="navbarCollapse">
+         <div class="collapse navbar-collapse " id="navbarCollapse">
              <div class="navbar-nav ms-auto p-4 p-lg-0">
                  <a href="{{ route('/') }}"
                      class="nav-item nav-link {{ request()->is('/') ? ' active' : '' }}">Home</a>
@@ -69,16 +69,16 @@
                      class="nav-item nav-link {{ request()->is('about') ? ' active' : '' }}">About Us</a>
                  <a href="{{ route('menu') }}"
                      class="nav-item nav-link {{ request()->is('menu') ? ' active' : '' }}">Menu</a>
-                 <a href="{{ route('room') }}"
-                     class="nav-item nav-link {{ request()->is('room') ? ' active' : '' }}">Room</a>
+
                  <div class="nav-item dropdown">
                      <a href="#"
-                         class="nav-link dropdown-toggle {{ request()->is('booking', 'team', 'testimonial') ? ' active' : '' }}"
+                         class="nav-link dropdown-toggle {{ request()->is('booking', 'team', 'testimonial', 'room') ? ' active' : '' }}"
                          data-bs-toggle="dropdown">Pages</a>
                      <div class="dropdown-menu m-0">
                          <a href="{{ route('booking') }}" class="dropdown-item">Bookings</a>
                          <a href="{{ route('team') }}" class="dropdown-item">Our Team</a>
                          <a href="{{ route('testimonial') }}" class="dropdown-item">Testimonial</a>
+                         <a href="{{ route('room') }}" class="dropdown-item">Room</a>
                      </div>
                  </div>
                  <a href="{{ route('contact') }}"

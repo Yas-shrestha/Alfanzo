@@ -26,7 +26,7 @@
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
                                                     <label for="exampleInputText1" class="form-label">Room Number</label>
-                                                    <input type="text" class="form-control" id="exampleInputText1"
+                                                    <input type="number" class="form-control" id="exampleInputText1"
                                                         aria-describedby="textHelp" name="number">
                                                     @error('number')
                                                         <small>{{ $message }}</small>

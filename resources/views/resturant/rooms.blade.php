@@ -30,7 +30,7 @@
                         <img src="{{ asset('uploads/' . $room->files->img) }}" class="card-img-top" alt="..."
                             height="300px" style="object-fit: cover">
                         <div class="card-body">
-                            <h5 class="card-title text-white">Room No {{ $room->number }}</h5>
+                            <h5 class="card-title text-white">{{ $room->name }}</h5>
                             <h6 class="card-subtitle text-muted text-white ">
                                 @if ($room->noofbed == 1)
                                     Single Bed
@@ -71,7 +71,7 @@
                                             <div class="text-center">
                                                 <img src="{{ asset('uploads/' . $room->files->img) }}" alt=""
                                                     height="300px" width="300px" style="object-fit: cover">
-                                                <h2 class="text-primary mt-3">Room No: {{ $room->number }}</h2>
+                                                <h2 class="text-primary mt-3">{{ $room->name }}</h2>
                                             </div>
                                             <hr>
                                             <div class="container">

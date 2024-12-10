@@ -20,8 +20,8 @@
                                     <div class="col-lg-7">
                                         <h1 class="display-2 mb-5 animated slideInDown text-white">{{ $carousel->title }}
                                         </h1>
-                                        <a href="{{ route('menu') }}"
-                                            class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Menu</a>
+                                        <a href="#pickup" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Book
+                                            Pickup</a>
                                         <a href="{{ route('booking') }}"
                                             class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Book a Table</a>
                                     </div>
@@ -66,7 +66,94 @@
         </div>
     </div>
     <!-- About End -->
+    <div id="pickup">
+        <div class="container p-3">
+            <form action="{{ route('pickup.store') }}" method="POST">
+                @csrf
+                <div class="row shadow p-4">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Pickup</h5>
+                    <h1 class="text-dark text-center mb-4">Book A Pickup</h1>
 
+                    <div class=" col-lg-4 col-md-6 col-sm-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label text-primary">Name</label>
+                            <input type="text" class="form-control text-dark" name="name" id=""
+                                aria-describedby="helpId" placeholder="Your Full Name" />
+                            @error('name')
+                                <small class="bg-danger p-2 rounded my-5">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label text-primary">Email</label>
+                            <input type="email" class="form-control text-dark" name="email" id=""
+                                aria-describedby="helpId" placeholder="Your Email" />
+                            @error('email')
+                                <small class="bg-danger p-2 rounded my-3">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label text-primary">Phone</label>
+                            <input type="tel" class="form-control text-dark" name="phone" id=""
+                                aria-describedby="helpId" placeholder="Your Number" />
+                            @error('phone')
+                                <small class="bg-danger p-2 rounded my-3">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label text-primary">Location</label>
+                            <input type="text" class="form-control text-dark" name="location" id=""
+                                aria-describedby="helpId" placeholder="" />
+                            @error('location')
+                                <small class="bg-danger p-2 rounded my-3">{{ $message }}</small>
+                            @enderror
+                            <small id="helpId" class="form-text text-muted">Location must be inside Pokhara</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label text-primary">No of People</label>
+                            <input type="number" class="form-control text-dark" name="noofpeople" id=""
+                                aria-describedby="helpId" placeholder="" min="1" max="100"
+                                value="1" />
+                            @error('noofpeople')
+                                <small class="bg-danger p-2 rounded my-3">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="mb-3">
+                            <label for="" class="form-label text-primary">Pickup Time</label>
+                            <input type="datetime-local" class="form-control text-dark" name="pickuptime"
+                                id="pickupTime" aria-describedby="helpId" placeholder="" />
+                            @error('pickuptime')
+                                <small class="bg-danger p-2 rounded my-3">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary w-50">Pick Me Up <i class="fa fa-smile-o"
+                                aria-hidden="true"></i> </button>
+                    </div>
+                </div>
+                <script>
+                    // Get the current date and time
+                    const now = new Date();
+
+                    // Format the date to match the "datetime-local" input format
+                    const formattedDate = now.toISOString().slice(0, 16); // "YYYY-MM-DDTHH:MM"
+
+                    // Set the min attribute dynamically
+                    document.getElementById('pickupTime').min = formattedDate;
+                </script>
+            </form>
+        </div>
+    </div>
 
     <!-- Team Start -->
     @if (count($teams))
@@ -83,7 +170,8 @@
                             <div class="team-item text-center rounded bg-white overflow-hidden pb-2">
                                 <div class="rounded overflow-hidden m-4 ">
                                     <img class="img-fluid rounded" src="{{ asset('uploads/' . $team->files->img) }}"
-                                        alt="" data-bs-toggle="modal" data-bs-target="#teamID{{ $team->id }}"
+                                        alt="" data-bs-toggle="modal"
+                                        data-bs-target="#teamID{{ $team->id }}"
                                         style="cursor: pointer;
                             height:10rem;">
                                 </div>
@@ -265,15 +353,16 @@
     @endif
 
     <!-- Booking Start -->
-    <div class="container-fluid bg-primary bg-icon mt-5 py-5">
-        <div class="container">
+    <div class=" bg-icon mt-5 ">
+        <div class="container  bg-primary p-5 my-3">
 
             <div class="p-5 wow fadeInUp text-center " style="background: rgba(0, 0, 0, 0.403)" data-wow-delay="0.2s">
                 <h5 class="section-title ff-secondary text-center text-primary fw-normal">Reservation</h5>
                 <h1 class="text-white mb-4">Book A Table Online</h1>
-                <p>Do you want to Book a table Or would you like to see our dining space first</p>
-                <a href="/booking" class="btn btn-primary">Book a Table</a>
-                <a href="/spaces" class="btn btn-primary">See our dining Spaces</a>
+                <p>Do you want to Book a table Or would you like to see our dining space or Are You willing For a Pickup</p>
+                <a href="/booking" class="btn btn-primary my-2">Book a Table</a>
+                <a href="/spaces" class="btn btn-primary my-2">See our dining Spaces</a>
+                <a href="/pickups" class="btn btn-primary my-2">Pickup</a>
             </div>
 
         </div>

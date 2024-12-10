@@ -29,7 +29,7 @@
             @forelse ($spaces as $space)
                 <div class="col-lg-4 col md-3 col-sm-12">
                     <div class="card bg-primary border-0">
-                        <a href="{{}}"> <img src="{{ asset('uploads/' . $space->files->img) }}" class="card-img-top"
+                        <a href=""> <img src="{{ asset('uploads/' . $space->files->img) }}" class="card-img-top"
                                 alt="..." height="300px" style="object-fit: cover"></a>
                         <div class="card-body">
                             <h5 class="card-title text-white">{{ $space->title }}</h5>
@@ -55,7 +55,7 @@
                                         <div class="modal-body">
                                             <div class="text-center">
                                                 <img src="{{ asset('uploads/' . $space->files->img) }}" alt=""
-                                                    height="300px" width="300px" style="object-fit: cover">
+                                                    height="300px" width="100%" style="object-fit: cover">
                                                 <h2 class="text-primary mt-3"> {{ $space->title }}</h2>
                                             </div>
                                             <hr>
@@ -63,7 +63,27 @@
 
                                                 <div class="my-2">
                                                     <h2 class="text-primary">About this Dining Space</h2>
-                                                    <div class="text-dark">
+                                                    <style>
+                                                        .description-container {
+                                                            max-width: 100%;
+                                                            /* Makes it responsive */
+                                                            overflow: hidden;
+                                                            /* Prevents scrollbars */
+                                                            word-wrap: break-word;
+                                                            /* Ensures text doesn't overflow */
+                                                            display: block;
+                                                            color: black;
+                                                        }
+
+                                                        img {
+                                                            max-width: 100%;
+                                                            /* Makes images responsive */
+                                                            height: auto;
+                                                            /* Maintains image aspect ratio */
+                                                            display: block;
+                                                        }
+                                                    </style>
+                                                    <div class="description-container">
                                                         {!! $space->description !!}
                                                     </div>
                                                 </div>
@@ -85,6 +105,19 @@
             @empty
                 <div class="fs-1 text-dark text-center">No Spaces</div>
             @endforelse
+            <div class="container-fluid bg-primary bg-icon mt-5 py-5">
+                <div class="container">
+
+                    <div class="p-5 wow fadeInUp text-center " style="background: rgba(0, 0, 0, 0.403)"
+                        data-wow-delay="0.2s">
+                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Reservation</h5>
+                        <h1 class="text-white mb-4">Book A Table </h1>
+                        <p>Do you want to Book a table now</p>
+                        <a href="/booking" class="btn btn-primary">Book a Table</a>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
     <!-- Page Header End -->

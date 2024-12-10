@@ -14,6 +14,7 @@ use App\Http\Controllers\FrontendController\IndexFrController;
 use App\Http\Controllers\FrontendController\MenuFrController;
 use App\Http\Controllers\FrontendController\NotFoundController;
 use App\Http\Controllers\FrontendController\OrderController;
+use App\Http\Controllers\FrontendController\PickupController;
 use App\Http\Controllers\FrontendController\ReservationsController;
 use App\Http\Controllers\FrontendController\TeamFrController;
 use App\Http\Controllers\FrontendController\TestimonialFrController;
@@ -49,6 +50,10 @@ Route::get('/order', [IndexFrController::class, 'order'])->name('order');
 Route::get('/404', [IndexFrController::class, 'notfound'])->name('404');
 Route::get('/room', [IndexFrController::class, 'room'])->name('room');
 Route::get('/tables', [IndexFrController::class, 'tables'])->name('table');
+// pickup
+Route::post('/pickinUp', [PickupController::class, 'store'])->name('pickup.store');
+Route::get('/pickup/confirm/{id}/{action}/{token}', [PickupController::class, 'confirm'])->name('pickup.confirm');
+// pickup
 
 Route::get('/qr-page', QRCodeController::class)->name('qr-page');
 Route::get('/payment-failed', PaymentFailedController::class)->name('payment-failed');

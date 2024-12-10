@@ -36,7 +36,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'siteKey' => 'Email',
-                'siteValue' => 'https://www.Emails.com',
+                'siteValue' => 'yasshrestha6@gmail.com',
             ],
             [
                 'siteKey' => 'Twitter',
@@ -44,7 +44,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'siteKey' => 'Phone',
-                'siteValue' => '9454342418',
+                'siteValue' => '9804172730',
             ],
             [
                 'siteKey' => 'Location',
