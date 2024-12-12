@@ -50,6 +50,7 @@ Route::get('/order', [IndexFrController::class, 'order'])->name('order');
 Route::get('/404', [IndexFrController::class, 'notfound'])->name('404');
 Route::get('/room', [IndexFrController::class, 'room'])->name('room');
 Route::get('/tables', [IndexFrController::class, 'tables'])->name('table');
+Route::get('/spaces', [IndexFrController::class, 'spaces'])->name('spaces');
 // pickup
 Route::post('/pickinUp', [PickupController::class, 'store'])->name('pickup.store');
 Route::get('/pickup/confirm/{id}/{action}/{token}', [PickupController::class, 'confirm'])->name('pickup.confirm');
@@ -64,9 +65,10 @@ Route::post('/carts', [CartController::class, 'index'])->name('cart.store');
 Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 
 Route::get('/booking', [BookingFrController::class, 'index'])->name('booking');
-Route::post('/booking/table', [BookingFrController::class, 'book'])->name('booking.table');
+Route::post('/booking/book', [BookingFrController::class, 'book'])->name('booking.book');
+Route::get('/booking/confirm/{id}/{action}/{token}', [BookingFrController::class, 'confirm'])->name('booking.confirm');
 
-Route::get('/booking/table', function () {
+Route::get('/booking/bookin', function () {
     // Redirect to a 404 page or handle it as needed
     return redirect('404');
 });

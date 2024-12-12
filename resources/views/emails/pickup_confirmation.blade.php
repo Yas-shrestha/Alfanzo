@@ -67,18 +67,6 @@
         </ul>
     </div>
 
-    <p>We look forward to serving you. To confirm your booking, please click the button below:</p>
-    <p>This expire within 10 min so Please request again if extra time is taken</p>
-
-    <!-- Confirmation Button -->
-    <p>Do you accept or reject the pickup request?</p>
-
-    <p>
-        <a href="{{ $acceptUrl }}"
-            style="padding: 10px; background-color: green; color: white; text-decoration: none;">Accept</a>
-        <a href="{{ $rejectUrl }}"
-            style="padding: 10px; background-color: red; color: white; text-decoration: none;">Reject</a>
-    </p>
 
     <p>If you have any questions or need to make changes, feel free to contact us.</p>
     <p>Best regards,<br>Alfanzo Resort Pickup Service Team</p>

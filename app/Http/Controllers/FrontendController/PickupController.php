@@ -28,7 +28,7 @@ class PickupController extends Controller
             'email' => 'required|email',
             'phone' => 'required',
             'location' => 'required',
-            'noofpeople' => 'required|numeric',
+            'noofpeople' => 'required|numeric|min:1|max:140',
             'pickuptime' => 'required',
         ]);
         $pickup->name = $validate_data['name'];
@@ -38,46 +38,13 @@ class PickupController extends Controller
         $pickup->noofpeople = $validate_data['noofpeople'];
         $pickup->pickuptime = $validate_data['pickuptime'];
         // Generate a unique token and set the expiration time
-        $pickup->verification_token = Str::random(60); // Create a random 60-character token
-        $pickup->verification_token_expires_at = Carbon::now()->addMinutes(10); // Set the expiry time to 10 minutes from now
 
         $pickup->save();
         Mail::to($pickup->email)->send(new PickupConfirmation($pickup));
+        $ownerEmail = SiteConfig::where('siteKey', 'email')->value('siteValue');
 
+        // Send an email to the owner
+        Mail::to($ownerEmail)->send(new PickupStatusNotification($pickup));
         return redirect()->back()->with('success', 'Successfully Booked Please Check Your Email and Verify it');
-    }
-
-    public function confirm($id, $action, $token)
-    {
-        // Find the pickup request by its ID
-        $pickup = Pickup::find($id);
-
-        if ($pickup) {
-            // Check if the token is valid and hasn't expired
-            if ($pickup->verification_token === $token && Carbon::now()->lt($pickup->verification_token_expires_at)) {
-                if ($action == 'accept') {
-                    // Update the status to 'confirmed' when accepted
-                    $pickup->verification = 'confirmed';
-                    $pickup->save();
-
-                    $ownerEmail = SiteConfig::where('siteKey', 'email')->value('siteValue');
-
-                    // Send an email to the owner
-                    Mail::to($ownerEmail)->send(new PickupStatusNotification($pickup, 'confirmed'));
-
-                    return redirect()->route('/')->with('success', 'Your pickup has been confirmed!');
-                } elseif ($action == 'reject') {
-                    // Mark the status as rejected or not verified
-                    $pickup->verification = 'not_verified';
-                    $pickup->save();
-
-                    return redirect()->route('/')->with('error', 'Your pickup request has been rejected.');
-                }
-            } else {
-                return redirect()->route('/')->with('error', 'Invalid or expired token.');
-            }
-        } else {
-            return redirect()->route('/')->with('error', 'Pickup not found.');
-        }
     }
 }

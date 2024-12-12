@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('spaces_id')->nullable();
-            $table->foreign('spaces_id')->references('id')->on('dining_spaces')->onDelete('cascade');
             $table->string('name');
+            $table->string('phone');
             $table->string('email');
             $table->string('noofpeople');
-            $table->dateTime('dateandtime');
-            $table->enum('reservation_status', ['available', 'pending', 'booked', 'canceled'])->nullable();
+            $table->string('spaces');
+            $table->string('room');
+            $table->string('date');
+            $table->string('pickup');
+            $table->enum('reservation_status', ['pending', 'booked', 'canceled'])->default('pending');
             $table->longText('specialrequest')->nullable();
+
             $table->timestamps();
         });
     }

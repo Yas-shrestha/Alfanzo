@@ -27,7 +27,6 @@
 
 <body>
     <h1>Pickup Status Notification</h1>
-    <p>The pickup request has been <strong>{{ $status }}</strong>.</p>
     <div class="details">
         <h2>Pickup Details:</h2>
         <ul>
@@ -38,7 +37,7 @@
             <li><strong>Number of People:</strong> {{ $pickup->noofpeople }}</li>
             <li><strong>Pickup Time:</strong> {{ \Carbon\Carbon::parse($pickup->pickuptime)->format('F j, Y, g:i a') }}
             </li>
-            <li><strong>Status:</strong> {{ $status }}</li>
+
         </ul>
     </div>
     <p>Please Pick up on {{ \Carbon\Carbon::parse($pickup->pickuptime)->format('F j, Y, g:i a') }} </p>

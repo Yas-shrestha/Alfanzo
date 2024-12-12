@@ -30,7 +30,7 @@ class PickupConfirmation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Pickup Confirmation',  // Set the email subject
+            subject: 'Pickup Request',  // Set the email subject
         );
     }
 
@@ -43,17 +43,6 @@ class PickupConfirmation extends Mailable
             view: 'emails.pickup_confirmation',
             with: [
                 'pickup' => $this->pickup,
-                'token' => $this->pickup->verification_token,  // Include token
-                'acceptUrl' => route('pickup.confirm', [
-                    'id' => $this->pickup->id,
-                    'action' => 'accept',
-                    'token' => $this->pickup->verification_token,  // Send token
-                ]),
-                'rejectUrl' => route('pickup.confirm', [
-                    'id' => $this->pickup->id,
-                    'action' => 'reject',
-                    'token' => $this->pickup->verification_token,  // Send token
-                ]),
             ]
         );
     }

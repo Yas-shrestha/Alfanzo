@@ -3,23 +3,22 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PickupStatusNotification extends Mailable
+class TableAndRoomBookNotification extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $pickup;
-
+    public $booking;
     /**
      * Create a new message instance.
      */
-    public function __construct($pickup)
+    public function __construct($booking)
     {
-        $this->pickup = $pickup;
+        $this->booking = $booking;
     }
 
     /**
@@ -28,7 +27,7 @@ class PickupStatusNotification extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Pickup Status Notification',
+            subject: 'Table And Room Book Notification',
         );
     }
 
@@ -38,10 +37,11 @@ class PickupStatusNotification extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.owner_pickup_status', // Update this to your actual view path
+            view: 'emails.Booking_conformation',
             with: [
-                'pickup' => $this->pickup
-            ],
+                'pickup' => $this->booking,
+
+            ]
         );
     }
 

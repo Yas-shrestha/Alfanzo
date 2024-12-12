@@ -19,10 +19,6 @@ return new class extends Migration
             $table->string('location');
             $table->string('noofpeople');
             $table->string('pickuptime');
-            $table->string('verification')->nullable();
-            $table->string('verification_token')->nullable();
-            $table->timestamp('verification_token_expires_at')->nullable();
-            $table->Enum('status', ['Pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
