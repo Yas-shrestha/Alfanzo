@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DiningSpace;
 use App\Models\Reservation;
 use App\Models\Files;
+use App\Models\room;
 use App\Models\Table;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use LDAP\Result;
 
 class ReservationController extends Controller
 {
@@ -24,7 +27,9 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('resturant.admin.Reservation.create', compact('files'));
+        $spaces = DiningSpace::query()->get()->all();
+        $rooms = room::query()->get()->all();
+        return view('resturant.admin.Reservation.create', compact('spaces', 'rooms'));
     }
 
     /**
@@ -67,7 +72,7 @@ class ReservationController extends Controller
             return redirect('booking')->with('success', 'Your reservation have been made');
         } else {
             // User is not logged in, redirect to the login page
-            return redirect('login')->with('error','User is not logged in');
+            return redirect('login')->with('error', 'User is not logged in');
         }
     }
 
@@ -142,5 +147,15 @@ class ReservationController extends Controller
         $Reservation->reservation_status = 'canceled';
         $Reservation->save();
         return redirect()->back()->with('success', 'Reservation is cancelled');
+    }
+    public function updateStatus(Request $request, $id)
+    {
+        $reservation = Reservation::query()->where('id', $id)->first();
+        $request->validate([
+            'status' => 'required',  // Ensure price is a number and greater than or equal to 1
+        ]);
+        $reservation->reservation_status = $request->status;
+        $reservation->save();
+        return redirect()->back()->with('success', 'Status updated successfully!');
     }
 }

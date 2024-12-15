@@ -97,8 +97,6 @@
                                  <a href="/admin/" class="dropdown-item">Dashboard</a>
                              @endif
                              <a href="/user-info" class="dropdown-item">User-info</a>
-                             <a href="/booked-table" class="dropdown-item">Booked table</a>
-                             <a href="/order" class="dropdown-item">Orders</a>
                              <a onclick="document.getElementById('logout-form').submit()" href="#"
                                  class="dropdown-item">logout</a>
                              <form action="{{ route('logout') }}" id="logout-form" method="post">
@@ -110,9 +108,7 @@
                  @else
                      <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4">Log In</a>
                  @endif
-                 <a class="btn-sm-square bg-white rounded-circle ms-3" href="{{ route('cart') }}">
-                     <small class="fa fa-shopping-bag text-body"></small>
-                 </a>
+
              </div>
          </div>
      </nav>

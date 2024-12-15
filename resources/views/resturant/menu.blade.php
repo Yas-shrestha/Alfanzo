@@ -94,9 +94,7 @@
                                             </button>
                                             <input type="number" name="food_id" value="{{ $food->id }}" readonly
                                                 style="display: none;">
-                                            <button type="submit" class="btn btn-light text-body" title="Add to cart"><i
-                                                    class="fa-solid fa-cart-shopping"></i>Add to
-                                                cart</button>
+
                                         </form>
                                     </div>
                                 </div>
@@ -196,9 +194,7 @@
                                             </button>
                                             <input type="number" name="food_id" value="{{ $food->id }}" readonly
                                                 style="display: none;">
-                                            <button type="submit" class="btn btn-light text-body" title="Add to cart"><i
-                                                    class="fa-solid fa-cart-shopping"></i>Add to
-                                                cart</button>
+
                                         </form>
                                     </div>
                                 </div>
@@ -298,9 +294,7 @@
                                             </button>
                                             <input type="number" name="food_id" value="{{ $food->id }}" readonly
                                                 style="display: none;">
-                                            <button type="submit" class="btn btn-light text-body" title="Add to cart"><i
-                                                    class="fa-solid fa-cart-shopping"></i>Add to
-                                                cart</button>
+
                                         </form>
                                     </div>
                                 </div>
@@ -400,9 +394,7 @@
                                             </button>
                                             <input type="number" name="food_id" value="{{ $food->id }}" readonly
                                                 style="display: none;">
-                                            <button type="submit" class="btn btn-light text-body" title="Add to cart"><i
-                                                    class="fa-solid fa-cart-shopping"></i>Add to
-                                                cart</button>
+
                                         </form>
                                     </div>
                                 </div>
@@ -558,9 +550,7 @@
                                             </button>
                                             <input type="number" name="food_id" value="{{ $food->id }}" readonly
                                                 style="display: none;">
-                                            <button type="submit" class="btn btn-light text-body" title="Add to cart"><i
-                                                    class="fa-solid fa-cart-shopping"></i>Add to
-                                                cart</button>
+
                                         </form>
                                     </div>
                                 </div>

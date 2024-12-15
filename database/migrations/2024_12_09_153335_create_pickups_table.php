@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('noofpeople');
             $table->string('pickuptime');
+            $table->enum('pickup_status', ['pending', 'booked', 'canceled'])->default('pending');
             $table->timestamps();
         });
     }

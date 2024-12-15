@@ -21,6 +21,7 @@ use App\Http\Controllers\FrontendController\TestimonialFrController;
 use App\Http\Controllers\FrontendController\UserFrController;
 use App\Http\Controllers\PaymentFailedController;
 use App\Http\Controllers\PaymentSuccessController;
+use App\Http\Controllers\PickupController as ControllersPickupController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
@@ -92,13 +93,23 @@ Route::middleware(['auth', 'checkRole'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/update-reservation/{id}', [ReservationController::class, 'updateStatus'])->name('update.reservation');
+    Route::get('/pickup', [ControllersPickupController::class, 'index'])->name('pickups.index');
+    Route::get('/pickup/create', [ControllersPickupController::class, 'create'])->name('pickups.create');
+    Route::delete('/pickup/{id}', [ControllersPickupController::class, 'destroy'])->name('pickups.destroy');
+    Route::get('/pickup/show/{id}', [ControllersPickupController::class, 'show'])->name('pickups.show');
+    Route::get('/pickup/cancel/{id}', [ControllersPickupController::class, 'cancel'])->name('pickups.cancel');
+    Route::post('/update-pickup/{id}', [ControllersPickupController::class, 'updateStatus'])->name('update.pickup');
+
+
+
     Route::prefix('/admin')->group(function () {
         Route::resource('/', 'App\Http\Controllers\DashboardController');
         Route::resource('/fileManager', 'App\Http\Controllers\FileController');
         Route::resource('/carousels', 'App\Http\Controllers\carouselController');
         Route::resource('/foods', 'App\Http\Controllers\FoodController');
         Route::resource('/abouts', 'App\Http\Controllers\AboutController');
-        Route::resource('/about_features', 'App\Http\Controllers\AboutFeatureController');
+        Route::resource('/about_features', 'App\Http\Controllers\AboutFeatureControlwler');
         Route::resource('/admins', 'App\Http\Controllers\AdminController');
         Route::resource('/users', 'App\Http\Controllers\UserController');
         Route::resource('/staffs', 'App\Http\Controllers\StaffController');

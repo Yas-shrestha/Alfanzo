@@ -1,8 +1,11 @@
-
-
-
 @extends('resturant.admin.inc.main')
 @section('main-container')
+    <style>
+        .col-sm-12.fs-3 span {
+            color: #c19a6b;
+            width: 200px
+        }
+    </style>
     <main id="main" class="main">
         <div class="content-wrapper">
             <section class="content-header">
@@ -24,82 +27,29 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('reservation.update', $reservation->id) }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @method('PUT')
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputTitle1" class="form-label">name</label>
-                                                    <input type="text" class="form-control" id="exampleInputTitle1"
-                                                        aria-describedby="titleHelp" name="name" disabled
-                                                        value="{{ $reservation->name }}">
-                                                    @error('name')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputTitle1" class="form-label">reservation_status</label>
-                                                    <input type="text" class="form-control" id="exampleInputTitle1"
-                                                        aria-describedby="titleHelp" name="reservation_status" disabled
-                                                        value="{{ $reservation->reservation_status }}">
-                                                    @error('reservation_status')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputTitle1" class="form-label">email</label>
-                                                    <input type="text" class="form-control" id="exampleInputTitle1"
-                                                        aria-describedby="titleHelp" name="email" disabled
-                                                        value="{{ $reservation->email }}">
-                                                    @error('email')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputTitle1" class="form-label">Date and Time</label>
-                                                    <input type="datetime-local" class="form-control" id="exampleInputTitle1"
-                                                        aria-describedby="titleHelp" name="dateandtime"
-                                                        value="{{ $reservation->dateandtime }}" disabled>
-                                                    @error('dateandtime')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputTitle1" class="form-label">noofpeople</label>
-                                                    <input type="text" class="form-control" id="exampleInputTitle1"
-                                                        aria-describedby="titleHelp" name="noofpeople" disabled
-                                                        value="{{ $reservation->noofpeople }}">
-                                                    @error('noofpeople')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputTitle1" class="form-label">specialrequest</label>
-                                                    <input type="text" class="form-control" id="exampleInputTitle1"
-                                                        aria-describedby="titleHelp" name="specialrequest" disabled
-                                                        value="{{ $reservation->specialrequest }}">
-                                                    @error('specialrequest')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span> Name:</span> {{ $reservation->name }}
                                         </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span>Phone:</span> {{ $reservation->phone }}
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span>Email:</span> {{ $reservation->email }}
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span> No Of People:</span>
+                                            {{ $reservation->noofpeople }}
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span>Spaces:</span>
+                                            {{ $reservation->spaces }} </div>
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span> Room:</span> {{ $reservation->room }}
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span> Date:</span> {{ $reservation->date }}
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span>Pickup:</span>
+                                            {{ $reservation->pickup }} </div>
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span>Reservation Status:</span>
+                                            {{ $reservation->reservation_status }} </div>
+                                        <div class="col-sm-12 fs-3"> <span> Special Request:</span>
+                                            {{ $reservation->specialRequest }} </div>
+                                    </div>
                     </section>
                 </div>
             </section>
@@ -108,7 +58,7 @@
     <script>
         function firstFunction() {
             var x = document.querySelector('input[name=img]:checked').value;
-            document.getElementById('imagebox').value = x;  
+            document.getElementById('imagebox').value = x;
         }
     </script>
 @endsection

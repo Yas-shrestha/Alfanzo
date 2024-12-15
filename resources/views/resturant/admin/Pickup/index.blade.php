@@ -19,13 +19,13 @@
                             </div>
                         @endif
                         <div class="d-flex justify-content-between">
-                            <h1>Manage reservation</h1>
-                            <a href="{{ route('reservation.create') }}" class="btn btn-primary">Add</a>
+                            <h1>Manage pickup</h1>
+                            <a href="{{ route('pickups.create') }}" class="btn btn-primary">Add</a>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">Manage-reservation</li>
+                                <li class="breadcrumb-item active">Manage-pickup</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -40,51 +40,50 @@
                                                 <th scope="col">S.N</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Phone</th>
-                                                <th scope="col">Room</th>
-                                                <th scope="col">Dining space</th>
-                                                <th scope="col">pickup</th>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">Reservation status</th>
+                                                <th scope="col">email</th>
+                                                <th scope="col">location</th>
+                                                <th scope="col">no of people</th>
+                                                <th scope="col">pickup time</th>
+                                                <th scope="col">Pickup status</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($reservations as $reservation)
+                                            @foreach ($pickups as $pickup)
                                                 <tr>
                                                     <th scope="row">{{ $loop->iteration }}</th>
-                                                    <td>{{ $reservation->name }}</td>
-                                                    <td>{{ $reservation->phone }}</td>
-                                                    <td>{{ $reservation->room }}</td>
-                                                    <td>{{ $reservation->spaces }}</td>
-                                                    <td>{{ $reservation->date }}</td>
-                                                    <td>{{ $reservation->pickup }}</td>
+                                                    <td>{{ $pickup->name }}</td>
+                                                    <td>{{ $pickup->phone }}</td>
+                                                    <td>{{ $pickup->email }}</td>
+                                                    <td>{{ $pickup->location }}</td>
+                                                    <td>{{ $pickup->noofpeople }}</td>
+                                                    <td>{{ $pickup->pickuptime }}</td>
                                                     @if (Auth::user() && Auth::user()->role == 'user')
                                                         <td>
                                                             <span
                                                                 class="badge rounded-pill 
-                                                {{ $reservation->reservation_status == 'canceled' ? 'bg-warning' : '' }}
-                                                {{ $reservation->reservation_status == 'pending' ? 'bg-primary' : '' }}
-                                                {{ $reservation->reservation_status == 'booked' ? 'bg-success' : '' }}">
-                                                                {{ $reservation->reservation_status }}
+                                                {{ $pickup->pickup_status == 'canceled' ? 'bg-warning' : '' }}
+                                                {{ $pickup->pickup_status == 'pending' ? 'bg-primary' : '' }}
+                                                {{ $pickup->pickup_status == 'booked' ? 'bg-success' : '' }}">
+                                                                {{ $pickup->pickup_status }}
                                                             </span>
                                                         </td>
                                                     @else
                                                         <td>
-                                                            <form
-                                                                action="{{ route('update.reservation', $reservation->id) }}"
+                                                            <form action="{{ route('update.pickup', $pickup->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <select class="form-select" name="status"
-                                                                    aria-label="Reservation Status">
+                                                                    aria-label="Pickup Status">
                                                                     <option>Select status</option>
                                                                     <option value="pending"
-                                                                        {{ $reservation->reservation_status == 'pending' ? 'selected' : '' }}>
+                                                                        {{ $pickup->pickup_status == 'pending' ? 'selected' : '' }}>
                                                                         Pending</option>
                                                                     <option value="booked"
-                                                                        {{ $reservation->reservation_status == 'booked' ? 'selected' : '' }}>
+                                                                        {{ $pickup->pickup_status == 'booked' ? 'selected' : '' }}>
                                                                         Booked</option>
                                                                     <option value="canceled"
-                                                                        {{ $reservation->reservation_status == 'canceled' ? 'selected' : '' }}>
+                                                                        {{ $pickup->pickup_status == 'canceled' ? 'selected' : '' }}>
                                                                         Canceled</option>
                                                                 </select>
                                                                 <button type="submit"
@@ -95,12 +94,12 @@
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-md"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#modal-cancel-Id{{ $reservation->id }}">
+                                                            data-bs-target="#modal-cancel-Id{{ $pickup->id }}">
                                                             <i class="fa-solid fa-xmark"></i>
                                                         </button>
                                                         <!-- Modal Body -->
                                                         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                                        <div class="modal fade" id="modal-cancel-Id{{ $reservation->id }}"
+                                                        <div class="modal fade" id="modal-cancel-Id{{ $pickup->id }}"
                                                             tabindex="-1" data-bs-backdrop="static"
                                                             data-bs-keyboard="false" role="dialog"
                                                             aria-labelledby="modalTitleId" aria-hidden="true">
@@ -118,7 +117,7 @@
                                                                         Are you sure you want to cancel
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <a href="{{ route('reservation.cancel', $reservation->id) }}"
+                                                                        <a href="{{ route('pickups.cancel', $pickup->id) }}"
                                                                             class="btn btn-danger">Yes</a>
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal"
@@ -128,18 +127,18 @@
                                                             </div>
                                                         </div>
 
-                                                        <a href="{{ route('reservation.show', $reservation->id) }}"
+                                                        <a href="{{ route('pickups.show', $pickup->id) }}"
                                                             class="btn btn-md btn-secondary"><i class="fa fa-eye"
                                                                 aria-hidden="true"></i></a>
                                                         <!-- Modal trigger button -->
                                                         <button type="button" class="btn btn-danger btn-md"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#modalId{{ $reservation->id }}">
+                                                            data-bs-target="#modalId{{ $pickup->id }}">
                                                             <i class="fa-solid fa-trash-can"></i>
                                                         </button>
                                                         <!-- Modal Body -->
                                                         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                                        <div class="modal fade" id="modalId{{ $reservation->id }}"
+                                                        <div class="modal fade" id="modalId{{ $pickup->id }}"
                                                             tabindex="-1" data-bs-backdrop="static"
                                                             data-bs-keyboard="false" role="dialog"
                                                             aria-labelledby="modalTitleId" aria-hidden="true">
@@ -159,7 +158,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <form
-                                                                            action="{{ route('reservation.destroy', $reservation->id) }}"
+                                                                            action="{{ route('pickups.destroy', $pickup->id) }}"
                                                                             method="POST" enctype="multipart/form-data">
                                                                             @method('delete')
                                                                             @csrf
@@ -187,7 +186,7 @@
                                         </tbody>
                                     </table>
                                     <div>
-                                        {{ $reservations->links() }}
+                                        {{ $pickups->links() }}
                                     </div>
                                 </div>
                             </div>

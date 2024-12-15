@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
 @section('container')
+    <style>
+        input {
+            color: black !important;
+        }
+    </style>
     <!--Banner -->
     <!-- Page Header Start -->
     @foreach ($settings as $set)

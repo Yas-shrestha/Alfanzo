@@ -24,21 +24,8 @@
                 </li>
 
                 <li class="menu-header small text-uppercase">
-                    <span class="menu-header-text">Manage Orders and reservation</span>
-                </li>
-                <li class="menu-item  {{ Route::is('orders.create', 'orders.index') ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                        <div data-i18n="Account Settings">Orders</div>
-                    </a>
-                    <ul class="menu-sub">
-                        <li class="menu-item">
-                            <a href="{{ route('orders.index') }}" class="menu-link">
-                                <div data-i18n="Notifications">Manage</div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                    <span class="menu-header-text">Manage reservation And Pickups</span>
+
 
                 <li class="menu-item {{ Route::is('reservation.index') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -54,36 +41,27 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-item {{ Route::is('newsletter.index') ? 'active' : '' }}">
+                <li class="menu-item {{ Route::is('pickups.index') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;
-                        <div data-i18n="Account Settings">Newsletter</div>
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                        <div data-i18n="Account Settings"> Pickup</div>
                     </a>
                     <ul class="menu-sub">
 
                         <li class="menu-item">
-                            <a href="{{ route('newsletter.index') }}" class="menu-link">
+                            <a href="{{ route('pickups.index') }}" class="menu-link">
                                 <div data-i18n="Notifications">Manage</div>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="menu-item {{ Route::is('payments.index') ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="fa fa-money" aria-hidden="true"></i>
-                        <div data-i18n="Account Settings">Payments</div>
-                    </a>
-                    <ul class="menu-sub">
 
-                        <li class="menu-item">
-                            <a href="{{ route('payments.index') }}" class="menu-link">
-                                <div data-i18n="Notifications">Manage</div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+
 
                 @if (Auth::check() && Auth::user()->role == 1)
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Room,Table and spaces</span>
+                    </li>
                     <li class="menu-item {{ Route::is('rooms.index') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="fa fa-home" aria-hidden="true"></i>
@@ -101,9 +79,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Table and spaces</span>
                     </li>
                     <li class="menu-item {{ Route::is('spaces.index') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -162,8 +137,23 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Manage</span>
+                    </li>
+                    <li class="menu-item {{ Route::is('newsletter.index') ? 'active' : '' }}">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                            <div data-i18n="Account Settings">Newsletter</div>
+                        </a>
+                        <ul class="menu-sub">
+
+                            <li class="menu-item">
+                                <a href="{{ route('newsletter.index') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Manage</div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="menu-item {{ Route::is('admins.index') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -178,6 +168,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="menu-item {{ Route::is('users.index') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
