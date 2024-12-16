@@ -266,38 +266,16 @@
                                             <span class="text-primary me-1">Rs{{ $food->price }}</span>
 
                                         </div>
-                                        <form action="{{ route('cart.store') }}" method="POST"
-                                            enctype="multipart/form-data" class="text-center">
-                                            @csrf
-                                            <input type="text" name="user_id" value="{{ $user_id }}" readonly
-                                                hidden>
-                                            <button type="button" class="btn btn-link px-2"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                            <input type="number" name="quantity" min="1" max="20"
-                                                style="width: 40px" value="1">
-                                            <button type="button" class="btn btn-link px-2"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                            <input type="number" name="food_id" value="{{ $food->id }}" readonly
-                                                style="display: none;">
-                                            <div class="d-flex border-top">
-                                                <small class="w-50 text-center border-end py-2" data-bs-toggle="modal"
-                                                    data-bs-target="#foodModallId{{ $food->id }}">
-                                                    <a class="text-body" href="" data-bs-toggle="modal"
-                                                        data-bs-target="#foodModallId{{ $food->id }}"><i
-                                                            class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                                </small>
-                                                <small class="w-50 text-center py-2">
-                                                    <button type="submit" class="btn btn-light text-body"
-                                                        title="Add to cart"><i class="fa-solid fa-cart-shopping"></i>Add
-                                                        to
-                                                        cart</button>
-                                                </small>
-                                            </div>
-                                        </form>
+
+                                        <div class=" border-top text-center">
+                                            <small class="w-50   border-en py-2" data-bs-toggle="modal"
+                                                data-bs-target="#foodModallId{{ $food->id }}">
+                                                <a class="text-primary " href="" data-bs-toggle="modal"
+                                                    data-bs-target="#foodModallId{{ $food->id }}"><i
+                                                        class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                            </small>
+
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
@@ -344,7 +322,7 @@
                             @endforeach
                         </div>
                         <div class="col-12 text-center wow fadeInUp mt-3" data-wow-delay="0.1s">
-                            <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Products</a>
+                            <a class="btn btn-primary rounded-pill py-3 px-5" href="{{ route('menu') }}">See Our Menu</a>
                         </div>
                     </div>
                 </div>
@@ -358,11 +336,11 @@
 
             <div class="p-5 wow fadeInUp text-center " style="background: rgba(0, 0, 0, 0.403)" data-wow-delay="0.2s">
                 <h5 class="section-title ff-secondary text-center text-primary fw-normal">Reservation</h5>
-                <h1 class="text-white mb-4">Book A Table Online</h1>
-                <p>Do you want to Book a table Or would you like to see our dining space or Are You willing For a Pickup</p>
-                <a href="/booking" class="btn btn-primary my-2">Book a Table</a>
+                <h1 class="text-white mb-4">Book Online</h1>
+                <p>Do you want to Book Room Or Table Or would you like to see our dining space</p>
+                <a href="/booking" class="btn btn-primary my-2">Book </a>
                 <a href="/spaces" class="btn btn-primary my-2">See our dining Spaces</a>
-                <a href="/pickups" class="btn btn-primary my-2">Pickup</a>
+                <a href="#pickup" class="btn btn-primary my-2">Pickup</a>
             </div>
 
         </div>
@@ -372,7 +350,7 @@
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                    {{-- <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5> --}}
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

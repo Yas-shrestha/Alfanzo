@@ -10,6 +10,8 @@ use App\Models\Cart;
 use App\Models\DiningSpace;
 use App\Models\Files;
 use App\Models\Food;
+use App\Models\FoodCategory;
+use App\Models\gallery;
 use App\Models\Order;
 use App\Models\reservation;
 use App\Models\room;
@@ -86,14 +88,12 @@ class IndexFrController extends Controller
     {
         $foodsQr = Food::all();
         $user_id = auth()->check() ? auth()->user()->id : null;
-        $breakfast = Food::where('type', 'breakfast')->get();
-        $lunch = Food::where('type', 'lunch')->get();
-        $dinner = Food::where('type', 'dinner')->get();
-        $drinks = Food::where('type', 'drinks')->get();
-        $desert = Food::where('type', 'desert')->get();
+        $categories = FoodCategory::query()->get()->all();
+
+        $foods = Food::query()->get()->all();
         $teams = Team::limit(4)->get();
         $settings = SiteConfig::all();
-        return view('resturant.menu', compact('desert', 'user_id', 'breakfast', 'lunch', 'dinner', 'drinks', 'foodsQr', 'teams', 'settings'));
+        return view('resturant.menu', compact('user_id', 'categories', 'foods',  'foodsQr', 'teams', 'settings'));
     }
     public function notFound()
     {
@@ -131,10 +131,10 @@ class IndexFrController extends Controller
         $settings = SiteConfig::all();
         return view('resturant.spaces', compact('spaces', 'settings'));
     }
-    public function tables()
+    public function gallery()
     {
-        $tables = Table::all();
+        $galleries = gallery::query()->get()->all();
         $settings = SiteConfig::all();
-        return view('resturant.spaces', compact('tables', 'settings'));
+        return view('resturant.gallery', compact('galleries', 'settings'));
     }
 }

@@ -24,11 +24,11 @@ class SettingSeeder extends Seeder
 
             [
                 'siteKey' => 'Instagram',
-                'siteValue' => 'https://www.Instagram.com',
+                'siteValue' => 'https://www.instagram.com/alfanzooresort/',
             ],
             [
                 'siteKey' => 'Facebook',
-                'siteValue' => 'https://www.Facebook.com',
+                'siteValue' => 'https://www.facebook.com/AlfanzooResort/',
             ],
             [
                 'siteKey' => 'Youtube',
@@ -36,7 +36,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'siteKey' => 'Email',
-                'siteValue' => 'yasshrestha6@gmail.com',
+                'siteValue' => 'alfanzooresortpokhara@gmail.com',
             ],
             [
                 'siteKey' => 'Twitter',

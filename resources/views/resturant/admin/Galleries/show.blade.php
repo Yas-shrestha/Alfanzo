@@ -7,12 +7,13 @@
 
                     <div class="pagetitle">
                         <div class="d-flex justify-content-between">
-                            <h1>Add</h1>
+                            <h1>View</h1>
+                            <a href="{{ route('galleries.index') }}" class="btn btn-primary btn-md ">Back</a>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">foods</li>
+                                <li class="breadcrumb-item active">View-gallery</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -20,49 +21,33 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('foods.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('galleries.show', $gallery->id) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @method('PUT')
                                         @csrf
                                         <div class="row">
+
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
-                                                    <label for="exampleInputText1" class="form-label">name</label>
+                                                    <label for="exampleInputText1" class="form-label">Title</label>
                                                     <input type="text" class="form-control" id="exampleInputText1"
-                                                        aria-describedby="textHelp" name="name">
-                                                    @error('name')
+                                                        disabled aria-describedby="textHelp" name="title"
+                                                        value="{{ $gallery->title }}">
+                                                    @error('title')
                                                         <small>{{ $message }}</small>
                                                     @enderror
                                                 </div>
-
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
-                                                    <label for="exampleFormControlTextarea1" class="form-label">Short
-                                                        Description</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'></textarea>
+                                                    <label for="exampleInputDescription1"
+                                                        class="form-label">Description</label>
+                                                    <input type="text" class="form-control" id="exampleInputDescription1"
+                                                        disabled aria-describedby="descriptionHelp" name="description"
+                                                        value="{{ $gallery->description }}">
                                                     @error('description')
                                                         <small>{{ $message }}</small>
                                                     @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputEmail1" class="form-label">price</label>
-                                                    <input type="number" class="form-control" id="exampleInputEmail1"
-                                                        aria-describedby="emailHelp" name="price">
-                                                    @error('price')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="mb-3 ">
-                                                    <label for="select1" class="form-label">Category</label>
-                                                    <select class="form-select " id="select1" name="type">
-                                                        @foreach ($foodCategories as $food)
-                                                            <option value="{{ $food->id }}">{{ $food->title }}</option>
-                                                        @endforeach
-                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -118,9 +103,6 @@
                                                                     <div>
                                                                         {{ $files->links() }}
                                                                     </div>
-                                                                    <?php
-                                                                    ?>
-
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -129,18 +111,21 @@
                                                                         data-bs-dismiss="modal"
                                                                         onclick=" firstFunction()">Save</button>
                                                                 </div>
-
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    <!-- Optional: Place to the bottom of scripts -->
+                                                    <script>
+                                                        const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+                                                    </script>
                                                 </div>
                                                 <div class="form-group col-12 mb-0">
                                                     <label class="col-form-label">Image</label>
                                                 </div>
+
                                                 <div class="input-group mb-3 col">
-                                                    <input id="imagebox" type="text" class="form-control" disabled
-                                                        name="img" readonly>
+                                                    <input id="imagebox" type="text" class="form-control" readonly
+                                                        name="img" readonly value="{{ $gallery->files->img }}">
                                                     <div class="input-group-append">
                                                         <button type="button" class="btn btn-primary btn-md"
                                                             data-bs-toggle="modal" data-bs-target="#modalId">
@@ -149,11 +134,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @error('title')
-                                                <small>{{ $message }}</small>
-                                            @enderror
                                         </div>
-                                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -163,15 +144,10 @@
             </section>
         </div>
     </main>
-
     <script>
         function firstFunction() {
             var x = document.querySelector('input[name=img]:checked').value;
             document.getElementById('imagebox').value = x;
         }
-    </script>
-    <!-- Optional: Place to the bottom of scripts -->
-    <script>
-        const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
     </script>
 @endsection

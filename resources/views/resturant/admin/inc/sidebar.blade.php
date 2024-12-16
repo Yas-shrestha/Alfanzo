@@ -62,6 +62,24 @@
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Room,Table and spaces</span>
                     </li>
+                    <li class="menu-item {{ Route::is('galleries.index') ? 'active' : '' }}">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="fa fa-image" aria-hidden="true"></i>
+                            <div data-i18n="Account Settings">Galleries</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('galleries.create') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Create</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('galleries.index') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Manage</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="menu-item {{ Route::is('rooms.index') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="fa fa-home" aria-hidden="true"></i>
@@ -98,19 +116,19 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item {{ Route::is('tables.create', 'tables.index') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('foods.create', 'foods.index') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="fa fa-table" aria-hidden="true"></i>
-                            <div data-i18n="Account Settings">Table</div>
+                            <i class="fa-solid fa-burger"></i>&nbsp;&nbsp;
+                            <div data-i18n="Account Settings">Food</div>
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="{{ route('tables.create') }}" class="menu-link">
+                                <a href="{{ route('foods.create') }}" class="menu-link">
                                     <div data-i18n="Account">Create</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('tables.index') }}" class="menu-link">
+                                <a href="{{ route('foods.index') }}" class="menu-link">
                                     <div data-i18n="Notifications">Manage</div>
                                 </a>
                             </li>
@@ -276,24 +294,7 @@
                         </ul>
                     </li>
 
-                    <li class="menu-item {{ Route::is('foods.create', 'foods.index') ? 'active' : '' }}">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="fa-solid fa-burger"></i>&nbsp;&nbsp;
-                            <div data-i18n="Account Settings">Food</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ route('foods.create') }}" class="menu-link">
-                                    <div data-i18n="Account">Create</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ route('foods.index') }}" class="menu-link">
-                                    <div data-i18n="Notifications">Manage</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
                     {{-- <li
                     class="menu-item {{ Route::is('course_reviews.create', 'course_reviews.index') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">

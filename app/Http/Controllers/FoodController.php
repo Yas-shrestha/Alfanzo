@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Files;
 use App\Models\Food;
+use App\Models\FoodCategory;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
@@ -14,7 +15,8 @@ class FoodController extends Controller
     public function index()
     {
         $foods = Food::paginate(5);
-        return view('resturant.admin.Foods.index', compact('foods'));
+        $foodCategories = FoodCategory::paginate(5);
+        return view('resturant.admin.Foods.index', compact('foods', 'foodCategories'));
     }
 
     /**
@@ -23,7 +25,8 @@ class FoodController extends Controller
     public function create()
     {
         $files = Files::paginate(9);
-        return view('resturant.admin.Foods.create', compact('files'));
+        $foodCategories = FoodCategory::paginate(5);
+        return view('resturant.admin.Foods.create', compact('files', 'foodCategories'));
     }
 
     /**
@@ -35,18 +38,17 @@ class FoodController extends Controller
         $validate_data = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'sub_description' => 'required',
-
-            'price' => 'required',
+            'price' => 'nullable',
+            'img' => 'required',
             'type' => 'required'
         ]);
         $food->name = $validate_data['name'];
         $food->description = $validate_data['description'];
-        $food->sub_description = $validate_data['sub_description'];
+
         // Save the image ID and image name to the database
         $food->file_id = $validate_data['img'];
         $food->price = $validate_data['price'];
-        $food->type = $validate_data['type'];
+        $food->category_id = $validate_data['type'];
 
         $food->save();
         return redirect('admin/foods')->with('success', 'Your data have been submitted');
@@ -86,19 +88,17 @@ class FoodController extends Controller
         $validate_data = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'sub_description' => 'required',
-
             'price' => 'required|numeric',
             'type' => 'required'
         ]);
         $food->name = $validate_data['name'];
         $food->description = $validate_data['description'];
-        $food->sub_description = $validate_data['sub_description'];
+
 
         // Save the image ID and image name to the database
         $food->file_id = $validate_data['img'];
         $food->price = $validate_data['price'];
-        $food->type = $validate_data['type'];
+        $food->category_id = $validate_data['type'];
 
         $food->update();
         return redirect('admin/foods')->with('success', 'Your data have been updated');

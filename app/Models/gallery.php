@@ -11,6 +11,6 @@ class gallery extends Model
     protected $fillable = ['title', 'file_id', 'description'];
     public function files()
     {
-        return $this->belongsTo(Files::class, "file_id");
+        return $this->belongsTo(Files::class, "file_id", 'id');
     }
 }

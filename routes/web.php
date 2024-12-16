@@ -5,6 +5,7 @@ use App\Http\Controllers\DiningSpaceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EsewaPaymentController;
+use App\Http\Controllers\FoodCategoryController;
 use App\Http\Controllers\FrontendController\AboutFrController;
 use App\Http\Controllers\FrontendController\BookedTableController;
 use App\Http\Controllers\FrontendController\BookingFrController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\FrontendController\ReservationsController;
 use App\Http\Controllers\FrontendController\TeamFrController;
 use App\Http\Controllers\FrontendController\TestimonialFrController;
 use App\Http\Controllers\FrontendController\UserFrController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PaymentFailedController;
 use App\Http\Controllers\PaymentSuccessController;
 use App\Http\Controllers\PickupController as ControllersPickupController;
@@ -26,6 +28,7 @@ use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
 use App\Models\DiningSpace;
+use App\Models\FoodCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +55,7 @@ Route::get('/404', [IndexFrController::class, 'notfound'])->name('404');
 Route::get('/room', [IndexFrController::class, 'room'])->name('room');
 Route::get('/tables', [IndexFrController::class, 'tables'])->name('table');
 Route::get('/spaces', [IndexFrController::class, 'spaces'])->name('spaces');
+Route::get('/gallery', [IndexFrController::class, 'gallery'])->name('gallery');
 // pickup
 Route::post('/pickinUp', [PickupController::class, 'store'])->name('pickup.store');
 Route::get('/pickup/confirm/{id}/{action}/{token}', [PickupController::class, 'confirm'])->name('pickup.confirm');
@@ -119,6 +123,8 @@ Route::middleware(['auth', 'checkRole'])->group(function () {
         Route::resource('/payments', 'App\Http\Controllers\PaymentController');
         Route::resource('/tables', 'App\Http\Controllers\TableController');
         Route::resource('/orders', 'App\Http\Controllers\OrderController');
+        Route::resource('/food-category', FoodCategoryController::class);
+        Route::resource('/galleries', GalleryController::class);
         Route::resource('/spaces', DiningSpaceController::class);
         Route::resource('/rooms', RoomController::class);
     });

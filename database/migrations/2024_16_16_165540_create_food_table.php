@@ -16,10 +16,10 @@ return new class extends Migration
             $table->foreignId('file_id')->nullable();
             $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
             $table->string('name');
-            $table->string('price');
-            $table->string('type');
+            $table->string('price')->nullable();
+            $table->foreignId('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('food_categories')->onDelete('cascade');
             $table->longText('description');
-            $table->longText('sub_description');
             $table->timestamps();
         });
     }

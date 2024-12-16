@@ -33,6 +33,7 @@
                                 alt="..." height="300px" style="object-fit: cover"></a>
                         <div class="card-body">
                             <h5 class="card-title text-white">{{ $space->title }}</h5>
+                            <h6 class="card-title text-white">No Of Table : {{ $space->nooftables }}</h6>
                             <div class=" text-white ">
                                 {{ Illuminate\Support\Str::words(strip_tags($space->description), 100) }}
                             </div>
@@ -60,7 +61,7 @@
                                             </div>
                                             <hr>
                                             <div class="container">
-
+                                                <h4>No of table : {{ $space->nooftables }}</h4>
                                                 <div class="my-2">
                                                     <h2 class="text-primary">About this Dining Space</h2>
                                                     <style>
@@ -83,6 +84,7 @@
                                                             display: block;
                                                         }
                                                     </style>
+
                                                     <div class="description-container">
                                                         {!! $space->description !!}
                                                     </div>

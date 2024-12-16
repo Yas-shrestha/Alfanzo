@@ -2,10 +2,11 @@
 <div class="container-fluid bg-dark footer  pt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 text-center">
                 @foreach ($settings as $set)
-                    @if ($set->siteKey == 'ResturantName')
-                        <h1 class="fw-bold text-primary mb-4">{{ $set->siteValue }}</h1>
+                    @if ($set->siteKey == 'Logo')
+                        <img src="{{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'buff-momo-1.png')) }}"
+                            style="height: 150px !important" alt="Logo" />
                     @endif
                 @endforeach
                 @foreach ($settings as $set)
@@ -14,24 +15,24 @@
                     @endif
                 @endforeach
                 <div class="d-flex pt-2">
-                    @foreach ($settings as $set)
+                    {{-- @foreach ($settings as $set)
                         @if ($set->siteKey == 'Twitter')
                             <a class="btn btn-square btn-outline-light rounded-circle me-1"
                                 href="{{ $set->siteValue }}"><i class="fab fa-twitter"></i></a>
                         @endif
-                    @endforeach
+                    @endforeach --}}
                     @foreach ($settings as $set)
                         @if ($set->siteKey == 'Facebook')
                             <a class="btn btn-square btn-outline-light rounded-circle me-1"
                                 href="{{ $set->siteValue }}"><i class="fab fa-facebook-f"></i></a>
                         @endif
                     @endforeach
-                    @foreach ($settings as $set)
+                    {{-- @foreach ($settings as $set)
                         @if ($set->siteKey == 'Youtube')
                             <a class="btn btn-square btn-outline-light rounded-circle me-1"
                                 href="{{ $set->siteValue }}"><i class="fab fa-youtube"></i></a>
                         @endif
-                    @endforeach
+                    @endforeach --}}
                     @foreach ($settings as $set)
                         @if ($set->siteKey == 'Instagram')
                             <a class="btn btn-square btn-outline-light rounded-circle me-0"
@@ -74,8 +75,8 @@
                 <a class="btn btn-link" href="{{ route('about') }}">About Us</a>
                 <a class="btn btn-link" href="{{ route('contact') }}">Contact Us</a>
                 <a class="btn btn-link" href="{{ route('testimonial') }}">People Review</a>
-                <a class="btn btn-link" href="">Terms & Condition</a>
-                <a class="btn btn-link" href="">Support</a>
+                {{-- <a class="btn btn-link" href="">Terms & Condition</a> --}}
+                <a class="btn btn-link" href="{{ route('contact') }}">Support</a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>

@@ -12,7 +12,7 @@
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">foods</li>
+                                <li class="breadcrumb-item active">Galleries</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -20,49 +20,23 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('foods.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('galleries.store') }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
+
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
-                                                    <label for="exampleInputText1" class="form-label">name</label>
+                                                    <label for="exampleInputText1" class="form-label">Title</label>
                                                     <input type="text" class="form-control" id="exampleInputText1"
-                                                        aria-describedby="textHelp" name="name">
-                                                    @error('name')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
+                                                        aria-describedby="textHelp" name="title">
                                                 </div>
-
                                             </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="mb-3">
-                                                    <label for="exampleFormControlTextarea1" class="form-label">Short
-                                                        Description</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'></textarea>
-                                                    @error('description')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputEmail1" class="form-label">price</label>
-                                                    <input type="number" class="form-control" id="exampleInputEmail1"
-                                                        aria-describedby="emailHelp" name="price">
-                                                    @error('price')
-                                                        <small>{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="mb-3 ">
-                                                    <label for="select1" class="form-label">Category</label>
-                                                    <select class="form-select " id="select1" name="type">
-                                                        @foreach ($foodCategories as $food)
-                                                            <option value="{{ $food->id }}">{{ $food->title }}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <label for="exampleFormControlTextarea1"
+                                                        class="form-label">Description</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name='description'></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -109,11 +83,10 @@
                                                                         <div class="col-lg-4 col md-3 col-sm-12">
 
                                                                             <a href="{{ route('fileManager.create') }}"
-                                                                                class="btn btn-primary text-center">Add
+                                                                                class="btn btn-primary text-center align-middle">Add
                                                                                 images </a>
                                                                         </div>
                                                                     </div>
-
 
                                                                     <div>
                                                                         {{ $files->links() }}
@@ -129,11 +102,13 @@
                                                                         data-bs-dismiss="modal"
                                                                         onclick=" firstFunction()">Save</button>
                                                                 </div>
-
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    <!-- Optional: Place to the bottom of scripts -->
+                                                    <script>
+                                                        const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+                                                    </script>
                                                 </div>
                                                 <div class="form-group col-12 mb-0">
                                                     <label class="col-form-label">Image</label>
@@ -149,9 +124,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @error('title')
-                                                <small>{{ $message }}</small>
-                                            @enderror
                                         </div>
                                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                                     </form>
@@ -169,9 +141,5 @@
             var x = document.querySelector('input[name=img]:checked').value;
             document.getElementById('imagebox').value = x;
         }
-    </script>
-    <!-- Optional: Place to the bottom of scripts -->
-    <script>
-        const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
     </script>
 @endsection

@@ -31,16 +31,16 @@
                      <a class="text-body ms-3" href="{{ $set->siteValue }}"><i class="fab fa-facebook-f"></i></a>
                  @endif
              @endforeach
-             @foreach ($settings as $set)
+             {{-- @foreach ($settings as $set)
                  @if ($set->siteKey == 'Twitter')
                      <a class="text-body ms-3" href="{{ $set->siteValue }}"><i class="fab fa-twitter"></i></a>
                  @endif
-             @endforeach
-             @foreach ($settings as $set)
+             @endforeach --}}
+             {{-- @foreach ($settings as $set)
                  @if ($set->siteKey == 'Youtube')
                      <a class="text-body ms-3" href="{{ $set->siteValue }}"><i class="fab fa-youtube"></i></a>
                  @endif
-             @endforeach
+             @endforeach --}}
              @foreach ($settings as $set)
                  @if ($set->siteKey == 'Instagram')
                      <a class="text-body ms-3" href="{{ $set->siteValue }}"><i class="fab fa-instagram"></i></a>
@@ -53,8 +53,9 @@
          <a href="/" class="navbar-brand ms-4 ms-lg-0">
 
              @foreach ($settings as $set)
-                 @if ($set->siteKey == 'ResturantName')
-                     <h1 class="fw-bold text-primary m-0">{{ $set->siteValue }}</h1>
+                 @if ($set->siteKey == 'Logo')
+                     <img src="{{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'buff-momo-1.png')) }}"
+                         style="height: 100px !important" alt="Logo" />
                  @endif
              @endforeach
          </a>
@@ -67,18 +68,20 @@
                      class="nav-item nav-link {{ request()->is('/') ? ' active' : '' }}">Home</a>
                  <a href="{{ route('about') }}"
                      class="nav-item nav-link {{ request()->is('about') ? ' active' : '' }}">About Us</a>
-                 <a href="{{ route('menu') }}"
-                     class="nav-item nav-link {{ request()->is('menu') ? ' active' : '' }}">Menu</a>
+                 <a href="{{ route('gallery') }}"
+                     class="nav-item nav-link {{ request()->is('gallery') ? ' active' : '' }}">Gallery</a>
 
                  <div class="nav-item dropdown">
                      <a href="#"
-                         class="nav-link dropdown-toggle {{ request()->is('booking', 'team', 'testimonial', 'room') ? ' active' : '' }}"
+                         class="nav-link dropdown-toggle {{ request()->is('booking', 'team', 'testimonial', 'room', 'menu') ? ' active' : '' }}"
                          data-bs-toggle="dropdown">Pages</a>
                      <div class="dropdown-menu m-0">
+                         <a href="{{ route('menu') }}" class="dropdown-item">Menu</a>
                          <a href="{{ route('booking') }}" class="dropdown-item">Bookings</a>
                          <a href="{{ route('team') }}" class="dropdown-item">Our Team</a>
                          <a href="{{ route('testimonial') }}" class="dropdown-item">Testimonial</a>
                          <a href="{{ route('room') }}" class="dropdown-item">Room</a>
+                         <a href="{{ route('spaces') }}" class="dropdown-item">Dining Spaces</a>
                      </div>
                  </div>
                  <a href="{{ route('contact') }}"

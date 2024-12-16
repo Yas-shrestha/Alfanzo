@@ -11,10 +11,9 @@ class Food extends Model
     protected $fillable = [
         'name',
         'description',
-        'sub_description',
         'file_id',
         'price',
-        'type'
+        'category_id'
     ];
 
     public function cart()
@@ -36,5 +35,9 @@ class Food extends Model
     public function foods()
     {
         return $this->belongsTo(Food::class, "food_id");
+    }
+    public function category()
+    {
+        return $this->belongsTo(FoodCategory::class, "category_id", 'id');
     }
 }

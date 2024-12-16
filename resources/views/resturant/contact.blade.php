@@ -1,5 +1,11 @@
 @extends('layouts.main')
 @section('container')
+    <style>
+        label,
+        input {
+            color: #96772e !important;
+        }
+    </style>
     <!-- Page Header Start -->
     @foreach ($settings as $set)
         @if ($set->siteKey == 'Banner')
@@ -51,7 +57,7 @@
                             @foreach ($settings as $set)
                                 @if ($set->siteKey == 'Email')
                                     <i class="fa fa-envelope me-3"></i>
-                                    <a href="mailto:{{ $set->siteValue }}">{{ $set->siteValue }}</a>
+                                    <a href="mailto:{{ $set->siteValue }}" class="text-white">{{ $set->siteValue }}</a>
                                 @endif
                             @endforeach
                         </p>
@@ -64,24 +70,24 @@
                         @endforeach
                         <h5 class="text-white">Follow Us</h5>
                         <div class="d-flex pt-2">
-                            @foreach ($settings as $set)
+                            {{-- @foreach ($settings as $set)
                                 @if ($set->siteKey == 'Instagram')
                                     <a class="btn btn-square btn-outline-light rounded-circle me-1"
                                         href="{{ $set->siteValue }}"><i class="fab fa-twitter"></i></a>
                                 @endif
-                            @endforeach
+                            @endforeach --}}
                             @foreach ($settings as $set)
                                 @if ($set->siteKey == 'Facebook')
                                     <a class="btn btn-square btn-outline-light rounded-circle me-1"
                                         href="{{ $set->siteValue }}"><i class="fab fa-facebook-f"></i></a>
                                 @endif
                             @endforeach
-                            @foreach ($settings as $set)
+                            {{-- @foreach ($settings as $set)
                                 @if ($set->siteKey == 'Youtube')
                                     <a class="btn btn-square btn-outline-light rounded-circle me-1"
                                         href="{{ $set->siteValue }}"><i class="fab fa-youtube"></i></a>
                                 @endif
-                            @endforeach
+                            @endforeach --}}
                             @foreach ($settings as $set)
                                 @if ($set->siteKey == 'Twitter')
                                     <a class="btn btn-square btn-outline-light rounded-circle me-0"
@@ -112,6 +118,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
+
                                     <input required type="text" class="form-control" id="subject" placeholder="Subject"
                                         name="subject" />
                                     <label for="subject">Subject</label>
