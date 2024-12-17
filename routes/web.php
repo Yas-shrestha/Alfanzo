@@ -113,7 +113,7 @@ Route::middleware(['auth', 'checkRole'])->group(function () {
         Route::resource('/carousels', 'App\Http\Controllers\carouselController');
         Route::resource('/foods', 'App\Http\Controllers\FoodController');
         Route::resource('/abouts', 'App\Http\Controllers\AboutController');
-        Route::resource('/about_features', 'App\Http\Controllers\AboutFeatureControlwler');
+        Route::resource('/about_features', 'App\Http\Controllers\AboutFeatureController');
         Route::resource('/admins', 'App\Http\Controllers\AdminController');
         Route::resource('/users', 'App\Http\Controllers\UserController');
         Route::resource('/staffs', 'App\Http\Controllers\StaffController');

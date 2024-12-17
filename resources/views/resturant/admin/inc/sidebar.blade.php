@@ -217,24 +217,7 @@
                         <span class="menu-header-text">Pages</span>
                     </li>
 
-                    <li class="menu-item {{ Route::is('tables.create', 'tables.index') ? 'active' : '' }}">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="fa fa-table" aria-hidden="true"></i>
-                            <div data-i18n="Account Settings">Table</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ route('tables.create') }}" class="menu-link">
-                                    <div data-i18n="Account">Create</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ route('tables.index') }}" class="menu-link">
-                                    <div data-i18n="Notifications">Manage</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
 
                     <li class="menu-item {{ Route::is('carousels.create', 'carousels.index') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">

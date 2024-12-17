@@ -54,7 +54,7 @@
                             src="{{ asset('uploads/' . ($about->files->img != '' ? $about->files->img : 'hero.jpg')) }}">
                     </div>
                 </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <div class="col-lg-6 wow fadeIn text-dark" data-wow-delay="0.5s">
                     <h1 class="display-5 mb-4">{{ $about->title }}</h1>
                     <p class="mb-4">{{ $about->description }}</p>
                     @foreach ($aboutFeature as $feature)
@@ -385,7 +385,7 @@
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                     @foreach ($testimonials as $testimonial)
-                        <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                        <div class="testimonial-item position-relative bg-white text-dark p-5 mt-4">
                             <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
                             <p class="mb-4">{{ $testimonial->description }}</p>
                             <div class="d-flex align-items-center">
