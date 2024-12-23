@@ -7,12 +7,13 @@
 
                     <div class="pagetitle">
                         <div class="d-flex justify-content-between">
-                            <h1>Add</h1>
+                            <h1>Edit</h1>
+                            <a href="{{ route('notice.index') }}" class="btn btn-primary btn-md p-3">Back</a>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">Dining Spaces</li>
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Home</a></li>
+                                <li class="breadcrumb-item active">notice</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -20,26 +21,35 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('spaces.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('notice.update', $notice->id) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @method('PUT')
                                         @csrf
                                         <div class="row">
-
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputText1" class="form-label">Title</label>
-                                                    <input type="text" class="form-control" id="exampleInputText1"
-                                                        aria-describedby="textHelp" name="title">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputText1" class="form-label">No of tables</label>
-                                                    <input type="number" class="form-control" id="exampleInputText1"
-                                                        aria-describedby="textHelp" name="nooftables">
-                                                </div>
-                                            </div>
-
                                             <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Title</label>
+                                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                                        aria-describedby="emailHelp" name="title"
+                                                        value="{{ $notice->title }}">
+                                                    @error('title')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Sub_title</label>
+                                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                                        aria-describedby="emailHelp" name="sub_title"
+                                                        value="{{ $notice->sub_title }}">
+                                                    @error('sub_title')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="mb-3">
                                                     <!-- Modal trigger button -->
                                                     <!-- Modal Body -->
@@ -65,36 +75,20 @@
                                                                             outline: 2px solid #f00;
                                                                         }
                                                                     </style>
-                                                                    <div class="row">
-
-
-                                                                        @forelse ($files as $file)
-                                                                            <label class="col-lg-4 col md-3 col-sm-12 my-2">
-                                                                                <input type="radio" name="img"
-                                                                                    value="{{ $file->id }}"
-                                                                                    style="opacity: 0;" />
-                                                                                <img src="{{ asset('uploads/' . $file->img) }}"
-                                                                                    alt="" height="100px;"
-                                                                                    width="100px;">
-                                                                            </label>
-                                                                        @empty
-                                                                            <h1>No Images on database</h1>
-                                                                        @endforelse
-                                                                        <div class="col-lg-4 col md-3 col-sm-12">
-
-                                                                            <a href="{{ route('fileManager.create') }}"
-                                                                                class="btn btn-primary text-center">Add
-                                                                                images </a>
-                                                                        </div>
-                                                                    </div>
-
-
+                                                                    @foreach ($files as $file)
+                                                                        <label>
+                                                                            <input type="radio" name="img"
+                                                                                value="{{ $file->id }}"
+                                                                                style="opacity: 0;" />
+                                                                            <img src="{{ asset('uploads/' . $file->img) }}"
+                                                                                alt="" height="100px;"
+                                                                                width="100px;"
+                                                                                style="margin-right:20px; margin-bottom:10px;">
+                                                                        </label>
+                                                                    @endforeach
                                                                     <div>
                                                                         {{ $files->links() }}
                                                                     </div>
-                                                                    <?php
-                                                                    ?>
-
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -114,26 +108,40 @@
                                                 <div class="form-group col-12 mb-0">
                                                     <label class="col-form-label">Image</label>
                                                 </div>
+
                                                 <div class="input-group mb-3 col">
-                                                    <input id="imagebox" type="text" class="form-control" disabled
-                                                        name="img" readonly>
+                                                    <input id="imagebox" type="text" class="form-control" readonly
+                                                        name="img" readonly value="{{ $notice->files->id }}">
+
                                                     <div class="input-group-append">
                                                         <button type="button" class="btn btn-primary btn-md"
                                                             data-bs-toggle="modal" data-bs-target="#modalId">
                                                             Choose Image
                                                         </button>
                                                     </div>
+
                                                 </div>
+                                                <div><a href="{{ asset('uploads/' . $notice->files->img) }}"><img
+                                                            src="{{ asset('uploads/' . $notice->files->img) }}"
+                                                            alt="" height="100px" width="100px"></a></div>
                                             </div>
+
+
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="mb-3">
-                                                    <label for="exampleFormControlTextarea1"
+                                                    <label for="exampleInputDescription1"
                                                         class="form-label">Description</label>
-                                                    <textarea id="myEditor" name="description"></textarea>
+                                                    <textarea id="myEditor" name="description">{{ $notice->description }}</textarea>
+                                                    @error('description')
+                                                        <small>{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                             </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary"
+                                                    name="submit">Submit</button>
+                                            </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -143,12 +151,10 @@
             </section>
         </div>
     </main>
-
     <script>
         function firstFunction() {
             var x = document.querySelector('input[name=img]:checked').value;
             document.getElementById('imagebox').value = x;
         }
     </script>
-   
 @endsection

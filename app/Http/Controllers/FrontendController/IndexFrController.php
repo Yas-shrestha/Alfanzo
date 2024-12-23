@@ -12,6 +12,7 @@ use App\Models\Files;
 use App\Models\Food;
 use App\Models\FoodCategory;
 use App\Models\gallery;
+use App\Models\Notice;
 use App\Models\Order;
 use App\Models\reservation;
 use App\Models\room;
@@ -29,6 +30,9 @@ class IndexFrController extends Controller
         $foods = Food::limit(4)->get();
         $user_id = auth()->check() ? auth()->user()->id : null;
         $carousels = Carousel::all();
+        $notice = Notice::query()
+            ->orderBy('created_at', 'desc') // Sort by the creation date
+            ->first();
         $file = Files::query()->inRandomOrder()->first();
 
         if (!$file) {
@@ -49,7 +53,7 @@ class IndexFrController extends Controller
         $teams = Team::limit(4)->get();
         $testimonials = Testimonial::all();
         $settings = SiteConfig::all();
-        return view('resturant.index', compact('carousels', 'about', 'aboutFeature', 'foods', 'teams', 'testimonials', 'user_id', 'settings'));
+        return view('resturant.index', compact('carousels', 'notice', 'about', 'aboutFeature', 'foods', 'teams', 'testimonials', 'user_id', 'settings'));
     }
     public function about()
     {
@@ -136,5 +140,11 @@ class IndexFrController extends Controller
         $galleries = gallery::query()->get()->all();
         $settings = SiteConfig::all();
         return view('resturant.gallery', compact('galleries', 'settings'));
+    }
+    public function notice()
+    {
+        $notices = Notice::query()->get()->all();
+        $settings = SiteConfig::all();
+        return view('resturant.notices', compact('notices', 'settings'));
     }
 }

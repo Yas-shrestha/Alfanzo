@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DiningSpace;
 use App\Models\Files;
+use App\Models\Notice;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Log;
 
-class DiningSpaceController extends Controller
+class NoticeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $spaces = DiningSpace::paginate(5);
-        return view('resturant.admin.DiningSpaces.index', compact('spaces'));
+        $notices = Notice::paginate(5);
+        return view('resturant.admin.notice.index', compact('notices'));
     }
 
     /**
@@ -25,7 +23,7 @@ class DiningSpaceController extends Controller
     public function create()
     {
         $files = Files::paginate(9);
-        return view('resturant.admin.DiningSpaces.create', compact('files'));
+        return view('resturant.admin.notice.create', compact('files'));
     }
 
     /**
@@ -33,25 +31,17 @@ class DiningSpaceController extends Controller
      */
     public function store(Request $request)
     {
-        // Create a new DiningSpace instance
-        $spaces = new DiningSpace;
-
-        // Validate the request
+        $notice = new Notice;
         $validate_data = $request->validate([
-            'title' => 'required|string',
-            'nooftables' => 'required|string',
-            'description' => 'required|string', // Rich text content with images
-            'img' => 'required', // Assuming 'img' is the file ID
+            'title' => 'required',
+            'img' => 'required',
+            'description' => 'required',
+            'sub_title' => 'required',
         ]);
-
-        // Save basic fields
-        $spaces->title = $validate_data['title'];
-        $spaces->nooftables = $validate_data['nooftables'];
-        $spaces->file_id = $validate_data['img'];
-
-        // Process the 'description' content to handle images
+        $notice->title = $validate_data['title'];
+        $notice->sub_title = $validate_data['sub_title'];
+        $notice->file_id = $validate_data['img'];
         $descriptionContent = $validate_data['description'];
-
         // Load the HTML content
         $dom = new \DOMDocument();
         libxml_use_internal_errors(true); // Suppress errors due to malformed HTML
@@ -82,25 +72,22 @@ class DiningSpaceController extends Controller
         }
 
         // Save the modified description back to the database
-        $spaces->description = $dom->saveHTML();
+        $notice->description = $dom->saveHTML();
 
         // Save the new record
-        $spaces->save();
-
-        return redirect('admin/spaces')->with('success', 'Your data has been submitted');
+        $notice->save();
+        return redirect('admin/notice')->with('success', 'Your data have been submitted');
     }
-
-
 
     /**
      * Display the specified resource.
      */
     public function show($id)
     {
-        $spaces = new DiningSpace;
-        $space = $spaces->where('id', $id)->First();
+        $notice = new Notice;
+        $notice = $notice->where('id', $id)->First();
         $files = Files::paginate(9);
-        return view('resturant.admin.DiningSpaces.show', compact('space', 'files'));
+        return view('resturant.admin.notice.show', compact('notice', 'files'));
     }
 
     /**
@@ -108,10 +95,10 @@ class DiningSpaceController extends Controller
      */
     public function edit($id)
     {
-        $spaces = new DiningSpace;
-        $space = $spaces->where('id', $id)->First();
+        $notice = new Notice;
+        $notice = $notice->where('id', $id)->First();
         $files = Files::paginate(9);
-        return view('resturant.admin.DiningSpaces.edit', compact('space', 'files'));
+        return view('resturant.admin.notice.edit', compact('notice', 'files'));
     }
 
     /**
@@ -119,29 +106,20 @@ class DiningSpaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $spaces = DiningSpace::findOrFail($id);
-
-        // Validate the input
-        $request->validate([
-            'title' => 'required|string',
-            'nooftables' => 'required|string',
-            'img' => 'nullable|exists:files,id',  // Ensure the img ID exists in the files table
-            'description' => 'nullable|string',  // Validate description as string
+        $notice = new Notice;
+        $notice = $notice->where('id', $id)->First();
+        $validate_data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'sub_title' => 'required',
+            'img' => 'required',
         ]);
-
-        // Update the title
-        $spaces->title = $request->input('title');
-        $spaces->nooftables = $request->input('nooftables');
-
-        // If img_id is provided, update the file_id (image)
-        if ($request->has('img') && $request->input('img') !== null) {
-            $spaces->file_id = $request->input('img');  // Update file_id to the provided img_id
-        }
-
-        // Handle description if it has base64 images
+        $notice->title = $validate_data['title'];
+        $notice->sub_title = $validate_data['sub_title'];
+        $notice->file_id = $validate_data['img'];
         if ($request->has('description') && $request->input('description') !== null) {
             // Delete old images from the previous description
-            $this->deleteOldImagesFromDescription($spaces->description);
+            $this->deleteOldImagesFromDescription($notice->description);
 
             // Get the new description content
             $descriptionContent = $request->input('description');
@@ -175,15 +153,11 @@ class DiningSpaceController extends Controller
             }
 
             // Save the updated description with the new image URLs
-            $spaces->description = $dom->saveHTML();
+            $notice->description = $dom->saveHTML();
         }
-
-        // Save the updated DiningSpace record
-        $spaces->save();
-
-        return redirect('/admin/spaces')->with('success', 'Space updated successfully!');
+        $notice->update();
+        return redirect('admin/notice')->with('success', 'Your data have been updated');
     }
-
     protected function deleteOldImagesFromDescription($oldDescription)
     {
         // Find all image URLs in the old description content
@@ -217,23 +191,15 @@ class DiningSpaceController extends Controller
     }
 
 
+
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id)
     {
-        // Find the DiningSpace by ID
-        $spaces = DiningSpace::findOrFail($id);
-
-        // Delete the associated image file (if necessary)
-        // Here assuming 'file_id' links to a file in the public directory
-        $file = File::find($spaces->file_id);
-        if ($file) {
-            $filePath = public_path('uploads/' . $file->filename); // Assuming files are stored in 'uploads' directory
-            if (file_exists($filePath)) {
-                unlink($filePath); // Delete the image file
-            }
-        }
-
-        // Optionally delete images referenced in the description
-        preg_match_all('/src="([^"]+)"/', $spaces->description, $matches);
+        $notice = new Notice;
+        $notice = $notice->where('id', $id)->First();
+        preg_match_all('/src="([^"]+)"/', $notice->description, $matches);
         $existingImageUrls = $matches[1]; // Array of existing image URLs
 
         // Remove any image files from the filesystem
@@ -247,10 +213,7 @@ class DiningSpaceController extends Controller
                 unlink($existingImagePath); // Delete the description image file
             }
         }
-
-        // Delete the dining space record
-        $spaces->delete();
-
-        return redirect('admin/spaces')->with('success', 'Your data has been deleted');
+        $notice->delete();
+        return redirect('admin/notice')->with('success', 'Your data have been deleted');
     }
 }

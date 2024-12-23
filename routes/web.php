@@ -21,6 +21,7 @@ use App\Http\Controllers\FrontendController\TeamFrController;
 use App\Http\Controllers\FrontendController\TestimonialFrController;
 use App\Http\Controllers\FrontendController\UserFrController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\PaymentFailedController;
 use App\Http\Controllers\PaymentSuccessController;
 use App\Http\Controllers\PickupController as ControllersPickupController;
@@ -56,6 +57,7 @@ Route::get('/room', [IndexFrController::class, 'room'])->name('room');
 Route::get('/tables', [IndexFrController::class, 'tables'])->name('table');
 Route::get('/spaces', [IndexFrController::class, 'spaces'])->name('spaces');
 Route::get('/gallery', [IndexFrController::class, 'gallery'])->name('gallery');
+Route::get('/notice', [IndexFrController::class, 'notice'])->name('notice');
 // pickup
 Route::post('/pickinUp', [PickupController::class, 'store'])->name('pickup.store');
 Route::get('/pickup/confirm/{id}/{action}/{token}', [PickupController::class, 'confirm'])->name('pickup.confirm');
@@ -127,6 +129,7 @@ Route::middleware(['auth', 'checkRole'])->group(function () {
         Route::resource('/galleries', GalleryController::class);
         Route::resource('/spaces', DiningSpaceController::class);
         Route::resource('/rooms', RoomController::class);
+        Route::resource('/notice', NoticeController::class);
     });
 });
 

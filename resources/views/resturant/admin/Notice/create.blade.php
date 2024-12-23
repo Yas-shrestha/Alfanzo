@@ -11,8 +11,8 @@
                         </div>
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">Dining Spaces</li>
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Home</a></li>
+                                <li class="breadcrumb-item active">Notice</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -20,26 +20,28 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('spaces.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('notice.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <div class="row">
-
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="row ">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="mb-3">
                                                     <label for="exampleInputText1" class="form-label">Title</label>
                                                     <input type="text" class="form-control" id="exampleInputText1"
                                                         aria-describedby="textHelp" name="title">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleInputText1" class="form-label">No of tables</label>
-                                                    <input type="number" class="form-control" id="exampleInputText1"
-                                                        aria-describedby="textHelp" name="nooftables">
+
                                                 </div>
                                             </div>
 
+
                                             <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputText1" class="form-label">Sub_title</label>
+                                                    <input type="text" class="form-control" id="exampleInputText1"
+                                                        aria-describedby="textHelp" name="sub_title">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="mb-3">
                                                     <!-- Modal trigger button -->
                                                     <!-- Modal Body -->
@@ -65,30 +67,18 @@
                                                                             outline: 2px solid #f00;
                                                                         }
                                                                     </style>
-                                                                    <div class="row">
 
-
-                                                                        @forelse ($files as $file)
-                                                                            <label class="col-lg-4 col md-3 col-sm-12 my-2">
-                                                                                <input type="radio" name="img"
-                                                                                    value="{{ $file->id }}"
-                                                                                    style="opacity: 0;" />
-                                                                                <img src="{{ asset('uploads/' . $file->img) }}"
-                                                                                    alt="" height="100px;"
-                                                                                    width="100px;">
-                                                                            </label>
-                                                                        @empty
-                                                                            <h1>No Images on database</h1>
-                                                                        @endforelse
-                                                                        <div class="col-lg-4 col md-3 col-sm-12">
-
-                                                                            <a href="{{ route('fileManager.create') }}"
-                                                                                class="btn btn-primary text-center">Add
-                                                                                images </a>
-                                                                        </div>
-                                                                    </div>
-
-
+                                                                    @foreach ($files as $file)
+                                                                        <label>
+                                                                            <input type="radio" name="img"
+                                                                                value="{{ $file->id }}"
+                                                                                style="opacity: 0;" />
+                                                                            <img src="{{ asset('uploads/' . $file->img) }}"
+                                                                                alt="" height="100px;"
+                                                                                width="100px;"
+                                                                                style="margin-right:20px; margin-bottom:10px;">
+                                                                        </label>
+                                                                    @endforeach
                                                                     <div>
                                                                         {{ $files->links() }}
                                                                     </div>
@@ -125,22 +115,26 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlTextarea1"
-                                                        class="form-label">Description</label>
-                                                    <textarea id="myEditor" name="description"></textarea>
-                                                </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlTextarea1"
+                                                    class="form-label">Description</label>
+                                                <textarea id="myEditor" name="description"></textarea>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                                    </form>
                                 </div>
+                                <div class="">
+
+                                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                </div>
+                                </form>
                             </div>
                         </div>
-                    </section>
                 </div>
             </section>
+        </div>
+        </section>
         </div>
     </main>
 
@@ -150,5 +144,4 @@
             document.getElementById('imagebox').value = x;
         }
     </script>
-   
 @endsection

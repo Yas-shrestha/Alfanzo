@@ -8,12 +8,12 @@
                     <div class="pagetitle">
                         <div class="d-flex justify-content-between">
                             <h1>View</h1>
-                            <a href="{{ route('spaces.index') }}" class="btn btn-primary btn-md ">Back</a>
+                            <a href="{{ route('notice.index') }}" class="btn btn-primary btn-md p-3">Back</a>
                         </div>
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
-                                <li class="breadcrumb-item active">View-space</li>
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Home</a></li>
+                                <li class="breadcrumb-item active">Notice</li>
                             </ol>
                         </nav>
                     </div><!-- End Page Title -->
@@ -21,14 +21,16 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    <h1>{{ $space->title }}</h1>
-                                    <hr>
-                                    <img src="{{ asset('uploads/' . $space->files->img) }}" alt=""
-                                        style="height: 300px;width:100%;object-fit:cover">
-                                    <hr>
-                                    <div>
-                                        <h1>About This Space</h1>
-                                        {!! $space->description !!}
+                                    <div class="card-body">
+                                        <h1>{{ $notice->title }}</h1>
+                                        <hr>
+                                        <img src="{{ asset('uploads/' . $notice->files->img) }}" alt=""
+                                            style="height: 300px;width:100%;object-fit:cover">
+                                        <hr>
+                                        <div>
+                                            <h1>About This Notice</h1>
+                                            {!! $notice->description !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

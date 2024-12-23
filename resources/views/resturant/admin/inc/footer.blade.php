@@ -54,6 +54,47 @@
 
             <!-- Place this tag in your head or just before your close body tag. -->
             <script async defer src="https://buttons.github.io/buttons.js')}}"></script>
+            <script>
+                tinymce.init({
+                    selector: '#myEditor', // Target the specific textarea
+                    plugins: [
+                        // Essential plugins
+                        'image', 'link', 'lists', 'media', 'table', 'wordcount',
+                        // Optional extras
+                        'emoticons', 'charmap', 'searchreplace', 'visualblocks'
+
+                    ],
+                    toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | link image  | numlist bullist  ',
+                    menubar: false, // Simplify UI by removing menu bar
+                    branding: false, // Remove "Powered by TinyMCE" branding
+                    height: 400, // Set a comfortable height for the editor
+                    image_title: true, // Enable title input for images
+                    automatic_uploads: false, // Disable TinyMCE's built-in image uploader
+                    file_picker_types: 'image', // Focus on images for the file picker
+                    file_picker_callback: function(callback, value, meta) {
+                        if (meta.filetype === 'image') {
+                            const input = document.createElement('input');
+                            input.setAttribute('type', 'file');
+                            input.setAttribute('accept', 'image/*');
+                            input.onchange = function() {
+                                const file = this.files[0];
+                                const reader = new FileReader();
+                                reader.onload = function() {
+                                    callback(reader.result, {
+                                        alt: file.name
+                                    });
+                                };
+                                reader.readAsDataURL(file);
+                            };
+                            input.click();
+                        }
+                    },
+                    content_style: `
+                        body { font-family:Arial,sans-serif; font-size:14px; }
+                        img { max-width: 100%; height: auto; }
+                    ` // Ensure images are responsive
+                });
+            </script>
             </body>
 
             </html>

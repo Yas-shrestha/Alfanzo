@@ -1,5 +1,7 @@
 @extends('layouts.main')
 @section('container')
+
+
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -43,7 +45,50 @@
     </div>
     <!-- Carousel End -->
 
+    <div class="modal fade" id="exampleModal{{ $notice->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog  modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">{{ $notice->title }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ asset('uploads/' . $notice->files->img) }}" alt="" width="100%">
+                    <div class="border-top">
+                        <h1 class="text-primary"></h1>
+                    </div>
+                    <style>
+                        .description-container {
+                            max-width: 100%;
+                            /* Makes it responsive */
+                            overflow: hidden;
+                            /* Prevents scrollbars */
+                            word-wrap: break-word;
+                            /* Ensures text doesn't overflow */
+                            display: block;
+                            color: black;
+                        }
 
+                        img {
+                            max-width: 100%;
+                            /* Makes images responsive */
+                            height: auto;
+                            /* Maintains image aspect ratio */
+                            display: block;
+                        }
+                    </style>
+
+                    <div class="description-container">
+                        {!! $notice->description !!}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- About Start -->
     <div class="py-5">
         <div class="container">
@@ -402,5 +447,20 @@
             </div>
         </div>
     @endif
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if the modal has already been shown
+            const modalShown = localStorage.getItem("modalShown");
+
+            if (!modalShown) {
+                // Show the modal
+                const modal = new bootstrap.Modal(document.getElementById("exampleModal{{ $notice->id }}"));
+                modal.show();
+
+                // Mark as shown in localStorage
+                localStorage.setItem("modalShown", "true");
+            }
+        });
+    </script>
     <!-- Testimonial End -->
 @endsection
