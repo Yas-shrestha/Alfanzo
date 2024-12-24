@@ -70,13 +70,15 @@
                      class="nav-item nav-link {{ request()->is('about') ? ' active' : '' }}">About Us</a>
                  <a href="{{ route('menu') }}"
                      class="nav-item nav-link {{ request()->is('menu') ? ' active' : '' }}">Menu</a>
+                 <a href="{{ route('gallery') }}"
+                     class="nav-item nav-link {{ request()->is('gallery') ? ' active' : '' }}">Gallery</a>
 
                  <div class="nav-item dropdown">
                      <a href="#"
                          class="nav-link dropdown-toggle {{ request()->is('booking', 'team', 'testimonial', 'room', 'gallery') ? ' active' : '' }}"
                          data-bs-toggle="dropdown">Pages</a>
                      <div class="dropdown-menu m-0">
-                         <a href="{{ route('gallery') }}" class="dropdown-item">Gallery</a>
+                         {{-- <a href="{{ route('gallery') }}" class="dropdown-item">Gallery</a> --}}
                          <a href="{{ route('booking') }}" class="dropdown-item">Bookings</a>
                          <a href="{{ route('team') }}" class="dropdown-item">Our Team</a>
                          {{-- <a href="{{ route('testimonial') }}" class="dropdown-item">Testimonial</a> --}}
@@ -88,7 +90,7 @@
                      class="nav-item nav-link {{ request()->is('contact') ? ' active' : '' }}">Contact Us</a>
              </div>
              <div class="d-none d-lg-flex ms-2">
-                 @if (auth()->check())
+                 {{-- @if (auth()->check())
                      <div class="nav-item dropdown">
                          <a href="/user-info" class="btn btn-primary py-2 px-4">
                              <i class="fa-solid fa-user"></i>
@@ -110,7 +112,7 @@
                      </div>
                  @else
                      <a href="{{ route('login') }}" class="btn btn-primary py-2 px-4">Log In</a>
-                 @endif
+                 @endif --}}
 
              </div>
          </div>
