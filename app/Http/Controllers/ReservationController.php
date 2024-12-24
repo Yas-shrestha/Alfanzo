@@ -83,7 +83,7 @@ class ReservationController extends Controller
     {
         $reservation = new Reservation;
         $reservation = $reservation->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Reservation.show', compact('reservation', 'files'));
     }
 
@@ -94,7 +94,7 @@ class ReservationController extends Controller
     {
         $reservation = new Reservation;
         $reservation = $reservation->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Reservation.edit', compact('reservation', 'files'));
     }
 

@@ -25,7 +25,7 @@ class TableController extends Controller
     public function create()
     {
         $spaces = DiningSpace::query()->get()->all();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Tables.create', compact('files', 'spaces'));
     }
 
@@ -58,7 +58,7 @@ class TableController extends Controller
     {
         $table = new table;
         $table = $table->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.tables.show', compact('table', 'files'));
     }
 
@@ -69,7 +69,7 @@ class TableController extends Controller
     {
         $table = new table;
         $table = $table->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.tables.edit', compact('table', 'files'));
     }
 

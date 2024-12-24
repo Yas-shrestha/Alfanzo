@@ -19,7 +19,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Rooms.create', compact('files'));
     }
 
@@ -62,7 +62,7 @@ class RoomController extends Controller
     {
         $room = new Room;
         $room = $room->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Rooms.show', compact('room', 'files'));
     }
 

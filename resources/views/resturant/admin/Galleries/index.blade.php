@@ -62,7 +62,48 @@
                                                             class="btn btn-md btn-secondary"><i class="fa fa-eye"
                                                                 aria-hidden="true"></i></a>
                                                         <!-- Modal trigger button -->
+                                                        <button type="button" class="btn btn-danger btn-md"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalId{{ $gallery->id }}">
+                                                            <i class="fa-solid fa-trash-can"></i>
+                                                        </button>
 
+                                                        <!-- Modal Body -->
+                                                        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                                                        <div class="modal fade" id="modalId{{ $gallery->id }}"
+                                                            tabindex="-1" data-bs-backdrop="static"
+                                                            data-bs-keyboard="false" role="dialog"
+                                                            aria-labelledby="modalTitleId" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                                                                role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="modalTitleId">Delete ??
+                                                                        </h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Are you sure
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <form
+                                                                            action="{{ route('galleries.destroy', $gallery->id) }}"
+                                                                            method="POST" enctype="multipart/form-data">
+                                                                            @method('delete')
+                                                                            @csrf
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit" name="submit"
+                                                                                class="btn btn-danger"><i
+                                                                                    class="fa-solid fa-trash-can"></i>
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach

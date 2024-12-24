@@ -22,7 +22,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Testimonials.create', compact('files'));
     }
 
@@ -59,7 +59,7 @@ class TestimonialController extends Controller
     {
         $testimonial = new Testimonial;
         $testimonial = $testimonial->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Testimonials.show', compact('testimonial', 'files'));
     }
 
@@ -70,7 +70,7 @@ class TestimonialController extends Controller
     {
         $testimonial = new Testimonial;
         $testimonial = $testimonial->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Testimonials.edit', compact('testimonial', 'files'));
     }
 

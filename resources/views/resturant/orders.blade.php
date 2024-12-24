@@ -6,17 +6,17 @@
     @foreach ($settings as $set)
         @if ($set->siteKey == 'Banner')
             <div class="container-fluid page-header mb-5 wow fadeIn"
-                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) top right no-repeat;"
+                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) center no-repeat;width:100%;background-size:cover;"
                 data-wow-delay="0.1s">
         @endif
     @endforeach
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown">Orders</h1>
+        <h1 class="display-3 mb-3 animated slideInDown  text-white">Orders</h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">orders</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">orders</li>
             </ol>
         </nav>
     </div>
@@ -45,8 +45,8 @@
                         <tr class="table-primary">
                             <td scope="row">{{ $loop->iteration }}</td>
                             <td>{{ $order->foods->name }}</td>
-                            <td>{{ $order->quantity }}</td> 
-                            <td>{{ $order->price_per_item}}</td> 
+                            <td>{{ $order->quantity }}</td>
+                            <td>{{ $order->price_per_item }}</td>
                             <td>{{ $order->esewa_status }}</td>
                             <td>{{ $order->food_status }}</td>
                         </tr>

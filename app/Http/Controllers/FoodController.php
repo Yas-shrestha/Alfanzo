@@ -24,7 +24,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         $foodCategories = FoodCategory::paginate(5);
         return view('resturant.admin.Foods.create', compact('files', 'foodCategories'));
     }
@@ -63,7 +63,7 @@ class FoodController extends Controller
     {
         $food = new Food;
         $food = $food->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Foods.show', compact('food', 'files'));
     }
 

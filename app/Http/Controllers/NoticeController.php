@@ -22,7 +22,7 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.notice.create', compact('files'));
     }
 
@@ -86,7 +86,7 @@ class NoticeController extends Controller
     {
         $notice = new Notice;
         $notice = $notice->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.notice.show', compact('notice', 'files'));
     }
 
@@ -97,7 +97,7 @@ class NoticeController extends Controller
     {
         $notice = new Notice;
         $notice = $notice->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.notice.edit', compact('notice', 'files'));
     }
 

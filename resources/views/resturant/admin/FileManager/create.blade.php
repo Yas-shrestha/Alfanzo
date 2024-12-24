@@ -30,11 +30,17 @@
                                                     <input type="text" class="form-control" id="exampleInputText1"
                                                         aria-describedby="textHelp" name="title">
                                                 </div>
+                                                @error('title')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">Image</label>
                                                     <input type="file" class="form-control" id="exampleInputEmail1"
                                                         name="img" aria-describedby="emailHelp">
                                                 </div>
+                                                @error('img')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>

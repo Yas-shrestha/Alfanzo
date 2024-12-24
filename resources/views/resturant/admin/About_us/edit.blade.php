@@ -43,9 +43,9 @@
                                                     <div class="mb-3">
                                                         <label for="exampleInputDescription1"
                                                             class="form-label">Description</label>
-                                                        <input type="text" class="form-control"
-                                                            id="exampleInputDescription1" aria-describedby="descriptionHelp"
-                                                            name="description" value="{{ $about->description }}">
+
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description">{{ $about->description }}</textarea>
+
                                                         @error('description')
                                                             <small>{{ $message }}</small>
                                                         @enderror
@@ -117,8 +117,7 @@
 
                                                     <div class="input-group mb-3 col">
                                                         <input id="imagebox" type="text" class="form-control" readonly
-                                                            name="img" readonly
-                                                            value="{{ $about->id }}|{{ $about->files->img }}">
+                                                            name="img" readonly value="{{ $about->id }}">
                                                         <div class="input-group-append">
                                                             <button type="button" class="btn btn-primary btn-md"
                                                                 data-bs-toggle="modal" data-bs-target="#modalId">

@@ -118,7 +118,6 @@
                                                                     </style>
                                                                     <div class="row">
 
-
                                                                         @forelse ($files as $file)
                                                                             <label
                                                                                 class="col-lg-4 col md-3 col-sm-12 my-2">
@@ -138,6 +137,7 @@
                                                                                 class="btn btn-primary text-center">Add
                                                                                 images </a>
                                                                         </div>
+                                                                        {{ $files->links() }}
                                                                     </div>
 
 

@@ -4,7 +4,7 @@
     @foreach ($settings as $set)
         @if ($set->siteKey == 'Banner')
             <div class="container-fluid page-header wow fadeIn"
-                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) top right no-repeat;"
+                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) center no-repeat;width:100%;background-size:cover;"
                 data-wow-delay="0.1s">
         @endif
     @endforeach
@@ -14,7 +14,7 @@
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">Testimonial</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Testimonial</li>
             </ol>
         </nav>
     </div>

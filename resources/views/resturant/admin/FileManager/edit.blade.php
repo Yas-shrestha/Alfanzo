@@ -41,6 +41,9 @@
                                                         name="img" aria-describedby="emailHelp"
                                                         value="{{ $file->img }}">
                                                 </div>
+                                                @error('img')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary" name="submit">Edit</button>

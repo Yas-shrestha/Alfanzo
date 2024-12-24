@@ -10,17 +10,17 @@
     @foreach ($settings as $set)
         @if ($set->siteKey == 'Banner')
             <div class="container-fluid page-header mb-5 wow fadeIn"
-                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) top right no-repeat;"
+                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) center no-repeat;width:100%;background-size:cover;"
                 data-wow-delay="0.1s">
         @endif
     @endforeach
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown">Contact Us</h1>
+        <h1 class="display-3 mb-3 animated slideInDown  text-white">Contact Us</h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">Contact Us</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Contact Us</li>
             </ol>
         </nav>
     </div>
@@ -139,6 +139,12 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="mt-3">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.3076940393303!2d83.94139589999999!3d28.2283391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995952ddf9b7667%3A0xc0d8029e6c9b5788!2sOYO%20501%20Alfanzoo%20Resort!5e0!3m2!1sen!2snp!4v1735068773045!5m2!1sen!2snp"
+                    height="450" style="border:0;width:100%" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>

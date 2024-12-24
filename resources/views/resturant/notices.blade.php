@@ -4,17 +4,17 @@
     @foreach ($settings as $set)
         @if ($set->siteKey == 'Banner')
             <div class="container-fluid page-header mb-5 wow fadeIn"
-                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) top right no-repeat;"
+                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) center no-repeat;width:100%;background-size:cover;"
                 data-wow-delay="0.1s">
         @endif
     @endforeach
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown">Notice</h1>
+        <h1 class="display-3 mb-3 animated slideInDown  text-white">Notice</h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">Notice</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Notice</li>
             </ol>
         </nav>
     </div>
@@ -36,7 +36,8 @@
                         <div class="modal-dialog  modal-lg      ">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title text-primary" id="exampleModalLabel">{{ $notice->title }}</h5>
+                                    <h5 class="modal-title text-primary" id="exampleModalLabel">{{ $notice->title }}
+                                    </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>

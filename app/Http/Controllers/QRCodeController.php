@@ -11,9 +11,7 @@ class QRCodeController extends Controller
 {
     public function __invoke()
     {
-        $categories = FoodCategory::query()->get()->all();
-        $foods = Food::query()->get()->all();
-        $settings = SiteConfig::all();
-        return view('resturant.Qr-scan', compact('categories', 'foods', 'settings'));
+        $fileLocation = public_path('pdf/Alfanzoo-resort.pdf');
+        return view('resturant.qr-scan.php');
     }
 }

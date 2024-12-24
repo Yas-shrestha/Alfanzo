@@ -4,17 +4,17 @@
     @foreach ($settings as $set)
         @if ($set->siteKey == 'Banner')
             <div class="container-fluid page-header mb-5 wow fadeIn"
-                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) top right no-repeat;"
+                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) center no-repeat;width:100%;background-size:cover;"
                 data-wow-delay="0.1s">
         @endif
     @endforeach
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown">Dining Spacess</h1>
+        <h1 class="display-3 mb-3 animated slideInDown  text-white">Dining Spacess</h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">Dining Spaces</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Dining Spaces</li>
             </ol>
         </nav>
     </div>
@@ -113,9 +113,9 @@
                     <div class="p-5 wow fadeInUp text-center " style="background: rgba(0, 0, 0, 0.403)"
                         data-wow-delay="0.2s">
                         <h5 class="section-title ff-secondary text-center text-primary fw-normal">Reservation</h5>
-                        <h1 class="text-white mb-4">Book A Table </h1>
-                        <p>Do you want to Book a table now</p>
-                        <a href="/booking" class="btn btn-primary">Book a Table</a>
+                        <h1 class="text-white mb-4">Book A Room or Table </h1>
+                        <p>Do you want to Book a room or table now</p>
+                        <a href="/booking" class="btn btn-primary">Book Room or Table</a>
                     </div>
 
                 </div>

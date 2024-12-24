@@ -33,22 +33,7 @@ class IndexFrController extends Controller
         $notice = Notice::query()
             ->orderBy('created_at', 'desc') // Sort by the creation date
             ->first();
-        $file = Files::query()->inRandomOrder()->first();
-
-        if (!$file) {
-            // If no file exists, insert a new random file
-            $file = Files::create([
-                'title' => 'Random File ' . Str::random(5),
-                'img' => 'hero.jpg' // Replace with an actual default image path
-            ]);
-        }
-
-        // Use the file ID from the retrieved or created file
-        $about = About::query()->firstOrCreate([
-            'file_id' => $file->id,
-            'title' => 'Restaurant Bagaicha',
-            'description' => 'Welcome to our restaurant Bagaicha where you will feel at home'
-        ]);
+        $about = About::query()->get()->first();
         $aboutFeature = AboutFeature::limit(4)->get();
         $teams = Team::limit(4)->get();
         $testimonials = Testimonial::all();

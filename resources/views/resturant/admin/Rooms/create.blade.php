@@ -141,8 +141,6 @@
                                                                                 images </a>
                                                                         </div>
                                                                     </div>
-
-
                                                                     <div>
                                                                         {{ $files->links() }}
                                                                     </div>

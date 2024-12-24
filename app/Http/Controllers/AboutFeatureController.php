@@ -23,7 +23,7 @@ class AboutFeatureController extends Controller
      */
     public function create()
     {
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.AboutFeatures.create', compact('files'));
     }
 
@@ -39,7 +39,7 @@ class AboutFeatureController extends Controller
             'feature' => 'required'
         ]);
 
-       $feature->feature = $validate_data['feature'];
+        $feature->feature = $validate_data['feature'];
         $feature->save();
         return redirect('admin/about_features')->with('success', 'Your data has been submitted');
     }
@@ -50,7 +50,7 @@ class AboutFeatureController extends Controller
     {
         $feature = new AboutFeature;
         $feature = $feature->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.AboutFeatures.show', compact('feature', 'files'));
     }
 
@@ -61,7 +61,7 @@ class AboutFeatureController extends Controller
     {
         $feature = new AboutFeature;
         $feature = $feature->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.AboutFeatures.edit', compact('feature', 'files'));
     }
 
@@ -75,7 +75,7 @@ class AboutFeatureController extends Controller
         $validate_data = $request->validate([
             'feature' => 'required'
         ]);
-       $feature->feature = $validate_data['feature'];
+        $feature->feature = $validate_data['feature'];
         $feature->update();
         return redirect('admin/about_features')->with('success', 'Your data have been updated');
     }

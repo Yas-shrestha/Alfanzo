@@ -22,7 +22,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.TeamMembers.create', compact('files'));
     }
 
@@ -67,7 +67,7 @@ class TeamController extends Controller
     {
         $team = new Team;
         $team = $team->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.TeamMembers.show', compact('team', 'files'));
     }
 
@@ -78,7 +78,7 @@ class TeamController extends Controller
     {
         $team = new Team;
         $team = $team->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.TeamMembers.edit', compact('team', 'files'));
     }
 

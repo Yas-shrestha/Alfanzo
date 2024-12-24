@@ -5,16 +5,16 @@
     @foreach ($settings as $set)
         @if ($set->siteKey == 'Banner')
             <div class="container-fluid page-header mb-5 wow fadeIn"
-                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) top right no-repeat;"
+                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) center no-repeat;width:100%;background-size:cover;"
                 data-wow-delay="0.1s">
         @endif
     @endforeach
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown">Cart</h1>
+        <h1 class="display-3 mb-3 animated slideInDown  text-white">Cart</h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">Cart</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Cart</li>
             </ol>
         </nav>
     </div>
@@ -98,8 +98,7 @@
                                 </div>
 
                                 <div class="flex items-center gap-4 mt-2">
-                                    <button type="submit"
-                                        class=" btn btn-primary btn-md">{{ __('Update') }}</button>
+                                    <button type="submit" class=" btn btn-primary btn-md">{{ __('Update') }}</button>
 
                                     @if (session('status') === 'password-updated')
                                         <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"

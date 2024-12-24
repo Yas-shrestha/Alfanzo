@@ -52,7 +52,7 @@ class AboutController extends Controller
     {
         $about = new About;
         $about = $about->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.About_us.show', compact('about', 'files'));
     }
 
@@ -63,7 +63,7 @@ class AboutController extends Controller
     {
         $about = new About;
         $about = $about->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.About_us.edit', compact('about', 'files'));
     }
 

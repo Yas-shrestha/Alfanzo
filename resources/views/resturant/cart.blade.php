@@ -5,16 +5,16 @@
     @foreach ($settings as $set)
         @if ($set->siteKey == 'Banner')
             <div class="container-fluid page-header mb-5 wow fadeIn"
-                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) top right no-repeat;"
+                style="background: url({{ asset('uploads/' . ($set->siteValue != '' ? $set->siteValue : 'hero.jpg')) }}) center no-repeat;width:100%;background-size:cover;"
                 data-wow-delay="0.1s">
         @endif
     @endforeach
     <div class="container">
-        <h1 class="display-3 mb-3 animated slideInDown">Cart</h1>
+        <h1 class="display-3 mb-3 animated slideInDown  text-white">Cart</h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
-                <li class="breadcrumb-item text-dark active" aria-current="page">Cart</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Cart</li>
             </ol>
         </nav>
     </div>
@@ -69,7 +69,8 @@
                                                         </button>
                                                     </div>
                                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                        <h6 class="mb-0" id="price">Rs{{ $item->food->price }}</h6>
+                                                        <h6 class="mb-0" id="price">Rs{{ $item->food->price }}
+                                                        </h6>
                                                         <input type="hidden" id="Price" class="price"
                                                             data-price-id="{{ $item->id }}"
                                                             value="{{ $item->food->price }}">
@@ -99,7 +100,8 @@
                                                                 role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="modalTitleId">Delete ??
+                                                                        <h5 class="modal-title" id="modalTitleId">Delete
+                                                                            ??
                                                                         </h5>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"

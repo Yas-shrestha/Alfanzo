@@ -22,7 +22,7 @@ class CarouselController extends Controller
      */
     public function create()
     {
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Carousels.create', compact('files'));
     }
 
@@ -51,7 +51,7 @@ class CarouselController extends Controller
     {
         $carousels = new Carousel;
         $carousels = $carousels->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Carousels.show', compact('carousels', 'files'));
     }
 
@@ -62,7 +62,7 @@ class CarouselController extends Controller
     {
         $carousels = new Carousel;
         $carousels = $carousels->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Carousels.edit', compact('carousels', 'files'));
     }
 

@@ -22,7 +22,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        $files = Files::query()->paginate(8);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Galleries.create', compact('files'));
     }
 
@@ -53,7 +53,7 @@ class GalleryController extends Controller
     {
         $gallery = new Gallery;
         $gallery = $gallery->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Galleries.show', compact('gallery', 'files'));
     }
 
@@ -64,7 +64,7 @@ class GalleryController extends Controller
     {
         $gallery = new Gallery;
         $gallery = $gallery->where('id', $id)->First();
-        $files = Files::paginate(9);
+        $files = Files::query()->paginate(30);
         return view('resturant.admin.Galleries.edit', compact('gallery', 'files'));
     }
 
