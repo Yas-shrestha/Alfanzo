@@ -40,11 +40,11 @@
                                                 <th scope="col">S.N</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Phone</th>
-                                                <th scope="col">email</th>
+                                                {{-- <th scope="col">email</th> --}}
                                                 <th scope="col">location</th>
                                                 <th scope="col">no of people</th>
                                                 <th scope="col">pickup time</th>
-                                                <th scope="col">Pickup status</th>
+                                                {{-- <th scope="col">Pickup status</th> --}}
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -54,11 +54,12 @@
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $pickup->name }}</td>
                                                     <td>{{ $pickup->phone }}</td>
-                                                    <td>{{ $pickup->email }}</td>
+                                                    {{-- <td>{{ $pickup->email }}</td> --}}
                                                     <td>{{ $pickup->location }}</td>
                                                     <td>{{ $pickup->noofpeople }}</td>
-                                                    <td>{{ $pickup->pickuptime }}</td>
-                                                    @if (Auth::user() && Auth::user()->role == 'user')
+                                                    <td>{{ \Carbon\Carbon::parse($pickup->pickuptime)->format('F j, Y, g:i a') }}
+                                                    </td>
+                                                    {{-- @if (Auth::user() && Auth::user()->role == 'user')
                                                         <td>
                                                             <span
                                                                 class="badge rounded-pill 
@@ -90,7 +91,7 @@
                                                                     class="btn btn-sm btn-primary my-1">Change</button>
                                                             </form>
                                                         </td>
-                                                    @endif
+                                                    @endif --}}
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-md"
                                                             data-bs-toggle="modal"

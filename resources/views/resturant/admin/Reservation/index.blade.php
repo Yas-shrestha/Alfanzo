@@ -44,7 +44,7 @@
                                                 <th scope="col">Dining space</th>
                                                 <th scope="col">pickup</th>
                                                 <th scope="col">Date</th>
-                                                <th scope="col">Reservation status</th>
+                                                {{-- <th scope="col">Reservation status</th> --}}
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -56,9 +56,10 @@
                                                     <td>{{ $reservation->phone }}</td>
                                                     <td>{{ $reservation->room }}</td>
                                                     <td>{{ $reservation->spaces }}</td>
-                                                    <td>{{ $reservation->date }}</td>
                                                     <td>{{ $reservation->pickup }}</td>
-                                                    @if (Auth::user() && Auth::user()->role == 'user')
+                                                    <td>{{ \Carbon\Carbon::parse($reservation->pickuptime)->format('F j, Y, g:i a') }}
+                                                    </td>
+                                                    {{-- @if (Auth::user() && Auth::user()->role == 'user')
                                                         <td>
                                                             <span
                                                                 class="badge rounded-pill 
@@ -91,7 +92,7 @@
                                                                     class="btn btn-sm btn-primary my-1">Change</button>
                                                             </form>
                                                         </td>
-                                                    @endif
+                                                    @endif --}}
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-md"
                                                             data-bs-toggle="modal"

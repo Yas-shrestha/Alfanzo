@@ -45,6 +45,6 @@ class PickupController extends Controller
 
         // Send an email to the owner
         Mail::to($ownerEmail)->send(new PickupStatusNotification($pickup));
-        return redirect()->back()->with('success', 'Successfully Booked Please Check Your Email and Verify it');
+        return redirect()->back()->with('success', 'Successfully Booked We will call you shortly');
     }
 }

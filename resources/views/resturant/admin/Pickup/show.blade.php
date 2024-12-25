@@ -37,6 +37,9 @@
                                         <div class="col-md-6 col-sm-12 fs-3"> <span> No Of People:</span>
                                             {{ $pickup->noofpeople }}
                                         </div>
+                                        <div class="col-md-6 col-sm-12 fs-3"> <span> Location:</span>
+                                            {{ $pickup->location }}
+                                        </div>
                                         <div class="col-md-6 col-sm-12 fs-3"> <span> Date:</span>
                                             {{ \Carbon\Carbon::parse($pickup->pickuptime)->format('F j, Y, g:i a') }}
                                         </div>
